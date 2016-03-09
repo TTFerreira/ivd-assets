@@ -40,7 +40,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Laravel
+                    I.V.D. Assets
                 </a>
             </div>
 
@@ -49,10 +49,13 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}">Home</a></li>
                     <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Locations<span class="caret"></span></a>
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Assets<span class="caret"></span></a>
                       <ul class="dropdown-menu">
                         <li><a href="{{ url('/locations') }}">View Locations</a></li>
                         <li><a href="{{ url('/locations/create') }}">Create Location</a></li>
+                        <li class="divider"></li>
+                        <li><a href="{{ url('/asset-types') }}">View Asset Types</a></li>
+                        <li><a href="{{ url('/asset-types/create') }}">Create Asset Types</a></li>
                       </ul>
                     </li>
                 </ul>

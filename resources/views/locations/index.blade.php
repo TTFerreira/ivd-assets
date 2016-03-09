@@ -7,6 +7,7 @@
 					<h3 class="panel-title">Locations</h3>
 				</div>
 				<div class="panel-body">
+          <p><a href="locations/create"><button type="button" class="btn btn-default" name="create-new-location" data-toggle="tooltip" data-original-title="Create New Location"><span class='glyphicon glyphicon-plus' aria-hidden='true'></span> <b>Create New Location</b></button></a></p>
           <table class="table table-striped table-bordered table-hover">
             <tr>
               <th>Building</th>

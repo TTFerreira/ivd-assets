@@ -20,11 +20,15 @@ Route::group(['middleware' => ['web']], function () {
 
   Route::get('locations', 'LocationsController@index');
   Route::get('locations/create', 'LocationsController@create');
-  Route::get('locations/{location}', 'LocationsController@show');
   Route::get('locations/{location}/edit', 'LocationsController@edit');
   Route::patch('locations/{location}/update', 'LocationsController@update');
   Route::post('locations', 'LocationsController@store');
 
+  Route::get('asset-types', 'AssetTypesController@index');
+  Route::get('asset-types/create', 'AssetTypesController@create');
+  Route::get('asset-types/{asset_type}/edit', 'AssetTypesController@edit');
+  Route::patch('asset-types/{asset_type}/update', 'AssetTypesController@update');
+  Route::post('asset-types', 'AssetTypesController@store');
 
   Route::get('cards', 'CardsController@index');
   Route::get('cards/{card}', 'CardsController@show');
