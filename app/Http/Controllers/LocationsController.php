@@ -9,9 +9,14 @@ use App\Http\Requests;
 
 class LocationsController extends Controller
 {
+  public function __construct()
+  {
+      $this->middleware('auth');
+  }
+
   public function index()
   {
-    $locations = Location::paginate(2);;
+    $locations = Location::paginate(10);;
     return view('locations.index', compact('locations'));
   }
 

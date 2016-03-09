@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>I.V.D. Assets</title>
 
     <!-- Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
@@ -55,7 +55,10 @@
                         <li><a href="{{ url('/locations/create') }}">Create Location</a></li>
                         <li class="divider"></li>
                         <li><a href="{{ url('/asset-types') }}">View Asset Types</a></li>
-                        <li><a href="{{ url('/asset-types/create') }}">Create Asset Types</a></li>
+                        <li><a href="{{ url('/asset-types/create') }}">Create Asset Type</a></li>
+                        <li class="divider"></li>
+                        <li><a href="{{ url('/divisions') }}">View Divisions</a></li>
+                        <li><a href="{{ url('/divisions/create') }}">Create Division</a></li>
                       </ul>
                     </li>
                 </ul>

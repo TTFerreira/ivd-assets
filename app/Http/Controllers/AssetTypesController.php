@@ -9,9 +9,14 @@ use App\Http\Requests;
 
 class AssetTypesController extends Controller
 {
+  public function __construct()
+  {
+      $this->middleware('auth');
+  }
+
   public function index()
   {
-    $asset_types = AssetType::paginate(2);;
+    $asset_types = AssetType::paginate(10);;
     return view('asset-types.index', compact('asset_types'));
   }
 
