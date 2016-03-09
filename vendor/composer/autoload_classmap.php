@@ -10,6 +10,7 @@ return array(
     'CreateCardsTable' => $baseDir . '/database/migrations/2016_03_07_115322_create_cards_table.php',
     'CreateDivisionsTable' => $baseDir . '/database/migrations/2016_03_09_101036_create_divisions_table.php',
     'CreateLocationsTable' => $baseDir . '/database/migrations/2016_03_08_125036_create_locations_table.php',
+    'CreateManufacturersTable' => $baseDir . '/database/migrations/2016_03_09_135625_create_manufacturers_table.php',
     'CreateNotesTable' => $baseDir . '/database/migrations/2016_03_07_132618_create_notes_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2016_03_08_124239_create_password_resets_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2016_03_08_083827_create_users_table.php',

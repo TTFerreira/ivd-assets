@@ -59,6 +59,9 @@
                         <li class="divider"></li>
                         <li><a href="{{ url('/divisions') }}">View Divisions</a></li>
                         <li><a href="{{ url('/divisions/create') }}">Create Division</a></li>
+                        <li class="divider"></li>
+                        <li><a href="{{ url('/manufacturers') }}">View Manufacturers</a></li>
+                        <li><a href="{{ url('/manufacturers/create') }}">Create Manufacturer</a></li>
                       </ul>
                     </li>
                 </ul>
