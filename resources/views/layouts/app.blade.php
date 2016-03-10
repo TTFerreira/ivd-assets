@@ -62,6 +62,9 @@
                         <li class="divider"></li>
                         <li><a href="{{ url('/manufacturers') }}">View Manufacturers</a></li>
                         <li><a href="{{ url('/manufacturers/create') }}">Create Manufacturer</a></li>
+                        <li class="divider"></li>
+                        <li><a href="{{ url('/pcspecs') }}">View PC Specifications</a></li>
+                        <li><a href="{{ url('/pcspecs/create') }}">Create PC Specification</a></li>
                       </ul>
                     </li>
                 </ul>
