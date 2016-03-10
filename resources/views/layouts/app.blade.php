@@ -65,6 +65,12 @@
                         <li class="divider"></li>
                         <li><a href="{{ url('/pcspecs') }}">View PC Specifications</a></li>
                         <li><a href="{{ url('/pcspecs/create') }}">Create PC Specification</a></li>
+                        <li class="divider"></li>
+                        <li><a href="{{ url('/statuses') }}">View Statuses</a></li>
+                        <li><a href="{{ url('/statuses/create') }}">Create Status</a></li>
+                        <li class="divider"></li>
+                        <li><a href="{{ url('/suppliers') }}">View Suppliers</a></li>
+                        <li><a href="{{ url('/suppliers/create') }}">Create Supplier</a></li>
                       </ul>
                     </li>
                 </ul>

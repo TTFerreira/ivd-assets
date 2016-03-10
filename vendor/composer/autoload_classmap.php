@@ -14,6 +14,8 @@ return array(
     'CreateNotesTable' => $baseDir . '/database/migrations/2016_03_07_132618_create_notes_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2016_03_08_124239_create_password_resets_table.php',
     'CreatePcspecsTable' => $baseDir . '/database/migrations/2016_03_10_072752_create_pcspecs_table.php',
+    'CreateStatuses' => $baseDir . '/database/migrations/2016_03_10_074414_create_statuses.php',
+    'CreateSuppliersTable' => $baseDir . '/database/migrations/2016_03_10_080055_create_suppliers_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2016_03_08_083827_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',

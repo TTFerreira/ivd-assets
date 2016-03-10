@@ -48,6 +48,18 @@ Route::group(['middleware' => ['web']], function () {
   Route::patch('pcspecs/{pcspec}/update', 'PcspecsController@update');
   Route::post('pcspecs', 'PcspecsController@store');
 
+  Route::get('statuses', 'StatusesController@index');
+  Route::get('statuses/create', 'StatusesController@create');
+  Route::get('statuses/{status}/edit', 'StatusesController@edit');
+  Route::patch('statuses/{status}/update', 'StatusesController@update');
+  Route::post('statuses', 'StatusesController@store');
+
+  Route::get('suppliers', 'SuppliersController@index');
+  Route::get('suppliers/create', 'SuppliersController@create');
+  Route::get('suppliers/{supplier}/edit', 'SuppliersController@edit');
+  Route::patch('suppliers/{supplier}/update', 'SuppliersController@update');
+  Route::post('suppliers', 'SuppliersController@store');
+
   Route::get('cards', 'CardsController@index');
   Route::get('cards/{card}', 'CardsController@show');
 
