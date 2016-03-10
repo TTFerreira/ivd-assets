@@ -60,6 +60,12 @@ Route::group(['middleware' => ['web']], function () {
   Route::patch('suppliers/{supplier}/update', 'SuppliersController@update');
   Route::post('suppliers', 'SuppliersController@store');
 
+  Route::get('models', 'AssetModelsController@index');
+  Route::get('models/create', 'AssetModelsController@create');
+  Route::get('models/{asset_model}/edit', 'AssetModelsController@edit');
+  Route::patch('models/{asset_model}/update', 'AssetModelsController@update');
+  Route::post('models', 'AssetModelsController@store');
+
   Route::get('cards', 'CardsController@index');
   Route::get('cards/{card}', 'CardsController@show');
 
