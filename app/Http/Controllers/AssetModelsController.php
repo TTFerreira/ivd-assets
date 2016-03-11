@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\AssetModel;
+use App\Manufacturer;
+use App\AssetType;
+use App\Pcspec;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -28,7 +31,10 @@ class AssetModelsController extends Controller
 
   public function create()
   {
-    return view('models.create');
+    $manufacturers = Manufacturer::all();
+    $asset_types = AssetType::all();
+    $pcspecs = Pcspec::all();
+    return view('models.create', compact('manufacturers', 'asset_types', 'pcspecs'));
   }
 
   public function store(Request $request)
@@ -54,7 +60,10 @@ class AssetModelsController extends Controller
 
   public function edit(AssetModel $asset_model)
   {
-    return view('models.edit', compact('asset_model'));
+    $manufacturers = Manufacturer::all();
+    $asset_types = AssetType::all();
+    $pcspecs = Pcspec::all();
+    return view('models.edit', compact('asset_model', 'manufacturers', 'asset_types', 'pcspecs'));
   }
 
   public function update(Request $request, AssetModel $asset_model)

@@ -51,6 +51,9 @@
                     <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Assets<span class="caret"></span></a>
                       <ul class="dropdown-menu">
+                        <li><a href="{{ url('/models') }}">View Models</a></li>
+                        <li><a href="{{ url('/models/create') }}">Create Model</a></li>
+                        <li class="divider"></li>
                         <li><a href="{{ url('/locations') }}">View Locations</a></li>
                         <li><a href="{{ url('/locations/create') }}">Create Location</a></li>
                         <li class="divider"></li>

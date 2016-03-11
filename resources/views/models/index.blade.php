@@ -11,18 +11,18 @@
           <table class="table table-striped table-bordered table-hover">
             <tr>
               <th>Manufacturer</th>
+              <th>Model Name</th>
               <th>Asset Type</th>
               <th>PC Specification</th>
-              <th>Model Name</th>
               <th>Actions</th>
             </tr>
             @foreach($asset_models as $asset_model)
               <tr>
                 <div>
                   <td>{{$asset_model->manufacturer->name}}</td>
+                  <td>{{$asset_model->asset_model}}</td>
                   <td>{{$asset_model->asset_type->type_name}}</td>
                   <td>{{$asset_model->pcspec->cpu}}, {{$asset_model->pcspec->ram}}, {{$asset_model->pcspec->hdd}}</td>
-                  <td>{{$asset_model->asset_model}}</td>
                   <td><a href="/models/{{ $asset_model->id }}/edit">Edit</a></td>
                 </div>
               </tr>

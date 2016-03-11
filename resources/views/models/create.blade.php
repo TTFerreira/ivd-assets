@@ -12,15 +12,31 @@
             {{csrf_field()}}
             <div class="form-group">
               <label for="manufacturer_id">Manufacturer</label>
-              <input type="text" name="manufacturer_id" class="form-control" value="{{old('manufacturer_id')}}">
+              {{-- <input type="text" name="manufacturer_id" class="form-control" value="{{old('manufacturer_id')}}"> --}}
+              <select class="form-control" name="manufacturer_id">
+                <option value = ""></option>
+                @foreach($manufacturers as $manufacturer)
+                    <option value="{{$manufacturer->id}}">{{$manufacturer->name}}</option>
+                @endforeach
+              </select>
             </div>
             <div class="form-group">
               <label for="asset_type_id">Asset Type</label>
-              <input type="text"  name="asset_type_id" class="form-control" value="{{old('asset_type_id')}}">
+              <select class="form-control" name="asset_type_id">
+                <option value = ""></option>
+                @foreach($asset_types as $asset_type)
+                    <option value="{{$asset_type->id}}">{{$asset_type->type_name}}</option>
+                @endforeach
+              </select>
             </div>
             <div class="form-group">
               <label for="pcspec_id">PC Specification</label>
-              <input type="text"  name="pcspec_id" class="form-control" value="{{old('pcspec_id')}}">
+              <select class="form-control" name="pcspec_id">
+                <option value = ""></option>
+                @foreach($pcspecs as $pcspec)
+                    <option value="{{$pcspec->id}}">{{$pcspec->cpu}}, {{$pcspec->ram}}, {{$pcspec->hdd}}</option>
+                @endforeach
+              </select>
             </div>
             <div class="form-group">
               <label for="asset_model">Model Name</label>
@@ -32,7 +48,7 @@
             </div>
 
             <div class="form-group">
-              <button type="submit" class="btn btn-primary">Add New Location</button>
+              <button type="submit" class="btn btn-primary">Add New Model</button>
             </div>
           </form>
         </div>

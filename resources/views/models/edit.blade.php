@@ -13,15 +13,39 @@
               {{csrf_field()}}
               <div class="form-group">
                 <label for="manufacturer_id">Manufacturer</label>
-                <input type="text" name="manufacturer_id" class="form-control" value="{{$asset_model->manufacturer_id}}">
+                <select class="form-control" name="manufacturer_id">
+                  @foreach($manufacturers as $manufacturer)
+                    <option
+                      @if($asset_model->manufacturer_id == $manufacturer->id)
+                        selected
+                      @endif
+                    value="{{$manufacturer->id}}">{{$manufacturer->name}}</option>
+                  @endforeach
+                </select>
               </div>
               <div class="form-group">
                 <label for="asset_type_id">Asset Type</label>
-                <input type="text"  name="asset_type_id" class="form-control" value="{{$asset_model->asset_type_id}}">
+                <select class="form-control" name="asset_type_id">
+                  @foreach($asset_types as $asset_type)
+                    <option
+                      @if($asset_model->asset_type_id == $asset_type->id)
+                        selected
+                      @endif
+                    value="{{$asset_type->id}}">{{$asset_type->type_name}}</option>
+                  @endforeach
+                </select>
               </div>
               <div class="form-group">
                 <label for="pcspec_id">PC Specification</label>
-                <input type="text"  name="pcspec_id" class="form-control" value="{{$asset_model->pcspec_id}}">
+                <select class="form-control" name="pcspec_id">
+                  @foreach($pcspecs as $pcspec)
+                    <option
+                      @if($asset_model->pcspec_id == $pcspec->id)
+                        selected
+                      @endif
+                    value="{{$pcspec->id}}">{{$pcspec->cpu}}, {{$pcspec->ram}}, {{$pcspec->hdd}}</option>
+                  @endforeach
+                </select>
               </div>
               <div class="form-group">
                 <label for="asset_model">Model Name</label>
