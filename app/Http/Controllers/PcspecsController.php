@@ -16,7 +16,7 @@ class PcspecsController extends Controller
 
   public function index()
   {
-    $pcspecs = Pcspec::paginate(10);;
+    $pcspecs = Pcspec::orderBy('cpu', 'asc')->paginate(10);
     return view('pcspecs.index', compact('pcspecs'));
   }
 

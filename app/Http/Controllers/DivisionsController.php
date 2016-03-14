@@ -16,7 +16,7 @@ class DivisionsController extends Controller
 
   public function index()
   {
-    $divisions = Division::paginate(10);;
+    $divisions = Division::orderBy('name', 'asc')->paginate(10);
     return view('divisions.index', compact('divisions'));
   }
 

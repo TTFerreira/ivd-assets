@@ -17,15 +17,12 @@ class MovementsController extends Controller
       $this->middleware('auth');
   }
 
-  public function index()
+  public function show(Asset $asset)
   {
-    $movements = Movement::paginate(10);;
-    return view('movements.index', compact('movements'));
-  }
-
-  public function show(Movement $movement)
-  {
-    return view('movements.show', compact('movement'));
+    $movements = Movement::orderBy('created_at', 'desc')->get();
+    $locations = Location::all();
+    $statuses = Status::all();
+    return view('movements.history', compact('asset', 'movements', 'locations', 'statuses'));
   }
 
   public function create(Asset $asset)
@@ -49,6 +46,9 @@ class MovementsController extends Controller
     $movement->status_id = $request->status_id;
 
     $movement->save();
+
+    $asset->movement_id = $movement->id;
+    $asset->update();
 
     return redirect('assets');
   }

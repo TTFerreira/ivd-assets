@@ -16,7 +16,7 @@ class LocationsController extends Controller
 
   public function index()
   {
-    $locations = Location::paginate(10);;
+    $locations = Location::orderBy('building', 'asc')->paginate(10);
     return view('locations.index', compact('locations'));
   }
 

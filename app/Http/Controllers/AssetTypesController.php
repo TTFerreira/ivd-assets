@@ -16,7 +16,7 @@ class AssetTypesController extends Controller
 
   public function index()
   {
-    $asset_types = AssetType::paginate(10);;
+    $asset_types = AssetType::orderBy('type_name', 'asc')->paginate(10);
     return view('asset-types.index', compact('asset_types'));
   }
 

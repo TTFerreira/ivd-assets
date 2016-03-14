@@ -27,7 +27,7 @@
                   <td>{{$asset->movement->location->location_name}}</td>
                   <td>{{$asset->division->name}}</td>
                   <td>{{$asset->movement->status->name}}</td>
-                  <td><a href="/assets/{{ $asset->id }}/move">Move</a> | <a href="/assets/{{ $asset->id }}/edit">Edit</a></td>
+                  <td><a href="/assets/{{ $asset->id }}/move">Move</a> | <a href="/movements/{{ $asset->id }}/history">History</a> | <a href="/assets/{{ $asset->id }}/edit">Edit</a></td>
                 </div>
               </tr>
             @endforeach
