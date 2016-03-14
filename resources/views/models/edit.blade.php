@@ -38,6 +38,7 @@
               <div class="form-group">
                 <label for="pcspec_id">PC Specification</label>
                 <select class="form-control pcspec_id" name="pcspec_id">
+                  <option value=""></option>
                   @foreach($pcspecs as $pcspec)
                     <option
                       @if($asset_model->pcspec_id == $pcspec->id)

@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Status extends Model
+class WarrantyType extends Model
 {
   protected $fillable = ['name'];
 
-  public function movement()
+  public function asset()
   {
-    return $this->hasMany(Movement::class);
+    return $this->hasMany(Asset::class);
   }
 }

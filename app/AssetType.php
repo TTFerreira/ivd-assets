@@ -8,7 +8,7 @@ class AssetType extends Model
 {
   protected $fillable = ['type_name', 'abbreviation'];
 
-  public function assetModels()
+  public function asset_model()
   {
     return $this->belongsTo(AssetModel::class);
   }

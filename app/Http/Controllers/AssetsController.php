@@ -8,6 +8,9 @@ use App\Division;
 use App\Supplier;
 use App\Movement;
 use App\Manufacturer;
+use App\Location;
+use App\Status;
+use App\WarrantyType;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -38,28 +41,44 @@ class AssetsController extends Controller
     $suppliers = Supplier::all();
     $movements = Movement::all();
     $manufacturers = Manufacturer::all();
-    return view('assets.create', compact('asset_models', 'divisions', 'suppliers', 'movements', 'manufacturers'));
+    $warranty_types = WarrantyType::all();
+    return view('assets.create', compact('asset_models', 'divisions', 'suppliers', 'movements', 'manufacturers', 'warranty_types'));
   }
 
   public function store(Request $request)
   {
     $this->validate($request, [
-      'serial_number' => 'required',
       'asset_model_id' => 'required',
       'division_id' => 'required',
       'supplier_id' => 'required'
     ]);
-
+    $count = \DB::table('assets')->count() + 1;
     $asset = new Asset();
     $asset->serial_number = $request->serial_number;
     $asset->model_id = $request->asset_model_id;
+    $tag = $asset->model->asset_type->abbreviation;
+    $tag = $tag . sprintf('%05d', $count);;
+    $asset->asset_tag = $tag;
     $asset->division_id = $request->division_id;
     $asset->supplier_id = $request->supplier_id;
     $asset->purchase_date = $request->purchase_date;
     $asset->warranty_months = $request->warranty_months;
-    $asset->warranty_type = $request->warranty_type;
+    $asset->warranty_type = $request->warranty_type_id;
 
     $asset->save();
+
+    $id = $asset->id;
+
+    $movement = new Movement();
+    $movement->asset_id = $id;
+    $movement->location_id = 1;
+    $movement->status_id = 1;
+
+    $movement->save();
+
+    $asset->movement_id = $movement->id;
+
+    $asset->update();
 
     return redirect('assets');
   }
@@ -77,7 +96,6 @@ class AssetsController extends Controller
   public function update(Request $request, Asset $asset)
   {
     $this->validate($request, [
-      'serial_number' => 'required',
       'asset_model_id' => 'required',
       'division_id' => 'required',
       'supplier_id' => 'required'

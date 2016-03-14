@@ -22,7 +22,7 @@ class CreateAssetsTable extends Migration
             $table->integer('movement_id')->nullable()->index();
             $table->date('purchase_date')->nullable();
             $table->integer('warranty_months')->nullable();
-            $table->string('warranty_type')->nullable();
+            $table->integer('warranty_type')->nullable();
             $table->timestamps();
         });
     }

@@ -13,8 +13,8 @@
               <th>Asset Tag</th>
               <th>Serial Number</th>
               <th>Model</th>
-              <th>Division</th>
               <th>Location</th>
+              <th>Division</th>
               <th>Status</th>
               <th>Actions</th>
             </tr>
@@ -22,12 +22,12 @@
               <tr>
                 <div>
                   <td>{{$asset->asset_tag}}</td>
-                  <td>{{$asset->serial_number}}</td>
+                  <td>{{$asset->serial_number or ''}}</td>
                   <td>{{$asset->model->manufacturer->name}} - {{$asset->model->asset_model}}</td>
+                  <td>{{$asset->movement->location->location_name}}</td>
                   <td>{{$asset->division->name}}</td>
-                  <td></td>
-                  <td></td>
-                  <td><a href="/assets/{{ $asset->id }}/edit">Edit</a></td>
+                  <td>{{$asset->movement->status->name}}</td>
+                  <td><a href="/assets/{{ $asset->id }}/move">Move</a> | <a href="/assets/{{ $asset->id }}/edit">Edit</a></td>
                 </div>
               </tr>
             @endforeach

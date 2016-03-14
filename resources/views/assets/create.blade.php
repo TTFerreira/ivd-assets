@@ -50,8 +50,13 @@
               <input type="number"  name="warranty_months" class="form-control" value="{{old('warranty_months')}}">
             </div>
             <div class="form-group">
-              <label for="warranty_type">Warranty Type</label>
-              <input type="text"  name="warranty_type" class="form-control" value="{{old('warranty_type')}}">
+              <label for="warranty_type_id">Warranty Type</label>
+              <select class="form-control warranty_type_id" name="warranty_type_id">
+                <option value = ""></option>
+                @foreach($warranty_types as $warranty_type)
+                    <option value="{{$warranty_type->id}}">{{$warranty_type->name}}</option>
+                @endforeach
+              </select>
             </div>
 
             <div class="form-group">
@@ -78,6 +83,7 @@
       $(".asset_model_id").select2();
       $(".division_id").select2();
       $(".supplier_id").select2();
+      $(".warranty_type_id").select2();
     });
   </script>
 @endsection

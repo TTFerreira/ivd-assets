@@ -17,4 +17,14 @@ class Asset extends Model
   {
     return $this->belongsTo(Division::class);
   }
+
+  public function movement()
+  {
+    return $this->belongsTo(Movement::class);
+  }
+
+  public function warranty_type()
+  {
+    return $this->belongsTo(WarrantyType::class);
+  }
 }

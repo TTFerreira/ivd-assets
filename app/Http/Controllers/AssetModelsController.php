@@ -42,7 +42,6 @@ class AssetModelsController extends Controller
     $this->validate($request, [
       'manufacturer_id' => 'required',
       'asset_type_id' => 'required',
-      'pcspec_id' => 'required',
       'asset_model' => 'required'
     ]);
 
@@ -71,7 +70,6 @@ class AssetModelsController extends Controller
     $this->validate($request, [
       'manufacturer_id' => 'required',
       'asset_type_id' => 'required',
-      'pcspec_id' => 'required',
       'asset_model' => 'required'
     ]);
 
