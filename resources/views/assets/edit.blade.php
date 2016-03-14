@@ -68,6 +68,7 @@
                 <button type="submit" class="btn btn-primary">Edit Asset</button>
               </div>
             </form>
+            <div class="text-center"><a class="btn btn-primary" href="{{ URL::previous() }}">Back</a></div>
           </div>
         </div>
 

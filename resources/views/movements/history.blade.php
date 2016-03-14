@@ -11,16 +11,19 @@
             <tr>
               <th>Location</th>
               <th>Status</th>
+              <th>Date</th>
             </tr>
             @foreach($movements as $movement)
               <tr>
                 <div>
                   <td>{{$movement->location->location_name}}</td>
                   <td>{{$movement->status->name}}</td>
+                  <td>{{$movement->created_at}}</td>
                 </div>
               </tr>
             @endforeach
           </table>
+          <div class="text-center"><a class="btn btn-primary" href="{{ URL::previous() }}">Back</a></div>
         </div>
       </div>
     </div>

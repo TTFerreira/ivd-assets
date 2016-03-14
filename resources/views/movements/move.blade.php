@@ -2,7 +2,7 @@
 
 @section('content')
   <div class="row">
-    <div class="col-md-6 col-md-offset-3">
+    <div class="col-md-4 col-md-offset-2">
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">Move Asset</h3>
@@ -28,13 +28,24 @@
                 @endforeach
               </select>
             </div>
-
             <div class="form-group">
               <button type="submit" class="btn btn-primary">Move Asset</button>
             </div>
           </form>
         </div>
       </div>
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Current Location/Status</h3>
+        </div>
+        <div class="panel-body">
+            <h4><b>Location:</b> {{$asset->movement->location->location_name}}</h4>
+            <h4><b>Status:</b> {{$asset->movement->status->name}}</h4>
+        </div>
+      </div>
+    </div>
 
       @if(count($errors))
         <ul>
@@ -44,6 +55,7 @@
         </ul>
       @endif
     </div>
+    <div class="text-center"><a class="btn btn-primary" href="{{ URL::previous() }}">Back</a></div>
   </div>
 @endsection
 
