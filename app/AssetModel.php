@@ -23,4 +23,9 @@ class AssetModel extends Model
     return $this->belongsTo(Pcspec::class);
   }
 
+  public function asset()
+  {
+    return $this->hasMany(Asset::class);
+  }
+
 }

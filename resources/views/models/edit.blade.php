@@ -13,7 +13,7 @@
               {{csrf_field()}}
               <div class="form-group">
                 <label for="manufacturer_id">Manufacturer</label>
-                <select class="form-control" name="manufacturer_id">
+                <select class="form-control manufacturer_id" name="manufacturer_id">
                   @foreach($manufacturers as $manufacturer)
                     <option
                       @if($asset_model->manufacturer_id == $manufacturer->id)
@@ -25,7 +25,7 @@
               </div>
               <div class="form-group">
                 <label for="asset_type_id">Asset Type</label>
-                <select class="form-control" name="asset_type_id">
+                <select class="form-control asset_type_id" name="asset_type_id">
                   @foreach($asset_types as $asset_type)
                     <option
                       @if($asset_model->asset_type_id == $asset_type->id)
@@ -37,7 +37,7 @@
               </div>
               <div class="form-group">
                 <label for="pcspec_id">PC Specification</label>
-                <select class="form-control" name="pcspec_id">
+                <select class="form-control pcspec_id" name="pcspec_id">
                   @foreach($pcspecs as $pcspec)
                     <option
                       @if($asset_model->pcspec_id == $pcspec->id)
@@ -72,4 +72,13 @@
       @endif
     </div>
   </div>
+@endsection
+@section('footer')
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $(".manufacturer_id").select2();
+      $(".asset_type_id").select2();
+      $(".pcspec_id").select2();
+    });
+  </script>
 @endsection

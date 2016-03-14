@@ -8,10 +8,12 @@ $baseDir = dirname($vendorDir);
 return array(
     'CreateAssetModelsTable' => $baseDir . '/database/migrations/2016_03_10_083700_create_asset_models_table.php',
     'CreateAssetTypesTable' => $baseDir . '/database/migrations/2016_03_09_081346_create_asset_types_table.php',
+    'CreateAssetsTable' => $baseDir . '/database/migrations/2016_03_14_073236_create_assets_table.php',
     'CreateCardsTable' => $baseDir . '/database/migrations/2016_03_07_115322_create_cards_table.php',
     'CreateDivisionsTable' => $baseDir . '/database/migrations/2016_03_09_101036_create_divisions_table.php',
     'CreateLocationsTable' => $baseDir . '/database/migrations/2016_03_08_125036_create_locations_table.php',
     'CreateManufacturersTable' => $baseDir . '/database/migrations/2016_03_09_135625_create_manufacturers_table.php',
+    'CreateMovementsTable' => $baseDir . '/database/migrations/2016_03_14_074008_create_movements_table.php',
     'CreateNotesTable' => $baseDir . '/database/migrations/2016_03_07_132618_create_notes_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2016_03_08_124239_create_password_resets_table.php',
     'CreatePcspecsTable' => $baseDir . '/database/migrations/2016_03_10_072752_create_pcspecs_table.php',

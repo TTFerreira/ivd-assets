@@ -13,6 +13,7 @@
 
     <!-- Styles -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet" />
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
     <style>
@@ -51,6 +52,9 @@
                     <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Assets<span class="caret"></span></a>
                       <ul class="dropdown-menu">
+                        <li><a href="{{ url('/assets') }}">View Assets</a></li>
+                        <li><a href="{{ url('/assets/create') }}">Create Asset</a></li>
+                        <li class="divider"></li>
                         <li><a href="{{ url('/models') }}">View Models</a></li>
                         <li><a href="{{ url('/models/create') }}">Create Model</a></li>
                         <li class="divider"></li>
@@ -105,6 +109,8 @@
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+    @yield('footer')
 </body>
 </html>

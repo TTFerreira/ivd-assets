@@ -13,7 +13,7 @@
             <div class="form-group">
               <label for="manufacturer_id">Manufacturer</label>
               {{-- <input type="text" name="manufacturer_id" class="form-control" value="{{old('manufacturer_id')}}"> --}}
-              <select class="form-control" name="manufacturer_id">
+              <select class="form-control manufacturer_id" name="manufacturer_id">
                 <option value = ""></option>
                 @foreach($manufacturers as $manufacturer)
                     <option value="{{$manufacturer->id}}">{{$manufacturer->name}}</option>
@@ -22,7 +22,7 @@
             </div>
             <div class="form-group">
               <label for="asset_type_id">Asset Type</label>
-              <select class="form-control" name="asset_type_id">
+              <select class="form-control asset_type_id" name="asset_type_id">
                 <option value = ""></option>
                 @foreach($asset_types as $asset_type)
                     <option value="{{$asset_type->id}}">{{$asset_type->type_name}}</option>
@@ -31,7 +31,7 @@
             </div>
             <div class="form-group">
               <label for="pcspec_id">PC Specification</label>
-              <select class="form-control" name="pcspec_id">
+              <select class="form-control pcspec_id" name="pcspec_id">
                 <option value = ""></option>
                 @foreach($pcspecs as $pcspec)
                     <option value="{{$pcspec->id}}">{{$pcspec->cpu}}, {{$pcspec->ram}}, {{$pcspec->hdd}}</option>
@@ -63,4 +63,14 @@
       @endif
     </div>
   </div>
+@endsection
+
+@section('footer')
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $(".manufacturer_id").select2();
+      $(".asset_type_id").select2();
+      $(".pcspec_id").select2();
+    });
+  </script>
 @endsection
