@@ -11,6 +11,15 @@
           <form method="POST" action="{{ url('models') }}">
             {{csrf_field()}}
             <div class="form-group">
+              <label for="asset_type_id">Asset Type</label>
+              <select class="form-control asset_type_id" name="asset_type_id">
+                <option value = ""></option>
+                @foreach($asset_types as $asset_type)
+                    <option value="{{$asset_type->id}}">{{$asset_type->type_name}}</option>
+                @endforeach
+              </select>
+            </div>
+            <div class="form-group">
               <label for="manufacturer_id">Manufacturer</label>
               {{-- <input type="text" name="manufacturer_id" class="form-control" value="{{old('manufacturer_id')}}"> --}}
               <select class="form-control manufacturer_id" name="manufacturer_id">
@@ -21,13 +30,12 @@
               </select>
             </div>
             <div class="form-group">
-              <label for="asset_type_id">Asset Type</label>
-              <select class="form-control asset_type_id" name="asset_type_id">
-                <option value = ""></option>
-                @foreach($asset_types as $asset_type)
-                    <option value="{{$asset_type->id}}">{{$asset_type->type_name}}</option>
-                @endforeach
-              </select>
+              <label for="asset_model">Model Name</label>
+              <input type="text"  name="asset_model" class="form-control" value="{{old('asset_model')}}">
+            </div>
+            <div class="form-group">
+              <label for="part_number">Part Number (Optional)</label>
+              <input type="text"  name="part_number" class="form-control" value="{{old('part_number')}}">
             </div>
             <div class="form-group">
               <label for="pcspec_id">PC Specification</label>
@@ -37,14 +45,6 @@
                     <option value="{{$pcspec->id}}">{{$pcspec->cpu}}, {{$pcspec->ram}}, {{$pcspec->hdd}}</option>
                 @endforeach
               </select>
-            </div>
-            <div class="form-group">
-              <label for="asset_model">Model Name</label>
-              <input type="text"  name="asset_model" class="form-control" value="{{old('asset_model')}}">
-            </div>
-            <div class="form-group">
-              <label for="part_number">Part Number (Optional)</label>
-              <input type="text"  name="part_number" class="form-control" value="{{old('part_number')}}">
             </div>
 
             <div class="form-group">

@@ -14,13 +14,15 @@
               <th>Date</th>
             </tr>
             @foreach($movements as $movement)
-              <tr>
-                <div>
-                  <td>{{$movement->location->location_name}}</td>
-                  <td>{{$movement->status->name}}</td>
-                  <td>{{$movement->created_at}}</td>
-                </div>
-              </tr>
+              @if($movement->asset_id == $asset->id)
+                <tr>
+                  <div>
+                    <td>{{$movement->location->location_name}}</td>
+                    <td>{{$movement->status->name}}</td>
+                    <td>{{$movement->created_at}}</td>
+                  </div>
+                </tr>
+              @endif
             @endforeach
           </table>
           <div class="text-center"><a class="btn btn-primary" href="{{ URL::previous() }}">Back</a></div>

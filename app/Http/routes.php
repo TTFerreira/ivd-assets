@@ -75,12 +75,4 @@ Route::group(['middleware' => ['web']], function () {
   Route::get('movements/{asset}/history', 'MovementsController@show');
   Route::get('assets/{asset}/move', 'MovementsController@create');
   Route::post('assets/{asset}/store', 'MovementsController@store');
-
-  Route::get('cards', 'CardsController@index');
-  Route::get('cards/{card}', 'CardsController@show');
-
-  Route::post('cards/{card}/notes', 'NotesController@store');
-
-  Route::get('notes/{note}/edit', 'NotesController@edit');
-  Route::patch('notes/{note}', 'NotesController@update');
 });

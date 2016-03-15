@@ -12,6 +12,18 @@
               {{method_field('PATCH')}}
               {{csrf_field()}}
               <div class="form-group">
+                <label for="asset_type_id">Asset Type</label>
+                <select class="form-control asset_type_id" name="asset_type_id">
+                  @foreach($asset_types as $asset_type)
+                    <option
+                      @if($asset_model->asset_type_id == $asset_type->id)
+                        selected
+                      @endif
+                    value="{{$asset_type->id}}">{{$asset_type->type_name}}</option>
+                  @endforeach
+                </select>
+              </div>
+              <div class="form-group">
                 <label for="manufacturer_id">Manufacturer</label>
                 <select class="form-control manufacturer_id" name="manufacturer_id">
                   @foreach($manufacturers as $manufacturer)
@@ -24,16 +36,12 @@
                 </select>
               </div>
               <div class="form-group">
-                <label for="asset_type_id">Asset Type</label>
-                <select class="form-control asset_type_id" name="asset_type_id">
-                  @foreach($asset_types as $asset_type)
-                    <option
-                      @if($asset_model->asset_type_id == $asset_type->id)
-                        selected
-                      @endif
-                    value="{{$asset_type->id}}">{{$asset_type->type_name}}</option>
-                  @endforeach
-                </select>
+                <label for="asset_model">Model Name</label>
+                <input type="text"  name="asset_model" class="form-control" value="{{$asset_model->asset_model}}">
+              </div>
+              <div class="form-group">
+                <label for="part_number">Part Number (Optional)</label>
+                <input type="text"  name="part_number" class="form-control" value="{{$asset_model->part_number}}">
               </div>
               <div class="form-group">
                 <label for="pcspec_id">PC Specification</label>
@@ -47,14 +55,6 @@
                     value="{{$pcspec->id}}">{{$pcspec->cpu}}, {{$pcspec->ram}}, {{$pcspec->hdd}}</option>
                   @endforeach
                 </select>
-              </div>
-              <div class="form-group">
-                <label for="asset_model">Model Name</label>
-                <input type="text"  name="asset_model" class="form-control" value="{{$asset_model->asset_model}}">
-              </div>
-              <div class="form-group">
-                <label for="part_number">Part Number (Optional)</label>
-                <input type="text"  name="part_number" class="form-control" value="{{$asset_model->part_number}}">
               </div>
 
               <div class="form-group">

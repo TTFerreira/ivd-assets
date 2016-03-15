@@ -67,10 +67,8 @@ class AssetsController extends Controller
 
     $asset->save();
 
-    $id = $asset->id;
-
     $movement = new Movement();
-    $movement->asset_id = $id;
+    $movement->asset_id = $asset->id;
     $movement->location_id = 1;
     $movement->status_id = 1;
 
