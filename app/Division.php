@@ -12,4 +12,9 @@ class Division extends Model
   {
     return $this->hasMany(Asset::class);
   }
+
+  public function invoice()
+  {
+    return $this->hasMany(Invoice::class);
+  }
 }

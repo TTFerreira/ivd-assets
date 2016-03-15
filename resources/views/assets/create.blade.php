@@ -42,6 +42,15 @@
               </select>
             </div>
             <div class="form-group">
+              <label for="invoice_id">Invoice</label>
+              <select class="form-control invoice_id" name="invoice_id">
+                <option value = ""></option>
+                @foreach($invoices as $invoice)
+                    <option value="{{$invoice->id}}">{{$invoice->invoice_number}}</option>
+                @endforeach
+              </select>
+            </div>
+            <div class="form-group">
               <label for="purchase_date">Purchase Date</label>
               <input type="date"  name="purchase_date" class="form-control" value="{{old('purchase_date')}}">
             </div>
@@ -84,6 +93,7 @@
       $(".division_id").select2();
       $(".supplier_id").select2();
       $(".warranty_type_id").select2();
+      $(".invoice_id").select2();
     });
   </script>
 @endsection

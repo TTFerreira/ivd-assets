@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Asset extends Model
 {
-  protected $fillable = ['serial_number', 'model_id', 'division_id', 'supplier_id', 'purchase_date', 'warranty_months', 'warranty_type'];
+  protected $fillable = ['serial_number', 'model_id', 'division_id', 'supplier_id', 'purchase_date', 'warranty_months', 'warranty_type', 'invoice_id'];
 
   public function model()
   {
@@ -26,5 +26,10 @@ class Asset extends Model
   public function warranty_type()
   {
     return $this->belongsTo(WarrantyType::class);
+  }
+
+  public function invoice()
+  {
+    return $this->belongsTo(Invoice::class);
   }
 }

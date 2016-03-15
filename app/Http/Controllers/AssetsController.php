@@ -11,6 +11,7 @@ use App\Manufacturer;
 use App\Location;
 use App\Status;
 use App\WarrantyType;
+use App\Invoice;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -42,7 +43,8 @@ class AssetsController extends Controller
     $movements = Movement::all();
     $manufacturers = Manufacturer::all();
     $warranty_types = WarrantyType::all();
-    return view('assets.create', compact('asset_models', 'divisions', 'suppliers', 'movements', 'manufacturers', 'warranty_types'));
+    $invoices = Invoice::all();
+    return view('assets.create', compact('asset_models', 'divisions', 'suppliers', 'movements', 'manufacturers', 'warranty_types', 'invoices'));
   }
 
   public function store(Request $request)
@@ -64,6 +66,7 @@ class AssetsController extends Controller
     $asset->purchase_date = $request->purchase_date;
     $asset->warranty_months = $request->warranty_months;
     $asset->warranty_type = $request->warranty_type_id;
+    $asset->invoice_id = $request->invoice_id;
 
     $asset->save();
 
@@ -88,7 +91,9 @@ class AssetsController extends Controller
     $suppliers = Supplier::all();
     $movements = Movement::all();
     $manufacturers = Manufacturer::all();
-    return view('assets.edit', compact('asset', 'asset_models', 'divisions', 'suppliers', 'movements', 'manufacturers'));
+    $warranty_types = WarrantyType::all();
+    $invoices = Invoice::all();
+    return view('assets.edit', compact('asset', 'asset_models', 'divisions', 'suppliers', 'movements', 'manufacturers', 'invoices', 'warranty_types'));
   }
 
   public function update(Request $request, Asset $asset)

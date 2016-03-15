@@ -75,4 +75,11 @@ Route::group(['middleware' => ['web']], function () {
   Route::get('movements/{asset}/history', 'MovementsController@show');
   Route::get('assets/{asset}/move', 'MovementsController@create');
   Route::post('assets/{asset}/store', 'MovementsController@store');
+
+  Route::get('invoices', 'InvoicesController@index');
+  Route::get('invoices/create', 'InvoicesController@create');
+  Route::get('invoices/{invoice}/edit', 'InvoicesController@edit');
+  Route::get('invoices/{invoice}', 'InvoicesController@show');
+  Route::patch('invoices/{invoice}/update', 'InvoicesController@update');
+  Route::post('invoices', 'InvoicesController@store');
 });

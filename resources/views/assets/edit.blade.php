@@ -52,6 +52,19 @@
                 </select>
               </div>
               <div class="form-group">
+                <label for="invoice_id">Invoice</label>
+                <select class="form-control invoice_id" name="invoice_id">
+                  <option value=""></option>
+                  @foreach($invoices as $invoice)
+                    <option
+                      @if($asset->invoice_id == $invoice->id)
+                        selected
+                      @endif
+                    value="{{$invoice->id}}">{{$invoice->invoice_number}}</option>
+                  @endforeach
+                </select>
+              </div>
+              <div class="form-group">
                 <label for="purchase_date">Purchase Date</label>
                 <input type="date"  name="purchase_date" class="form-control" value="{{$asset->purchase_date}}">
               </div>
@@ -61,7 +74,16 @@
               </div>
               <div class="form-group">
                 <label for="warranty_type">Warranty Type</label>
-                <input type="text"  name="warranty_type" class="form-control" value="{{$asset->warranty_type}}">
+                <select class="form-control warranty_type" name="warranty_type">
+                  <option value=""></option>
+                  @foreach($warranty_types as $warranty_type)
+                    <option
+                      @if($asset->warranty_type == $warranty_type->id)
+                        selected
+                      @endif
+                    value="{{$warranty_type->id}}">{{$warranty_type->name}}</option>
+                  @endforeach
+                </select>
               </div>
 
               <div class="form-group">
@@ -88,6 +110,8 @@
       $(".asset_model_id").select2();
       $(".division_id").select2();
       $(".supplier_id").select2();
+      $(".invoice_id").select2();
+      $(".warranty_type").select2();
     });
   </script>
 @endsection

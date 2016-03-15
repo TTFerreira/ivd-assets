@@ -6,10 +6,13 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddDateColumnToInvoicesTable' => $baseDir . '/database/migrations/2016_03_15_193226_add_date_column_to_invoices_table.php',
+    'AddInvoiceIdToAssetsTable' => $baseDir . '/database/migrations/2016_03_15_152059_add_invoice_id_to_assets_table.php',
     'CreateAssetModelsTable' => $baseDir . '/database/migrations/2016_03_10_083700_create_asset_models_table.php',
     'CreateAssetTypesTable' => $baseDir . '/database/migrations/2016_03_09_081346_create_asset_types_table.php',
     'CreateAssetsTable' => $baseDir . '/database/migrations/2016_03_14_073236_create_assets_table.php',
     'CreateDivisionsTable' => $baseDir . '/database/migrations/2016_03_09_101036_create_divisions_table.php',
+    'CreateInvoicesTable' => $baseDir . '/database/migrations/2016_03_15_145621_create_invoices_table.php',
     'CreateLocationsTable' => $baseDir . '/database/migrations/2016_03_08_125036_create_locations_table.php',
     'CreateManufacturersTable' => $baseDir . '/database/migrations/2016_03_09_135625_create_manufacturers_table.php',
     'CreateMovementsTable' => $baseDir . '/database/migrations/2016_03_14_074008_create_movements_table.php',
