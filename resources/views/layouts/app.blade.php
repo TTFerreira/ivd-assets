@@ -80,6 +80,13 @@
                         <li><a href="{{ url('/suppliers/create') }}">Create Supplier</a></li>
                       </ul>
                     </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Invoices<span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="{{ url('/invoices') }}">View Invoices</a></li>
+                        <li><a href="{{ url('/invoices/create') }}">Create Invoice</a></li>
+                      </ul>
+                    </li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
