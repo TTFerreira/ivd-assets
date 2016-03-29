@@ -43,10 +43,11 @@ class InvoicesController extends Controller
   {
     $this->validate($request, [
       'invoice_number' => 'required|unique:invoices,invoice_number',
-      'order_number' => 'required',
+      'order_number' => 'required|unique:invoices,order_number',
       'division_id' => 'required',
       'supplier_id' => 'required',
-      'invoiced_date' => 'required'
+      'invoiced_date' => 'required',
+      'total' => 'required|numeric|between:0, 99999999.99'
     ]);
 
     $invoice = new Invoice();
@@ -55,6 +56,7 @@ class InvoicesController extends Controller
     $invoice->division_id = $request->division_id;
     $invoice->supplier_id = $request->supplier_id;
     $invoice->invoiced_date = $request->invoiced_date;
+    $invoice->total = $request->total;
     $filename = "invoices/" . $invoice->invoice_number . '.pdf';
     $file = $request->file('file');
     if ($file) {
@@ -69,20 +71,34 @@ class InvoicesController extends Controller
   public function edit(Invoice $invoice)
   {
     $suppliers = Supplier::all();
-    return view('invoices.edit', compact('invoice', 'suppliers'));
+    $divisions = Division::all();
+    return view('invoices.edit', compact('invoice', 'suppliers', 'divisions'));
   }
 
   public function update(Request $request, Invoice $invoice)
   {
     $this->validate($request, [
       'invoice_number' => 'required|unique:invoices,invoice_number,'.$invoice->id,
-      'order_number' => 'required',
+      'order_number' => 'required|unique:invoices,order_number,'.$invoice->id,
       'division_id' => 'required',
       'supplier_id' => 'required',
-      'invoiced_date' => 'required'
+      'invoiced_date' => 'required',
+      'total' => 'required|numeric|between:0, 99999999.99'
     ]);
 
+    if ($request->invoice_number != $invoice->invoice_number) {
+      Storage::move('invoices/' . $invoice->invoice_number . '.pdf', 'invoices/' . $request->invoice_number  . '.pdf');
+    }
+
+    $filename = "invoices/" . $request->invoice_number . '.pdf';
+    $file = $request->file('file');
+    if ($file) {
+      Storage::disk('local')->put($filename, File::get($file));
+    }
+
     $invoice->update($request->all());
+
+
 
     return redirect('invoices');
   }

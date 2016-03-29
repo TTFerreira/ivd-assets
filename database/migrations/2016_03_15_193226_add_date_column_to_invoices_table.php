@@ -16,6 +16,7 @@ class AddDateColumnToInvoicesTable extends Migration
             $table->string('order_number');
             $table->integer('division_id')->unsigned()->index();
             $table->date('invoiced_date');
+            $table->decimal('total');
         });
     }
 

@@ -78,8 +78,8 @@ Route::group(['middleware' => ['web']], function () {
 
   Route::get('invoices', 'InvoicesController@index');
   Route::get('invoices/create', 'InvoicesController@create');
-  Route::get('invoices/{invoice}/edit', 'InvoicesController@edit');
   Route::get('invoices/{invoice}', 'InvoicesController@show');
+  Route::get('invoices/{invoice}/edit', 'InvoicesController@edit');
   Route::patch('invoices/{invoice}/update', 'InvoicesController@update');
   Route::post('invoices', 'InvoicesController@store');
 });
