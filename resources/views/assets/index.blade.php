@@ -19,7 +19,20 @@
               <th>Actions</th>
             </tr>
             @foreach($assets as $asset)
-              <tr>
+              <?php $now = new \Carbon\Carbon(); ?>
+              @if($asset->purchase_date != '0000-00-00')
+                <?php $purchasedDate = \Carbon\Carbon::parse($asset->purchase_date);
+                $age = $purchasedDate->diffInMonths($now); ?>
+              @endif
+              <tr
+                @if(isset($age))
+                  @if($age > 59)
+                    class="danger"
+                  @elseif($age > 47 && $age < 60)
+                    class="warning"
+                  @endif
+                @endif
+              >
                 <div>
                   <td>{{$asset->asset_tag}}</td>
                   <td>{{$asset->serial_number or ''}}</td>

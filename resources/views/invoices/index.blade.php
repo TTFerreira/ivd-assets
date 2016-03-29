@@ -12,6 +12,7 @@
             <tr>
               <th>Invoice Number</th>
               <th>Order Number</th>
+              <th>Total</th>
               <th>Division</th>
               <th>Supplier</th>
               <th>Invoiced Date</th>
@@ -22,6 +23,7 @@
                 <div>
                   <td>{{$invoice->invoice_number}}</td>
                   <td>{{$invoice->order_number}}</td>
+                  <td>R{{$invoice->total}}</td>
                   <td>{{$invoice->division->name}}</td>
                   <td>{{$invoice->supplier->name}}</td>
                   <td>{{$invoice->invoiced_date}}</td>
