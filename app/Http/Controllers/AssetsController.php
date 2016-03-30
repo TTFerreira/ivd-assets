@@ -94,7 +94,8 @@ class AssetsController extends Controller
     $manufacturers = Manufacturer::all();
     $warranty_types = WarrantyType::all();
     $invoices = Invoice::all();
-    return view('assets.edit', compact('asset', 'asset_models', 'divisions', 'suppliers', 'movements', 'manufacturers', 'invoices', 'warranty_types'));
+    $pageTitle = 'Edit Assets';
+    return view('assets.edit', compact('asset', 'asset_models', 'divisions', 'suppliers', 'movements', 'manufacturers', 'invoices', 'warranty_types', 'pageTitle'));
   }
 
   public function update(Request $request, Asset $asset)

@@ -3098,5 +3098,59 @@
         ],
         "description": "Symfony DomCrawler Component",
         "homepage": "https://symfony.com"
+    },
+    {
+        "name": "acacha/admin-lte-template-laravel",
+        "version": "2.0.7",
+        "version_normalized": "2.0.7.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/acacha/adminlte-laravel.git",
+            "reference": "3a62fe7d75c5a6fc24663f67ec19c65ba7cc2cc1"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/acacha/adminlte-laravel/zipball/3a62fe7d75c5a6fc24663f67ec19c65ba7cc2cc1",
+            "reference": "3a62fe7d75c5a6fc24663f67ec19c65ba7cc2cc1",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/console": "~5.0",
+            "illuminate/support": "~5.0",
+            "php": ">=5.4.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.0"
+        },
+        "time": "2016-03-16 11:10:31",
+        "type": "package",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Acacha\\AdminLTETemplateLaravel\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Sergi Tur Badenas",
+                "email": "sergiturbadenas@gmail.com",
+                "homepage": "http://acacha.org"
+            }
+        ],
+        "description": "AdminLTE template applied to Laravel Scaffolding",
+        "keywords": [
+            "AdminLTE",
+            "admin",
+            "admin-lte",
+            "administrator",
+            "bootstrap",
+            "laravel",
+            "template",
+            "theme"
+        ]
     }
 ]

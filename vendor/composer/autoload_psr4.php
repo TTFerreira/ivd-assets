@@ -35,4 +35,5 @@ return array(
     'ClassPreloader\\' => array($vendorDir . '/classpreloader/classpreloader/src'),
     'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
     'App\\' => array($baseDir . '/app'),
+    'Acacha\\AdminLTETemplateLaravel\\' => array($vendorDir . '/acacha/admin-lte-template-laravel/src'),
 );
