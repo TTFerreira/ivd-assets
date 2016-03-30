@@ -3,7 +3,9 @@
   @if(isset($pageTitle))
     <h1>
       @yield('contentheader_title', $pageTitle)
-      <small>@yield('contentheader_description', 'Blah Blah')</small>
+      @if(isset($pageDescription))
+        <small>@yield('contentheader_description', $pageDescription)</small>
+      @endif
     </h1>
   @else
     <h1>@yield('contentheader_title', '&nbsp;')</h1>

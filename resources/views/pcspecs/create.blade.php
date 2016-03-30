@@ -3,11 +3,11 @@
 @section('main-content')
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Add a New PC Specification</h3>
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Add a New PC Specification</h3>
         </div>
-        <div class="panel-body">
+        <div class="box-body">
           <form method="POST" action="{{ url('pcspecs') }}">
             {{csrf_field()}}
             <div class="form-group">

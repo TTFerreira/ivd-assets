@@ -1,12 +1,13 @@
 @extends('layouts.app')
 
 @section('main-content')
+  <div class="row">
     <div class="col-md-6 col-md-offset-3">
-      <div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">Movement History</h3>
-				</div>
-				<div class="panel-body">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Movement History</h3>
+        </div>
+        <div class="box-body">
           <table class="table table-striped table-bordered table-hover">
             <tr>
               <th>Location</th>
@@ -24,9 +25,10 @@
                 </tr>
               @endif
             @endforeach
-          </table>
+          </table><br>
           <div class="text-center"><a class="btn btn-primary" href="{{ URL::previous() }}">Back</a></div>
         </div>
       </div>
     </div>
+  </div>
 @endsection

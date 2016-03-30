@@ -2,7 +2,57 @@
 
 @section('main-content')
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="info-box">
+        <span class="info-box-icon bg-red"><i class="fa fa-tags"></i></span>
+
+        <div class="info-box-content">
+          <span class="info-box-text">Total Assets</span>
+          <span class="info-box-number">{{$totalAssets}}</span>
+        </div>
+        <!-- /.info-box-content -->
+      </div>
+      <!-- /.info-box -->
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="info-box">
+        <span class="info-box-icon bg-aqua"><i class="fa fa-home"></i></span>
+
+        <div class="info-box-content">
+          <span class="info-box-text">Deployed</span>
+          <span class="info-box-number">{{$deployed}}</span>
+        </div>
+        <!-- /.info-box-content -->
+      </div>
+      <!-- /.info-box -->
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="info-box">
+        <span class="info-box-icon bg-green"><i class="fa fa-check"></i></span>
+
+        <div class="info-box-content">
+          <span class="info-box-text">Ready to Deploy</span>
+          <span class="info-box-number">{{$readyToDeploy}}</span>
+        </div>
+        <!-- /.info-box-content -->
+      </div>
+      <!-- /.info-box -->
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="info-box">
+        <span class="info-box-icon bg-yellow"><i class="fa fa-wrench"></i></span>
+
+        <div class="info-box-content">
+          <span class="info-box-text">Repairs</span>
+          <span class="info-box-number">{{$repairs}}</span>
+        </div>
+        <!-- /.info-box-content -->
+      </div>
+      <!-- /.info-box -->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 col-xs-12">
       <div class="box box-primary">
         <div class="box-header with-border">
           <h3 class="box-title">Assets</h3>

@@ -86,7 +86,7 @@
   </div>
 @endsection
 
-@section('footer')
+@section('my-footer')
   <script type="text/javascript">
     $(document).ready(function() {
       $(".asset_model_id").select2();

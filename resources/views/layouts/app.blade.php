@@ -45,6 +45,7 @@ desired effect
         <section class="content">
             <!-- Your Page Content Here -->
             @yield('main-content')
+            @yield('my-footer')
         </section><!-- /.content -->
     </div><!-- /.content-wrapper -->
 

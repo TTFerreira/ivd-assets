@@ -14,6 +14,7 @@ use App\WarrantyType;
 use App\Invoice;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use DB;
 
 use App\Http\Requests;
 
@@ -26,8 +27,36 @@ class AssetsController extends Controller
 
   public function index()
   {
+    $pageTitle = 'View Assets';
+    $totalAssets = DB::table('assets')->count();
+    $deployed = DB::table('assets')
+                        ->join('movements', function ($join) {
+                          $join->on('assets.movement_id', '=', 'movements.id')
+                               ->where('movements.status_id', '=', 2);
+                        })
+                        ->count();
+    $readyToDeploy = DB::table('assets')
+                        ->join('movements', function ($join) {
+                          $join->on('assets.movement_id', '=', 'movements.id')
+                               ->where('movements.status_id', '=', 1);
+                        })
+                        ->count();
+    $repairsThree = DB::table('assets')
+                        ->join('movements', function ($join) {
+                          $join->on('assets.movement_id', '=', 'movements.id')
+                               ->where('movements.status_id', '=', 3);
+                        })
+                        ->count();
+    $repairsFour = DB::table('assets')
+                        ->join('movements', function ($join) {
+                          $join->on('assets.movement_id', '=', 'movements.id')
+                               ->where('movements.status_id', '=', 4);
+                        })
+                        ->count();
+    $repairs = $repairsThree + $repairsFour;
+
     $assets = Asset::orderBy('created_at', 'desc')->paginate(10);
-    return view('assets.index', compact('assets'));
+    return view('assets.index', compact('assets', 'pageTitle', 'totalAssets', 'deployed', 'readyToDeploy', 'repairs'));
   }
 
   public function show(Asset $asset)
