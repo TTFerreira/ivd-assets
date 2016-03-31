@@ -19,7 +19,7 @@ class MovementsController extends Controller
 
   public function show(Asset $asset)
   {
-    $movements = Movement::orderBy('created_at', 'desc')->get();
+    $movements = Movement::all();
     $locations = Location::all();
     $statuses = Status::all();
     return view('movements.history', compact('asset', 'movements', 'locations', 'statuses'));

@@ -19,7 +19,7 @@ class AssetModelsController extends Controller
 
   public function index()
   {
-    $asset_models = AssetModel::orderBy('created_at', 'desc')->paginate(10);
+    $asset_models = AssetModel::all();
     return view('models.index', compact('asset_models'));
   }
 

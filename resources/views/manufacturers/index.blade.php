@@ -9,22 +9,41 @@
         </div>
         <div class="box-body">
           <p><a href="manufacturers/create"><button type="button" class="btn btn-default" name="create-new-manufacturer" data-toggle="tooltip" data-original-title="Create New Manufacturer"><span class='glyphicon glyphicon-plus' aria-hidden='true'></span> <b>Create New Manufacturer</b></button></a></p>
-          <table class="table table-striped table-bordered table-hover">
-            <tr>
-              <th>Manufacturer</th>
-              <th>Actions</th>
-            </tr>
-            @foreach($manufacturers as $manufacturer)
+          <table id="table" class="table table-striped table-bordered table-hover">
+            <thead>
               <tr>
-                <div>
-                  <td>{{$manufacturer->name}}</td>
-                  <td><a href="/manufacturers/{{ $manufacturer->id }}/edit">Edit</a></td>
-                </div>
+                <th>Manufacturer</th>
+                <th>Actions</th>
               </tr>
-            @endforeach
+            </thead>
+            <tbody>
+              @foreach($manufacturers as $manufacturer)
+                <tr>
+                  <div>
+                    <td>{{$manufacturer->name}}</td>
+                    <td><a href="/manufacturers/{{ $manufacturer->id }}/edit">Edit</a></td>
+                  </div>
+                </tr>
+              @endforeach
+            </tbody>
           </table>
         </div>
       </div>
-      <div class="text-center">{!! $manufacturers->links() !!}</div>
     </div>
+    <script>
+      $(document).ready(function() {
+        $('#table').DataTable( {
+            columnDefs: [ {
+                targets: [ 0 ],
+                orderData: [ 0, 1 ]
+            }, {
+                targets: [ 1 ],
+                orderData: [ 1, 0 ]
+            }, {
+                targets: [ 1 ],
+                orderData: [ 1, 0 ]
+            } ]
+        } );
+      } );
+    </script>
 @endsection

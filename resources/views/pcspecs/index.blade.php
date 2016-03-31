@@ -9,26 +9,45 @@
         </div>
         <div class="box-body">
           <p><a href="pcspecs/create"><button type="button" class="btn btn-default" name="create-new-pcspec" data-toggle="tooltip" data-original-title="Create New PC Specification"><span class='glyphicon glyphicon-plus' aria-hidden='true'></span> <b>Create New PC Specification</b></button></a></p>
-          <table class="table table-striped table-bordered table-hover">
-            <tr>
-              <th>CPU</th>
-              <th>RAM</th>
-              <th>HDD</th>
-              <th>Actions</th>
-            </tr>
-            @foreach($pcspecs as $pcspec)
+          <table id="table" class="table table-striped table-bordered table-hover">
+            <thead>
               <tr>
-                <div>
-                  <td>{{$pcspec->cpu}}</td>
-                  <td>{{$pcspec->ram}}</td>
-                  <td>{{$pcspec->hdd}}</td>
-                  <td><a href="/pcspecs/{{ $pcspec->id }}/edit">Edit</a></td>
-                </div>
+                <th>CPU</th>
+                <th>RAM</th>
+                <th>HDD</th>
+                <th>Actions</th>
               </tr>
-            @endforeach
+            </thead>
+            <tbody>
+              @foreach($pcspecs as $pcspec)
+                <tr>
+                  <div>
+                    <td>{{$pcspec->cpu}}</td>
+                    <td>{{$pcspec->ram}}</td>
+                    <td>{{$pcspec->hdd}}</td>
+                    <td><a href="/pcspecs/{{ $pcspec->id }}/edit">Edit</a></td>
+                  </div>
+                </tr>
+              @endforeach
+            </tbody>
           </table>
         </div>
       </div>
-      <div class="text-center">{!! $pcspecs->links() !!}</div>
     </div>
+    <script>
+      $(document).ready(function() {
+        $('#table').DataTable( {
+            columnDefs: [ {
+                targets: [ 0 ],
+                orderData: [ 0, 1 ]
+            }, {
+                targets: [ 1 ],
+                orderData: [ 1, 0 ]
+            }, {
+                targets: [ 1 ],
+                orderData: [ 1, 0 ]
+            } ]
+        } );
+      } );
+    </script>
 @endsection
