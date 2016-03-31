@@ -45,12 +45,12 @@ desired effect
         <section class="content">
             <!-- Your Page Content Here -->
             @yield('main-content')
-            @yield('my-footer')
         </section><!-- /.content -->
     </div><!-- /.content-wrapper -->
 
     @include('layouts.partials.controlsidebar')
 
+    @yield('footer')
     @include('layouts.partials.footer')
 
 </div><!-- ./wrapper -->
