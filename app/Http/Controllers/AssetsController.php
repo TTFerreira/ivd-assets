@@ -55,7 +55,7 @@ class AssetsController extends Controller
                         ->count();
     $repairs = $repairsThree + $repairsFour;
 
-    $assets = Asset::orderBy('created_at', 'desc')->paginate(10);
+    $assets = Asset::all();
     return view('assets.index', compact('assets', 'pageTitle', 'totalAssets', 'deployed', 'readyToDeploy', 'repairs'));
   }
 
