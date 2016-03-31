@@ -7,6 +7,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Movement;
+use App\Asset;
+use App\Location;
+use App\Status;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
@@ -33,6 +37,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+      $assets = Asset::all();
+      $locations = Location::all();
+      $statuses = Status::all();
+      $movements = Movement::orderBy('created_at', 'desc')->take(5)->get();
+      return view('home', compact('assets', 'movements', 'locations', 'statuses'));
     }
 }

@@ -1,20 +1,48 @@
 @extends('layouts.app')
 
-@section('htmlheader_title')
-	Home
-@endsection
-
-
 @section('main-content')
-	<div class="container spark-screen">
-		<div class="row">
-			<div class="col-md-10 col-md-offset-1">
-				<div class="panel panel-default">
-					<div class="panel-heading">Home</div>
+	<div class="row">
+		<div class="col-md-4 col-xs-12">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Movement History - 5 Latest</h3>
+        </div>
+        <div class="box-body">
+					<ul class="timeline">
+				    <!-- timeline time label -->
+						@foreach($movements as $movement)
+							<?php $createdDate = \Carbon\Carbon::parse($movement->created_at); ?>
+							<li class="time-label">
+				        <span class="bg-aqua">
+			            {{$createdDate->format('l, j F Y')}}
+				        </span>
+					    </li>
+					    <!-- /.timeline-label -->
 
-					<div class="panel-body">
-						You are logged in!
-					</div>
+					    <!-- timeline item -->
+					    <li>
+				        <!-- timeline icon -->
+				        <i class="fa fa-user bg-blue"></i>
+				        <div class="timeline-item">
+			            <span class="time"><i class="fa fa-clock-o"></i> {{$createdDate->format('H:i')}}</span>
+
+			            <h3 class="timeline-header">{{$movement->user->name}}</h3>
+
+			            <div class="timeline-body">
+										<dl class="dl-horizontal">
+				              <dt>Asset:</dt><dd>{{$movement->asset->asset_tag}}</dd>
+				              <dt>Model:</dt><dd>{{$movement->asset->model->manufacturer->name}} {{$movement->asset->model->asset_model}}</dd>
+				              <dt>Location:</dt><dd>{{$movement->location->location_name}}</dd>
+				              <dt>Status Applied:</dt><dd>{{$movement->status->name}}</dd>
+										</dl>
+			            </div>
+			            <div class="timeline-footer">
+			            </div>
+				        </div>
+				    	</li>
+					    <!-- END timeline item -->
+						@endforeach
+					</ul>
 				</div>
 			</div>
 		</div>

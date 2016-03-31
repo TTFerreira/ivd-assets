@@ -23,4 +23,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function movement()
+    {
+      return $this->hasOne(Movement::class);
+    }
 }
