@@ -11,7 +11,8 @@
 					<ul class="timeline">
 				    <!-- timeline time label -->
 						@foreach($movements as $movement)
-							<?php $createdDate = \Carbon\Carbon::parse($movement->created_at); ?>
+							<?php $createdDate = \Carbon\Carbon::parse($movement->created_at);
+							$asset = App\Asset::find($movement->asset_id); ?>
 							<li class="time-label">
 				        <span class="bg-aqua">
 			            {{$createdDate->format('l, j F Y')}}
@@ -30,8 +31,8 @@
 
 			            <div class="timeline-body">
 										<dl class="dl-horizontal">
-				              <dt>Asset:</dt><dd>{{$movement->asset->asset_tag}}</dd>
-				              <dt>Model:</dt><dd>{{$movement->asset->model->manufacturer->name}} {{$movement->asset->model->asset_model}}</dd>
+				              <dt>Asset:</dt><dd>{{$asset->asset_tag}}</dd>
+				              <dt>Model:</dt><dd>{{$asset->model->manufacturer->name}} {{$asset->model->asset_model}}</dd>
 				              <dt>Location:</dt><dd>{{$movement->location->location_name}}</dd>
 				              <dt>Status Applied:</dt><dd>{{$movement->status->name}}</dd>
 										</dl>
