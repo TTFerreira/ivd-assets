@@ -2,10 +2,10 @@
 
 @section('main-content')
 	<div class="row">
-		<div class="col-md-4 col-xs-12">
+		<div class="col-md-5 col-xs-12">
       <div class="box box-primary">
         <div class="box-header with-border">
-          <h3 class="box-title">Movement History - 5 Latest</h3>
+          <h3 class="box-title">Latest Movement Activity</h3>
         </div>
         <div class="box-body">
 					<ul class="timeline">

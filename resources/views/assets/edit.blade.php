@@ -114,4 +114,11 @@
       $(".warranty_type").select2();
     });
   </script>
+  <script>
+    $(":input").keypress(function(event){
+      if (event.which == '10' || event.which == '13') {
+        event.preventDefault();
+      }
+    });
+  </script>
 @endsection

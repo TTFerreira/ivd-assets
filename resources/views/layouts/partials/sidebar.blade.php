@@ -46,20 +46,13 @@
                 <ul class="treeview-menu">
                     <li><a href="{{ url('/models')}}">View Models</a></li>
                     <li><a href="{{ url('/models/create')}}">Create Model</a></li>
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="#"><i class='fa fa-server'></i> <span>PC Specifications</span> <i class="fa fa-angle-left pull-right"></i></a>
-                <ul class="treeview-menu">
+                    <li class="divider"></li>
                     <li><a href="{{ url('/pcspecs')}}">View PC Specifications</a></li>
                     <li><a href="{{ url('/pcspecs/create')}}">Create PC Specification</a></li>
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="#"><i class='fa fa-copyright'></i> <span>Manufacturers</span> <i class="fa fa-angle-left pull-right"></i></a>
-                <ul class="treeview-menu">
                     <li><a href="{{ url('/manufacturers')}}">View Manufacturers</a></li>
                     <li><a href="{{ url('/manufacturers/create')}}">Create Manufacturer</a></li>
+                    <li><a href="{{ url('/asset-types')}}">View Asset Types</a></li>
+                    <li><a href="{{ url('/asset-types/create')}}">Create Asset Type</a></li>
                 </ul>
             </li>
             <li class="treeview">
@@ -67,13 +60,6 @@
                 <ul class="treeview-menu">
                     <li><a href="{{ url('/suppliers')}}">View Suppliers</a></li>
                     <li><a href="{{ url('/suppliers/create')}}">Create Supplier</a></li>
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="#"><i class='fa fa-cubes'></i> <span>Asset Types</span> <i class="fa fa-angle-left pull-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a href="{{ url('/asset-types')}}">View Asset Types</a></li>
-                    <li><a href="{{ url('/asset-types/create')}}">Create Asset Type</a></li>
                 </ul>
             </li>
             <li class="treeview">
