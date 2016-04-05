@@ -17,4 +17,9 @@ class Division extends Model
   {
     return $this->hasMany(Invoice::class);
   }
+  
+  public function budget()
+  {
+    return $this->hasMany(Budget::class);
+  }
 }

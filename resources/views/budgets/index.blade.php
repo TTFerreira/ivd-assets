@@ -5,29 +5,27 @@
     <div class="col-md-12">
       <div class="box box-primary">
         <div class="box-header with-border">
-          <h3 class="box-title">Models</h3>
+          <h3 class="box-title">Budgets</h3>
         </div>
         <div class="box-body">
-          <p><a href="models/create"><button type="button" class="btn btn-default" name="create-new-model" data-toggle="tooltip" data-original-title="Create New Model"><span class='glyphicon glyphicon-plus' aria-hidden='true'></span> <b>Create New Model</b></button></a></p>
+          <p><a href="budgets/create"><button type="button" class="btn btn-default" name="create-new-budget" data-toggle="tooltip" data-original-title="Create New Budget"><span class='glyphicon glyphicon-plus' aria-hidden='true'></span> <b>Create New Budget</b></button></a></p>
           <table id="table" class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
-                <th>Manufacturer</th>
-                <th>Model Name</th>
-                <th>Asset Type</th>
-                <th>PC Specification</th>
+                <th>Division</th>
+                <th>Year</th>
+                <th>Budget Total</th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
-              @foreach($asset_models as $asset_model)
+              @foreach($budgets as $budget)
                 <tr>
                   <div>
-                    <td>{{$asset_model->manufacturer->name}}</td>
-                    <td>{{$asset_model->asset_model}}</td>
-                    <td>{{$asset_model->asset_type->type_name}}</td>
-                    <td>{{$asset_model->pcspec->cpu or ''}} {{$asset_model->pcspec->ram or ''}} {{$asset_model->pcspec->hdd or ''}}</td>
-                    <td><a href="/models/{{ $asset_model->id }}/edit">Edit</a></td>
+                    <td>{{$budget->division->name}}</td>
+                    <td>{{$budget->year}}</td>
+                    <td>R{{$budget->total}}</td>
+                    <td><a href="/budgets/{{ $budget->id }}/edit">Edit</a></td>
                   </div>
                 </tr>
               @endforeach

@@ -82,4 +82,11 @@ Route::group(['middleware' => ['web']], function () {
   Route::get('invoices/{invoice}/edit', 'InvoicesController@edit');
   Route::patch('invoices/{invoice}/update', 'InvoicesController@update');
   Route::post('invoices', 'InvoicesController@store');
+
+  Route::get('budgets', 'BudgetsController@index');
+  Route::get('budgets/create', 'BudgetsController@create');
+  Route::get('budgets/{budget}', 'BudgetsController@show');
+  Route::get('budgets/{budget}/edit', 'BudgetsController@edit');
+  Route::patch('budgets/{budget}/update', 'BudgetsController@update');
+  Route::post('budgets', 'BudgetsController@store');
 });

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddDateColumnToInvoicesTable extends Migration
+class CreateBudgetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,12 @@ class AddDateColumnToInvoicesTable extends Migration
      */
     public function up()
     {
-        Schema::table('invoices', function (Blueprint $table) {
-            $table->string('order_number');
+        Schema::create('budgets', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('division_id')->unsigned()->index();
-            $table->date('invoiced_date');
+            $table->string('year');
             $table->decimal('total', 8, 2);
+            $table->timestamps();
         });
     }
 
@@ -27,8 +28,6 @@ class AddDateColumnToInvoicesTable extends Migration
      */
     public function down()
     {
-        Schema::table('invoices', function (Blueprint $table) {
-            //
-        });
+        Schema::drop('budgets');
     }
 }

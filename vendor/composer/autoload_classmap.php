@@ -12,6 +12,7 @@ return array(
     'CreateAssetModelsTable' => $baseDir . '/database/migrations/2016_03_10_083700_create_asset_models_table.php',
     'CreateAssetTypesTable' => $baseDir . '/database/migrations/2016_03_09_081346_create_asset_types_table.php',
     'CreateAssetsTable' => $baseDir . '/database/migrations/2016_03_14_073236_create_assets_table.php',
+    'CreateBudgetsTable' => $baseDir . '/database/migrations/2016_04_05_115944_create_budgets_table.php',
     'CreateDivisionsTable' => $baseDir . '/database/migrations/2016_03_09_101036_create_divisions_table.php',
     'CreateInvoicesTable' => $baseDir . '/database/migrations/2016_03_15_145621_create_invoices_table.php',
     'CreateLocationsTable' => $baseDir . '/database/migrations/2016_03_08_125036_create_locations_table.php',
