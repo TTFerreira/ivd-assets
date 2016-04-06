@@ -24,7 +24,7 @@
                   <div>
                     <td>{{$budget->division->name}}</td>
                     <td>{{$budget->year}}</td>
-                    <td>R{{$budget->total}}</td>
+                    <td>R{{number_format($budget->total,2)}}</td>
                     <td><a href="/budgets/{{ $budget->id }}/edit">Edit</a></td>
                   </div>
                 </tr>

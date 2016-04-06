@@ -11,6 +11,9 @@ use App\Movement;
 use App\Asset;
 use App\Location;
 use App\Status;
+use App\Budget;
+use App\Invoice;
+use App\Division;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
@@ -40,7 +43,11 @@ class HomeController extends Controller
       $assets = Asset::all();
       $locations = Location::all();
       $statuses = Status::all();
+      $budgets = Budget::all();
+      $invoices = Invoice::all();
+      $divisions = Division::all();
+      $year = \Carbon\Carbon::now()->year;
       $movements = Movement::orderBy('created_at', 'desc')->take(5)->get();
-      return view('home', compact('assets', 'movements', 'locations', 'statuses'));
+      return view('home', compact('assets', 'movements', 'locations', 'statuses', 'budgets', 'invoices', 'divisions', 'year'));
     }
 }

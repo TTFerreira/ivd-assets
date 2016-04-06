@@ -93,7 +93,18 @@
                     <td>{{$asset->model->manufacturer->name}} - {{$asset->model->asset_model}}</td>
                     <td>{{$asset->movement->location->location_name}}</td>
                     <td>{{$asset->division->name}}</td>
-                    <td>{{$asset->movement->status->name}}</td>
+                    <td>
+                      @if($asset->movement->status->id == 1)
+                        <span class="label label-success">
+                      @elseif($asset->movement->status->id == 2)
+                        <span class="label label-info">
+                      @elseif($asset->movement->status->id == 3 || $asset->movement->status->id == 4)
+                        <span class="label label-warning">
+                      @elseif($asset->movement->status->id == 5 || $asset->movement->status->id == 6)
+                        <span class="label label-danger">
+                      @endif
+                      {{$asset->movement->status->name}}</span>
+                    </td>
                     <td><a href="/assets/{{ $asset->id }}/move">Move</a> | <a href="/movements/{{ $asset->id }}/history">History</a> | <a href="/assets/{{ $asset->id }}/edit">Edit</a></td>
                   </div>
                 </tr>

@@ -84,10 +84,11 @@
                 </ul>
             </li>
             <li class="treeview">
-                <a href="#"><i class='fa fa-usd'></i> <span>Invoices</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class='fa fa-usd'></i> <span>Invoices and Budgets</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{ url('/invoices')}}">View Invoices</a></li>
                     <li><a href="{{ url('/invoices/create')}}">Create Invoice</a></li>
+                    <li><a href="{{ url('/budgets')}}">View Budgets</a></li>
                 </ul>
             </li>
         </ul><!-- /.sidebar-menu -->
