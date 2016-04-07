@@ -73,12 +73,12 @@
               <input type="text"  name="warranty_months" class="form-control" value="{{$asset->warranty_months}}">
             </div>
             <div class="form-group">
-              <label for="warranty_type">Warranty Type</label>
-              <select class="form-control warranty_type" name="warranty_type">
+              <label for="warranty_type_id">Warranty Type</label>
+              <select class="form-control warranty_type_id" name="warranty_type_id">
                 <option value=""></option>
                 @foreach($warranty_types as $warranty_type)
                   <option
-                    @if($asset->warranty_type == $warranty_type->id)
+                    @if($asset->warranty_type_id == $warranty_type->id)
                       selected
                     @endif
                   value="{{$warranty_type->id}}">{{$warranty_type->name}}</option>
@@ -111,7 +111,7 @@
       $(".division_id").select2();
       $(".supplier_id").select2();
       $(".invoice_id").select2();
-      $(".warranty_type").select2();
+      $(".warranty_type_id").select2();
     });
   </script>
   <script>

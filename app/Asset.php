@@ -18,6 +18,11 @@ class Asset extends Model
     return $this->belongsTo(Division::class);
   }
 
+  public function supplier()
+  {
+    return $this->belongsTo(Supplier::class);
+  }
+
   public function movement()
   {
     return $this->belongsTo(Movement::class);

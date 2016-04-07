@@ -82,7 +82,8 @@ class AssetsController extends Controller
     $this->validate($request, [
       'asset_model_id' => 'required',
       'division_id' => 'required',
-      'supplier_id' => 'required'
+      'supplier_id' => 'required',
+      'warranty_type_id' => 'required'
     ]);
     $count = \DB::table('assets')->count() + 1;
     $asset = new Asset();
@@ -95,7 +96,7 @@ class AssetsController extends Controller
     $asset->supplier_id = $request->supplier_id;
     $asset->purchase_date = $request->purchase_date;
     $asset->warranty_months = $request->warranty_months;
-    $asset->warranty_type = $request->warranty_type_id;
+    $asset->warranty_type_id = $request->warranty_type_id;
     $asset->invoice_id = $request->invoice_id;
 
     $asset->save();
@@ -132,7 +133,8 @@ class AssetsController extends Controller
     $this->validate($request, [
       'asset_model_id' => 'required',
       'division_id' => 'required',
-      'supplier_id' => 'required'
+      'supplier_id' => 'required',
+      'warranty_type_id' => 'required'
     ]);
 
     $asset->update($request->all());

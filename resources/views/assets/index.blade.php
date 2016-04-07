@@ -63,12 +63,17 @@
             <thead>
               <tr>
                 <th>Asset Tag</th>
+                <th>Asset Type</th>
                 <th>Serial Number</th>
                 <th>Model</th>
                 <th>Location</th>
                 <th>Division</th>
                 <th>Status</th>
                 <th>Actions</th>
+                <th>Supplier</th>
+                <th>Purchase Date</th>
+                <th>Warranty Months</th>
+                <th>Warranty Type</th>
               </tr>
             </thead>
             <tbody>
@@ -89,6 +94,7 @@
                 >
                   <div>
                     <td>{{$asset->asset_tag}}</td>
+                    <td>{{$asset->model->asset_type->type_name}}</td>
                     <td>{{$asset->serial_number or ''}}</td>
                     <td>{{$asset->model->manufacturer->name}} - {{$asset->model->asset_model}}</td>
                     <td>{{$asset->movement->location->location_name}}</td>
@@ -106,6 +112,10 @@
                       {{$asset->movement->status->name}}</span>
                     </td>
                     <td><a href="/assets/{{ $asset->id }}/move">Move</a> | <a href="/movements/{{ $asset->id }}/history">History</a> | <a href="/assets/{{ $asset->id }}/edit">Edit</a></td>
+                    <td>{{$asset->supplier->name}}</td>
+                    <td>{{$asset->purchase_date}}</td>
+                    <td>{{$asset->warranty_months}}</td>
+                    <td>{{$asset->warranty_type->name}}</td>
                   </div>
                 </tr>
                 <?php $age = null; ?>
@@ -117,19 +127,29 @@
     </div>
   </div>
   <script>
-    $(document).ready(function() {
-      $('#table').DataTable( {
-          columnDefs: [ {
-              targets: [ 0 ],
-              orderData: [ 0, 1 ]
-          }, {
-              targets: [ 1 ],
-              orderData: [ 1, 0 ]
-          }, {
-              targets: [ 4 ],
-              orderData: [ 4, 0 ]
-          } ]
-      } );
-    } );
+  $(document).ready(function() {
+  $('#table').DataTable( {
+      dom: 'Bfrtip',
+      buttons: [
+          'copyHtml5',
+          'csvHtml5',
+          'excelHtml5'
+      ],
+      columns: [
+        null,
+        { "visible": false },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        { "visible": false },
+        { "visible": false },
+        { "visible": false },
+        { "visible": false }
+      ],
+  } );
+} );
   </script>
 @endsection

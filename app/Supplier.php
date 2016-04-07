@@ -12,4 +12,9 @@ class Supplier extends Model
   {
     return $this->hasMany(Invoice::class);
   }
+
+  public function asset()
+  {
+    return $this->hasMany(Asset::class);
+  }
 }
