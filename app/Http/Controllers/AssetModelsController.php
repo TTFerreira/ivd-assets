@@ -19,22 +19,24 @@ class AssetModelsController extends Controller
 
   public function index()
   {
+    $pageTitle = 'View Models';
     $asset_models = AssetModel::all();
-    return view('models.index', compact('asset_models'));
+    return view('models.index', compact('asset_models', 'pageTitle'));
   }
 
   public function show(AssetModel $asset_model)
   {
-    //$location->load('notes.user');
-    return view('models.show', compact('asset_model'));
+    $pageTitle = 'View Model';
+    return view('models.show', compact('asset_model', 'pageTitle'));
   }
 
   public function create()
   {
+    $pageTitle = 'Create New Model';
     $manufacturers = Manufacturer::all();
     $asset_types = AssetType::all();
     $pcspecs = Pcspec::all();
-    return view('models.create', compact('manufacturers', 'asset_types', 'pcspecs'));
+    return view('models.create', compact('manufacturers', 'asset_types', 'pcspecs', 'pageTitle'));
   }
 
   public function store(Request $request)
@@ -59,10 +61,11 @@ class AssetModelsController extends Controller
 
   public function edit(AssetModel $asset_model)
   {
+    $pageTitle = 'Edit Model - ' . $asset_model->manufacturer->name .  ' ' . $asset_model->asset_model;
     $manufacturers = Manufacturer::all();
     $asset_types = AssetType::all();
     $pcspecs = Pcspec::all();
-    return view('models.edit', compact('asset_model', 'manufacturers', 'asset_types', 'pcspecs'));
+    return view('models.edit', compact('asset_model', 'manufacturers', 'asset_types', 'pcspecs', 'pageTitle'));
   }
 
   public function update(Request $request, AssetModel $asset_model)

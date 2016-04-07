@@ -5,7 +5,7 @@
     <div class="col-md-6 col-md-offset-3">
       <div class="box box-primary">
         <div class="box-header with-border">
-          <h3 class="box-title">Edit Location</h3>
+          <h3 class="box-title">{{$pageTitle}}</h3>
         </div>
         <div class="box-body">
           <form method="POST" action="/locations/{{$location->id}}/update">

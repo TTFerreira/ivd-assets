@@ -16,19 +16,20 @@ class StatusesController extends Controller
 
   public function index()
   {
+    $pageTitle = 'View Statuses';
     $statuses = Status::all();
-    return view('statuses.index', compact('statuses'));
+    return view('statuses.index', compact('statuses', 'pageTitle'));
   }
 
   public function show(Status $status)
   {
-    //$location->load('notes.user');
     return view('statuses.show', compact('status'));
   }
 
   public function create()
   {
-    return view('statuses.create');
+    $pageTitle = 'Create New Status';
+    return view('statuses.create', compact('pageTitle'));
   }
 
   public function store(Request $request)
@@ -47,7 +48,8 @@ class StatusesController extends Controller
 
   public function edit(Status $status)
   {
-    return view('statuses.edit', compact('status'));
+    $pageTitle = 'Edit Status - ' . $status->name;
+    return view('statuses.edit', compact('status', 'pageTitle'));
   }
 
   public function update(Request $request, Status $status)

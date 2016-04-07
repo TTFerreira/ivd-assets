@@ -16,8 +16,9 @@ class SuppliersController extends Controller
 
   public function index()
   {
+    $pageTitle = 'View Suppliers';
     $suppliers = Supplier::all();
-    return view('suppliers.index', compact('suppliers'));
+    return view('suppliers.index', compact('suppliers', 'pageTitle'));
   }
 
   public function show(Supplier $supplier)
@@ -28,7 +29,8 @@ class SuppliersController extends Controller
 
   public function create()
   {
-    return view('suppliers.create');
+    $pageTitle = 'Create New Supplier';
+    return view('suppliers.create', compact('pageTitle'));
   }
 
   public function store(Request $request)
@@ -47,7 +49,8 @@ class SuppliersController extends Controller
 
   public function edit(Supplier $supplier)
   {
-    return view('suppliers.edit', compact('supplier'));
+    $pageTitle = 'Edit Supplier - ' . $supplier->name;
+    return view('suppliers.edit', compact('supplier', 'pageTitle'));
   }
 
   public function update(Request $request, Supplier $supplier)

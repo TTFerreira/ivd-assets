@@ -16,19 +16,20 @@ class PcspecsController extends Controller
 
   public function index()
   {
+    $pageTitle = 'View PC Specifications';
     $pcspecs = Pcspec::all();
-    return view('pcspecs.index', compact('pcspecs'));
+    return view('pcspecs.index', compact('pcspecs', 'pageTitle'));
   }
 
   public function show(Pcspec $pcspec)
   {
-    //$location->load('notes.user');
     return view('pcspecs.show', compact('pcspec'));
   }
 
   public function create()
   {
-    return view('pcspecs.create');
+    $pageTitle = 'Create New PC Specification';
+    return view('pcspecs.create', compact('pageTitle'));
   }
 
   public function store(Request $request)
@@ -51,7 +52,8 @@ class PcspecsController extends Controller
 
   public function edit(Pcspec $pcspec)
   {
-    return view('pcspecs.edit', compact('pcspec'));
+    $pageTitle = 'Edit PC Specification - ' . $pcspec->cpu . ', ' . $pcspec->ram . ', ' . $pcspec->hdd;
+    return view('pcspecs.edit', compact('pcspec', 'pageTitle'));
   }
 
   public function update(Request $request, Pcspec $pcspec)

@@ -16,8 +16,9 @@ class LocationsController extends Controller
 
   public function index()
   {
+    $pageTitle = 'View Locations';
     $locations = Location::all();
-    return view('locations.index', compact('locations'));
+    return view('locations.index', compact('locations', 'pageTitle'));
   }
 
   public function show(Location $location)
@@ -28,7 +29,8 @@ class LocationsController extends Controller
 
   public function create()
   {
-    return view('locations.create');
+    $pageTitle = 'Create Location';
+    return view('locations.create', compact('pageTitle'));
   }
 
   public function store(Request $request)
@@ -51,7 +53,8 @@ class LocationsController extends Controller
 
   public function edit(Location $location)
   {
-    return view('locations.edit', compact('location'));
+    $pageTitle = 'Edit Location - ' . $location->location_name;
+    return view('locations.edit', compact('location', 'pageTitle'));
   }
 
   public function update(Request $request, Location $location)

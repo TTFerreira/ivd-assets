@@ -21,8 +21,9 @@ class InvoicesController extends Controller
 
   public function index()
   {
+    $pageTitle = 'View Invoices';
     $invoices = Invoice::all();
-    return view('invoices.index', compact('invoices'));
+    return view('invoices.index', compact('invoices', 'pageTitle'));
   }
 
   public function show(Invoice $invoice)
@@ -34,9 +35,10 @@ class InvoicesController extends Controller
 
   public function create()
   {
+    $pageTitle = 'Create New Invoice';
     $suppliers = Supplier::all();
     $divisions = Division::all();
-    return view('invoices.create', compact('suppliers', 'divisions'));
+    return view('invoices.create', compact('suppliers', 'divisions', 'pageTitle'));
   }
 
   public function store(Request $request)
@@ -70,9 +72,10 @@ class InvoicesController extends Controller
 
   public function edit(Invoice $invoice)
   {
+    $pageTitle = 'Edit Invoice - ' . $invoice->invoice_number;
     $suppliers = Supplier::all();
     $divisions = Division::all();
-    return view('invoices.edit', compact('invoice', 'suppliers', 'divisions'));
+    return view('invoices.edit', compact('invoice', 'suppliers', 'divisions', 'pageTitle'));
   }
 
   public function update(Request $request, Invoice $invoice)

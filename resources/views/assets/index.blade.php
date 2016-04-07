@@ -128,28 +128,28 @@
   </div>
   <script>
   $(document).ready(function() {
-  $('#table').DataTable( {
-      dom: 'Bfrtip',
-      buttons: [
-          'copyHtml5',
-          'csvHtml5',
-          'excelHtml5'
-      ],
-      columns: [
-        null,
-        { "visible": false },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        { "visible": false },
-        { "visible": false },
-        { "visible": false },
-        { "visible": false }
-      ],
+    $('#table').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copyHtml5',
+            'csvHtml5',
+            'excelHtml5'
+        ],
+        columns: [
+          null,
+          { "visible": false },
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          { "visible": false },
+          { "visible": false },
+          { "visible": false },
+          { "visible": false }
+        ],
+    } );
   } );
-} );
   </script>
 @endsection

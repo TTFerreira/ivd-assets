@@ -16,8 +16,9 @@ class ManufacturersController extends Controller
 
   public function index()
   {
+    $pageTitle = 'View Manufacturers';
     $manufacturers = Manufacturer::all();
-    return view('manufacturers.index', compact('manufacturers'));
+    return view('manufacturers.index', compact('manufacturers', 'pageTitle'));
   }
 
   public function show(Manufacturer $manufacturer)
@@ -28,7 +29,8 @@ class ManufacturersController extends Controller
 
   public function create()
   {
-    return view('manufacturers.create');
+    $pageTitle = 'Create New Manufacturer';
+    return view('manufacturers.create', compact('pageTitle'));
   }
 
   public function store(Request $request)
@@ -47,7 +49,8 @@ class ManufacturersController extends Controller
 
   public function edit(Manufacturer $manufacturer)
   {
-    return view('manufacturers.edit', compact('manufacturer'));
+    $pageTitle = 'Edit Manufacturer - ' . $manufacturer->name;
+    return view('manufacturers.edit', compact('manufacturer', 'pageTitle'));
   }
 
   public function update(Request $request, Manufacturer $manufacturer)

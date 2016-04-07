@@ -5,7 +5,7 @@
     <div class="col-md-12">
       <div class="box box-primary">
         <div class="box-header with-border">
-          <h3 class="box-title">Invoices</h3>
+          <h3 class="box-title">{{$pageTitle}}</h3>
         </div>
         <div class="box-body">
           <p><a href="/invoices/create"><button type="button" class="btn btn-default" name="create-new-invoice" data-toggle="tooltip" data-original-title="Create New Invoice"><span class='glyphicon glyphicon-plus' aria-hidden='true'></span> <b>Create New Invoice</b></button></a></p>
@@ -42,19 +42,15 @@
     </div>
   </div>
   <script>
-    $(document).ready(function() {
-      $('#table').DataTable( {
-          columnDefs: [ {
-              targets: [ 0 ],
-              orderData: [ 0, 1 ]
-          }, {
-              targets: [ 1 ],
-              orderData: [ 1, 0 ]
-          }, {
-              targets: [ 2 ],
-              orderData: [ 2, 0 ]
-          } ]
-      } );
+  $(document).ready(function() {
+    $('#table').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copyHtml5',
+            'csvHtml5',
+            'excelHtml5'
+        ]
     } );
+  } );
   </script>
 @endsection

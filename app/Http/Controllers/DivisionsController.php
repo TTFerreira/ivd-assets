@@ -16,8 +16,9 @@ class DivisionsController extends Controller
 
   public function index()
   {
+    $pageTitle = 'View Divisions';
     $divisions = Division::all();
-    return view('divisions.index', compact('divisions'));
+    return view('divisions.index', compact('divisions', 'pageTitle'));
   }
 
   public function show(Division $division)
@@ -28,7 +29,8 @@ class DivisionsController extends Controller
 
   public function create()
   {
-    return view('divisions.create');
+    $pageTitle = 'Create New Division';
+    return view('divisions.create', compact('pageTitle'));
   }
 
   public function store(Request $request)
@@ -47,7 +49,8 @@ class DivisionsController extends Controller
 
   public function edit(Division $division)
   {
-    return view('divisions.edit', compact('division'));
+    $pageTitle = 'Edit Division - ' . $division->name;
+    return view('divisions.edit', compact('division', 'pageTitle'));
   }
 
   public function update(Request $request, Division $division)

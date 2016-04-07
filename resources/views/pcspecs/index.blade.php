@@ -5,7 +5,7 @@
     <div class="col-md-12">
       <div class="box box-primary">
         <div class="box-header with-border">
-          <h3 class="box-title">PC Specifications</h3>
+          <h3 class="box-title">{{$pageTitle}}</h3>
         </div>
         <div class="box-body">
           <p><a href="pcspecs/create"><button type="button" class="btn btn-default" name="create-new-pcspec" data-toggle="tooltip" data-original-title="Create New PC Specification"><span class='glyphicon glyphicon-plus' aria-hidden='true'></span> <b>Create New PC Specification</b></button></a></p>

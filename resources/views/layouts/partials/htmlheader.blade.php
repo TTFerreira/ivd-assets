@@ -1,6 +1,6 @@
 <head>
     <meta charset="UTF-8">
-    <title> IVD Assets @if(isset($pageTitle)) - @yield('htmlheader_title', $pageTitle) @endif</title>
+    <title>IVD Assets @if(isset($pageTitle))- @yield('htmlheader_title', $pageTitle) @endif</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.4 -->
     <link href="{{ asset('/css/bootstrap.css') }}" rel="stylesheet" type="text/css" />

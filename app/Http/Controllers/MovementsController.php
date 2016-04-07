@@ -19,18 +19,20 @@ class MovementsController extends Controller
 
   public function show(Asset $asset)
   {
+    $pageTitle = 'Movement History - ' . $asset->asset_tag;
     $movements = Movement::all();
     $locations = Location::all();
     $statuses = Status::all();
-    return view('movements.history', compact('asset', 'movements', 'locations', 'statuses'));
+    return view('movements.history', compact('asset', 'movements', 'locations', 'statuses', 'pageTitle'));
   }
 
   public function create(Asset $asset)
   {
+    $pageTitle = 'Move Asset - ' . $asset->asset_tag;
     $assets = Asset::all();
     $locations = Location::all();
     $statuses = Status::all();
-    return view('movements.move', compact('asset', 'assets', 'locations', 'statuses'));
+    return view('movements.move', compact('asset', 'assets', 'locations', 'statuses', 'pageTitle'));
   }
 
   public function store(Request $request, Asset $asset)

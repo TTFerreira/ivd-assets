@@ -61,12 +61,12 @@ class AssetsController extends Controller
 
   public function show(Asset $asset)
   {
-    //$location->load('notes.user');
     return view('assets.show', compact('asset'));
   }
 
   public function create()
   {
+    $pageTitle = 'Create New Asset';
     $asset_models = AssetModel::all();
     $divisions = Division::all();
     $suppliers = Supplier::all();
@@ -74,7 +74,7 @@ class AssetsController extends Controller
     $manufacturers = Manufacturer::all();
     $warranty_types = WarrantyType::all();
     $invoices = Invoice::all();
-    return view('assets.create', compact('asset_models', 'divisions', 'suppliers', 'movements', 'manufacturers', 'warranty_types', 'invoices'));
+    return view('assets.create', compact('asset_models', 'divisions', 'suppliers', 'movements', 'manufacturers', 'warranty_types', 'invoices', 'pageTitle'));
   }
 
   public function store(Request $request)
@@ -117,6 +117,7 @@ class AssetsController extends Controller
 
   public function edit(Asset $asset)
   {
+    $pageTitle = 'Edit Asset - ' . $asset->asset_tag;
     $asset_models = AssetModel::all();
     $divisions = Division::all();
     $suppliers = Supplier::all();
@@ -124,7 +125,6 @@ class AssetsController extends Controller
     $manufacturers = Manufacturer::all();
     $warranty_types = WarrantyType::all();
     $invoices = Invoice::all();
-    $pageTitle = 'Edit Assets';
     return view('assets.edit', compact('asset', 'asset_models', 'divisions', 'suppliers', 'movements', 'manufacturers', 'invoices', 'warranty_types', 'pageTitle'));
   }
 

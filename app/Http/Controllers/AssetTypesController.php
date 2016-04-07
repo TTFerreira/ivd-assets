@@ -16,19 +16,20 @@ class AssetTypesController extends Controller
 
   public function index()
   {
+    $pageTitle = 'View Asset Types';
     $asset_types = AssetType::all();
-    return view('asset-types.index', compact('asset_types'));
+    return view('asset-types.index', compact('asset_types', 'pageTitle'));
   }
 
   public function show(AssetType $asset_type)
   {
-    //$location->load('notes.user');
     return view('asset-types.show', compact('asset_type'));
   }
 
   public function create()
   {
-    return view('asset-types.create');
+    $pageTitle = 'Create New Asset Type';
+    return view('asset-types.create', compact('pageTitle'));
   }
 
   public function store(Request $request)
@@ -49,7 +50,8 @@ class AssetTypesController extends Controller
 
   public function edit(AssetType $asset_type)
   {
-    return view('asset-types.edit', compact('asset_type'));
+    $pageTitle = 'Edit Asset Type - ' . $asset_type->type_name;
+    return view('asset-types.edit', compact('asset_type', 'pageTitle'));
   }
 
   public function update(Request $request, AssetType $asset_type)

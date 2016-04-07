@@ -17,8 +17,9 @@ class BudgetsController extends Controller
 
   public function index()
   {
+    $pageTitle = 'View Budgets';
     $budgets = Budget::all();
-    return view('budgets.index', compact('budgets'));
+    return view('budgets.index', compact('budgets', 'pageTitle'));
   }
 
   public function show(Budget $budget)
@@ -28,8 +29,9 @@ class BudgetsController extends Controller
 
   public function create()
   {
+    $pageTitle = 'Create New Budget';
     $divisions = Division::all();
-    return view('budgets.create', compact('divisions'));
+    return view('budgets.create', compact('divisions', 'pageTitle'));
   }
 
   public function store(Request $request)
@@ -52,8 +54,9 @@ class BudgetsController extends Controller
 
   public function edit(Budget $budget)
   {
+    $pageTitle = 'Edit Budget - ' . $budget->division->name . ' ' . $budget->year;
     $divisions = Division::all();
-    return view('budgets.edit', compact('budget', 'divisions'));
+    return view('budgets.edit', compact('budget', 'divisions', 'pageTitle'));
   }
 
   public function update(Request $request, Budget $budget)

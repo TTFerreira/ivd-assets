@@ -5,7 +5,7 @@
     <div class="col-md-4 col-md-offset-2">
       <div class="box box-primary">
         <div class="box-header with-border">
-          <h3 class="box-title">Move Asset</h3>
+          <h3 class="box-title">{{$pageTitle}}</h3>
         </div>
         <div class="box-body">
           <form method="POST" action="/assets/{{$asset->id}}/store">

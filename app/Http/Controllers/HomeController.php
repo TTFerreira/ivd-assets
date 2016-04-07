@@ -40,6 +40,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+      $pageTitle = 'Dashboard';
       $assets = Asset::all();
       $locations = Location::all();
       $statuses = Status::all();
@@ -48,6 +49,6 @@ class HomeController extends Controller
       $divisions = Division::all();
       $year = \Carbon\Carbon::now()->year;
       $movements = Movement::orderBy('created_at', 'desc')->take(5)->get();
-      return view('home', compact('assets', 'movements', 'locations', 'statuses', 'budgets', 'invoices', 'divisions', 'year'));
+      return view('home', compact('assets', 'movements', 'locations', 'statuses', 'budgets', 'invoices', 'divisions', 'year', 'pageTitle'));
     }
 }
