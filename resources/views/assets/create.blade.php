@@ -2,7 +2,7 @@
 
 @section('main-content')
   <div class="row">
-    <div class="col-md-6 col-md-offset-3">
+    <div class="col-md-6">
       <div class="box box-primary">
         <div class="box-header with-border">
           <h3 class="box-title">{{$pageTitle}}</h3>
@@ -72,6 +72,19 @@
               <button type="submit" class="btn btn-primary">Add New Asset</button>
             </div>
           </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Useful Links</h3>
+        </div>
+        <div class="box-body">
+          <ul>
+            <li><a href="http://h20564.www2.hp.com/hpsc/wc/public/home" target="_blank">HP Warranty Check</a></li>
+            <li><a href="http://customercare.acer-euro.com/customerselfservice/CaseBooking.aspx?CID=ZA&LID=ENG&OP=1#_ga=1.185835882.214577358.1416317708" target="_blank">Acer Warranty Check</a></li>
+          </ul>
         </div>
       </div>
 
