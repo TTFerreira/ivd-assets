@@ -28,4 +28,9 @@ class User extends Authenticatable
     {
       return $this->hasOne(Movement::class);
     }
+
+    public function ticket()
+    {
+      return $this->hasMany(Ticket::class);
+    }
 }

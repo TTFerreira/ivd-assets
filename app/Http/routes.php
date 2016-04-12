@@ -89,4 +89,11 @@ Route::group(['middleware' => ['web']], function () {
   Route::get('budgets/{budget}/edit', 'BudgetsController@edit');
   Route::patch('budgets/{budget}/update', 'BudgetsController@update');
   Route::post('budgets', 'BudgetsController@store');
+
+  Route::get('tickets', 'TicketsController@index');
+  Route::get('tickets/create', 'TicketsController@create');
+  Route::get('tickets/{ticket}', 'TicketsController@show');
+  Route::get('tickets/{ticket}/edit', 'TicketsController@edit');
+  Route::patch('tickets/{ticket}/update', 'TicketsController@update');
+  Route::post('tickets', 'TicketsController@store');
 });

@@ -12,4 +12,9 @@ class Location extends Model
     {
       return $this->hasMany(Movement::class);
     }
+
+    public function ticket()
+    {
+      return $this->hasMany(Ticket::class);
+    }
 }
