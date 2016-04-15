@@ -96,4 +96,5 @@ Route::group(['middleware' => ['web']], function () {
   Route::get('tickets/{ticket}/edit', 'TicketsController@edit');
   Route::patch('tickets/{ticket}/update', 'TicketsController@update');
   Route::post('tickets', 'TicketsController@store');
+  Route::post('tickets/{ticket}', 'TicketsEntriesController@store');
 });

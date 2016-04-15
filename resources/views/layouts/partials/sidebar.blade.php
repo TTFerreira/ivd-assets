@@ -12,7 +12,7 @@
             <li class="treeview">
                 <a href="#"><i class='fa fa-ticket'></i> <span>Tickets</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ url('/tickets')}}">View Ticket</a></li>
+                    <li><a href="{{ url('/tickets')}}">View Tickets</a></li>
                     <li><a href="{{ url('/tickets/create')}}">Create Ticket</a></li>
                 </ul>
             </li>

@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Ticket;
+use App\TicketsEntry;
 use App\TicketsPriority;
 use App\TicketsStatus;
 use App\TicketsType;
 use App\Location;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -28,8 +30,15 @@ class TicketsController extends Controller
 
   public function show(Ticket $ticket)
   {
-    $pageTitle = 'View Ticket';
-    return view('tickets.show', compact('ticket', 'pageTitle'));
+    $pageTitle = 'Viewing Ticket #' . $ticket->id;
+    $ticketsPriorities = TicketsPriority::all();
+    $ticketsStatuses = TicketsStatus::all();
+    $ticketsTypes = TicketsType::all();
+    $locations = Location::all();
+    $users = User::all();
+    $now = new Carbon();
+    $ticketEntries = TicketsEntry::where('ticket_id', $ticket->id)->orderBy('created_at', 'asc')->get();
+    return view('tickets.show', compact('ticket', 'ticketEntries', 'pageTitle', 'ticketsPriorities', 'ticketsStatuses', 'ticketsTypes', 'locations', 'users', 'now'));
   }
 
   public function create()
@@ -66,23 +75,33 @@ class TicketsController extends Controller
 
     $ticket->save();
 
-    return redirect('tickets');
+    return redirect('tickets/' . $ticket->id);
   }
 
-  public function edit(Manufacturer $manufacturer)
+  public function edit(Ticket $ticket)
   {
-    $pageTitle = 'Edit Manufacturer - ' . $manufacturer->name;
-    return view('manufacturers.edit', compact('manufacturer', 'pageTitle'));
+    $pageTitle = 'Edit Ticket - ' . $ticket->id;
+    return view('tickets.edit', compact('ticket', 'pageTitle'));
   }
 
-  public function update(Request $request, Manufacturer $manufacturer)
+  public function update(Request $request, Ticket $ticket)
   {
     $this->validate($request, [
-      'name' => 'required|unique:manufacturers,name,'.$manufacturer->id
+      'user_id' => 'required',
+      'location_id' => 'required',
+      'ticket_status_id' => 'required',
+      'ticket_type_id' => 'required',
+      'ticket_priority_id' => 'required'
     ]);
 
-    $manufacturer->update($request->all());
+    $ticket->user_id = $request->user_id;
+    $ticket->location_id = $request->location_id;
+    $ticket->ticket_status_id = $request->ticket_status_id;
+    $ticket->ticket_type_id = $request->ticket_type_id;
+    $ticket->ticket_priority_id = $request->ticket_priority_id;
 
-    return redirect('manufacturers');
+    $ticket->update();
+
+    return redirect('tickets/' . $ticket->id);
   }
 }
