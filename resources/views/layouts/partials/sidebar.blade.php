@@ -73,6 +73,7 @@
                     <li><a href="{{ url('/budgets')}}">View Budgets</a></li>
                 </ul>
             </li>
+            <li><a href="{{ url('/admin')}}"><i class='fa fa-gear'></i> Admin</a></li>
         </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

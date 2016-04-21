@@ -57,11 +57,11 @@
             </div>
             <div class="form-group">
               <label for="subject">Subject</label>
-              <input type="text"  name="subject" class="form-control" value="{{old('subject')}}">
+              <input type="text" class="form-control" name="subject" value="{{old('subject')}}">
             </div>
             <div class="form-group">
               <label for="description">Description</label>
-              <textarea name="description" class="form-control" rows="5">{{old('description')}}</textarea>
+              <textarea class="form-control" rows="5" name="description">{{old('description')}}</textarea>
             </div>
 
             <div class="form-group">
@@ -90,13 +90,6 @@
       $(".ticket_status_id").select2();
       $(".ticket_type_id").select2();
       $(".ticket_priority_id").select2();
-    });
-  </script>
-  <script>
-    $(":input").keypress(function(event){
-      if (event.which == '10' || event.which == '13') {
-        event.preventDefault();
-      }
     });
   </script>
 @endsection

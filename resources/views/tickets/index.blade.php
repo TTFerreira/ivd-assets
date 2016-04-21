@@ -43,16 +43,10 @@
     <script>
       $(document).ready(function() {
         $('#table').DataTable( {
-            columnDefs: [ {
-                targets: [ 0 ],
-                orderData: [ 0, 1 ]
-            }, {
-                targets: [ 1 ],
-                orderData: [ 1, 0 ]
-            }, {
-                targets: [ 2 ],
-                orderData: [ 2, 0 ]
-            } ]
+          columnDefs: [ {
+            orderable: false, targets: 6
+          } ],
+          order: [[ 0, "desc" ]]
         } );
       } );
     </script>

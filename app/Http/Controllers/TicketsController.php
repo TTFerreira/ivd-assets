@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Mail;
 use App\Ticket;
 use App\TicketsEntry;
 use App\TicketsPriority;
@@ -74,6 +75,12 @@ class TicketsController extends Controller
     $ticket->description = $request->description;
 
     $ticket->save();
+
+    $user = User::findOrFail($ticket->user_id);
+
+    Mail::send('emails.new-ticket', ['user' => $user, 'ticket' => $ticket], function ($m) use ($user, $ticket) {
+      $m->to($user->email, $user->name)->subject('New Ticket: #' . $ticket->id . ' - ' . $ticket->subject);
+    });
 
     return redirect('tickets/' . $ticket->id);
   }
