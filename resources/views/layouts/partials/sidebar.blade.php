@@ -10,6 +10,13 @@
             <!-- Optionally, you can add icons to the links -->
             <li><a href="{{ url('home') }}"><i class='fa fa-home'></i> <span>Home</span></a></li>
             <li class="treeview">
+                <a href="#"><i class='fa fa-ticket'></i> <span>Tickets</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ url('/tickets')}}">View Tickets</a></li>
+                    <li><a href="{{ url('/tickets/create')}}">Create Ticket</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
                 <a href="#"><i class='fa fa-tags'></i> <span>Assets</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{ url('/assets')}}">View Assets</a></li>
@@ -66,6 +73,7 @@
                     <li><a href="{{ url('/budgets')}}">View Budgets</a></li>
                 </ul>
             </li>
+            <li><a href="{{ url('/admin')}}"><i class='fa fa-gear'></i> Admin</a></li>
         </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

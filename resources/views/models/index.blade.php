@@ -5,7 +5,7 @@
     <div class="col-md-12">
       <div class="box box-primary">
         <div class="box-header with-border">
-          <h3 class="box-title">Models</h3>
+          <h3 class="box-title">{{$pageTitle}}</h3>
         </div>
         <div class="box-body">
           <p><a href="models/create"><button type="button" class="btn btn-default" name="create-new-model" data-toggle="tooltip" data-original-title="Create New Model"><span class='glyphicon glyphicon-plus' aria-hidden='true'></span> <b>Create New Model</b></button></a></p>
