@@ -30,7 +30,6 @@ class InvoicesController extends Controller
   {
     $filepath = storage_path() . "/app/invoices/" . $invoice->invoice_number . ".pdf";
     return response()->file($filepath);
-    // return view('invoices.show', compact('invoice', 'filepath'));
   }
 
   public function create()

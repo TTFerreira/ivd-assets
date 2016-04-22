@@ -117,4 +117,12 @@ Route::group(['middleware' => ['web']], function () {
   Route::get('admin/ticket-types/{ticketsType}/edit', 'PagesController@editTicketType');
   Route::patch('admin/ticket-types/{ticketsType}/update', 'PagesController@updateTicketType');
   Route::post('admin/ticket-types', 'PagesController@storeTicketType');
+
+  Route::get('admin/ticket-canned-fields', 'TicketsCannedFieldsController@index');
+  Route::get('admin/ticket-canned-fields/create', 'TicketsCannedFieldsController@create');
+  Route::get('admin/ticket-canned-fields/{ticketsCannedField}/edit', 'TicketsCannedFieldsController@edit');
+  Route::patch('admin/ticket-canned-fields/{ticketsCannedField}/update', 'TicketsCannedFieldsController@update');
+  Route::post('admin/ticket-canned-fields', 'TicketsCannedFieldsController@store');
+
+  Route::post('canned', 'TicketsCannedFieldsController@canned');
 });

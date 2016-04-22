@@ -10,6 +10,7 @@ use App\TicketsStatus;
 use App\TicketsType;
 use App\Location;
 use App\User;
+use App\TicketsCannedField;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -50,7 +51,8 @@ class TicketsController extends Controller
     $ticketsTypes = TicketsType::all();
     $locations = Location::all();
     $users = User::all();
-    return view('tickets.create', compact('ticketsPriorities', 'ticketsStatuses', 'ticketsTypes', 'locations', 'users', 'pageTitle'));
+    $ticketsCannedFields = TicketsCannedField::all();
+    return view('tickets.create', compact('ticketsPriorities', 'ticketsStatuses', 'ticketsTypes', 'locations', 'users', 'ticketsCannedFields', 'pageTitle'));
   }
 
   public function store(Request $request)
