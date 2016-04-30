@@ -153,8 +153,15 @@
     </div>
   </div>
   <script>
-  $("#note").click(function() {
-    $("#new-note").toggle('1500');
-  });
-</script>
+    $("#note").click(function() {
+      $("#new-note").toggle('1500');
+    });
+  </script>
+  @if(Session::has('status'))
+    <script>
+      $(document).ready(function() {
+        Command: toastr["{{Session::get('status')}}"]("{{Session::get('message')}}", "{{Session::get('title')}}");
+      });
+    </script>
+  @endif
 @endsection

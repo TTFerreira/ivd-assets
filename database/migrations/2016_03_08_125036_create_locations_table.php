@@ -17,7 +17,6 @@ class CreateLocationsTable extends Migration
             $table->string('building');
             $table->string('office');
             $table->string('location_name');
-            $table->timestamps();
         });
     }
 

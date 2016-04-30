@@ -19,3 +19,60 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Division::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->company
+    ];
+});
+
+$factory->define(App\Location::class, function (Faker\Generator $faker) {
+    return [
+        'building' => $faker->regexify('[A-H]{1}[1-5]{2}'),
+        'office' => $faker->numerify('###'),
+        'location_name' => $faker->secondaryAddress,
+    ];
+});
+
+$factory->define(App\Supplier::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->company,
+    ];
+});
+
+$factory->define(App\AssetType::class, function (Faker\Generator $faker) {
+    return [
+        'type_name' => $faker->word,
+        'abbreviation' => $faker->regexify('[A-H]{3}'),
+    ];
+});
+
+$factory->define(App\Manufacturer::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->company,
+    ];
+});
+
+$factory->define(App\AssetModel::class, function (Faker\Generator $faker) {
+    return [
+        'manufacturer_id' => $faker->numberBetween($min = 1, $max = 4),
+        'asset_type_id' => $faker->numberBetween($min = 1, $max = 4),
+        'pcspec_id' => $faker->numberBetween($min = 1, $max = 4),
+        'asset_model' => $faker->regexify('[A-Z]{3}[0-9]{3}[A-Z]{2}'),
+        'part_number' => $faker->regexify('[A-Z]{3}[0-9]{3}[A-Z]{2}'),
+        'created_at' => new Carbon\Carbon,
+        'updated_at' => new Carbon\Carbon,
+    ];
+});
+
+$factory->define(App\Asset::class, function (Faker\Generator $faker) {
+    return [
+        'manufacturer_id' => $faker->numberBetween($min = 1, $max = 4),
+        'asset_type_id' => $faker->numberBetween($min = 1, $max = 4),
+        'pcspec_id' => $faker->numberBetween($min = 1, $max = 4),
+        'asset_model' => $faker->regexify('[A-Z]{3}[0-9]{3}[A-Z]{2}'),
+        'part_number' => $faker->regexify('[A-Z]{3}[0-9]{3}[A-Z]{2}'),
+        'created_at' => new Carbon\Carbon,
+        'updated_at' => new Carbon\Carbon,
+    ];
+});

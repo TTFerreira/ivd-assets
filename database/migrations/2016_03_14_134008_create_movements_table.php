@@ -17,7 +17,13 @@ class CreateMovementsTable extends Migration
             $table->integer('asset_id')->unsigned()->index();
             $table->integer('location_id')->unsigned()->index();
             $table->integer('status_id')->unsigned()->index();
+            $table->integer('user_id')->unsigned()->index();
             $table->timestamps();
+
+            $table->foreign('asset_id')->references('id')->on('assets');
+            $table->foreign('location_id')->references('id')->on('locations');
+            $table->foreign('status_id')->references('id')->on('statuses');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

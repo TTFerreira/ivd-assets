@@ -31,7 +31,7 @@
                     <td>{{$ticket->ticket_status->status}}</td>
                     <td>{{$ticket->ticket_priority->priority}}</td>
                     <td>{{$ticket->subject}}</td>
-                    <td><a href="/tickets/{{ $ticket->id }}">View</a> | <a href="/tickets/{{ $ticket->id }}/edit">Edit</a></td>
+                    <td><a href="/tickets/{{ $ticket->id }}">View</a></td>
                   </div>
                 </tr>
               @endforeach

@@ -10,6 +10,7 @@ use App\TicketsType;
 use App\Location;
 use App\User;
 use App\Ticket;
+use App\Http\Requests\Tickets\CreateTicketRequest;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -39,18 +40,8 @@ class TicketsCannedFieldsController extends Controller
     return view('admin.ticket-canned-fields.create', compact('ticketsPriorities', 'ticketsStatuses', 'ticketsTypes', 'locations', 'users', 'pageTitle'));
   }
 
-  public function store(Request $request)
+  public function store(CreateTicketRequest $request)
   {
-    $this->validate($request, [
-      'user_id' => 'required',
-      'location_id' => 'required',
-      'ticket_status_id' => 'required',
-      'ticket_type_id' => 'required',
-      'ticket_priority_id' => 'required',
-      'subject' => 'required',
-      'description' => 'required'
-    ]);
-
     $ticket = new TicketsCannedField();
     $ticket->user_id = $request->user_id;
     $ticket->location_id = $request->location_id;
@@ -81,7 +72,7 @@ class TicketsCannedFieldsController extends Controller
 
   public function edit(TicketsCannedField $ticketsCannedField)
   {
-    $pageTitle = 'Edit Ticket - ' . $ticketsCannedField->subject;
+    $pageTitle = 'Edit Ticket Canned Fields - ' . $ticketsCannedField->subject;
     $ticketsPriorities = TicketsPriority::all();
     $ticketsStatuses = TicketsStatus::all();
     $ticketsTypes = TicketsType::all();

@@ -12,17 +12,28 @@ use App\Location;
 use App\User;
 use App\TicketsCannedField;
 use Carbon\Carbon;
+use Session;
 use Illuminate\Http\Request;
+use App\Http\Requests\Tickets\CreateTicketRequest;
+use App\Http\Requests\Tickets\UpdateTicketRequest;
 
 use App\Http\Requests;
 
 class TicketsController extends Controller
 {
+  /**
+   * Check if user is logged in
+   */
   public function __construct()
   {
       $this->middleware('auth');
   }
 
+  /**
+   * Show all tickets
+   *
+   * @return view 'All Tickets'
+   */
   public function index()
   {
     $pageTitle = 'View Tickets';
@@ -30,6 +41,11 @@ class TicketsController extends Controller
     return view('tickets.index', compact('tickets', 'pageTitle'));
   }
 
+  /**
+   * Show the Ticket
+   * @param  Ticket $ticket The supplied Ticket
+   * @return view
+   */
   public function show(Ticket $ticket)
   {
     $pageTitle = 'Viewing Ticket #' . $ticket->id;
@@ -43,6 +59,11 @@ class TicketsController extends Controller
     return view('tickets.show', compact('ticket', 'ticketEntries', 'pageTitle', 'ticketsPriorities', 'ticketsStatuses', 'ticketsTypes', 'locations', 'users', 'now'));
   }
 
+  /**
+   * Show form for creating a new Ticket
+   *
+   * @return view 'Create Ticket Form'
+   */
   public function create()
   {
     $pageTitle = 'Create New Ticket';
@@ -55,18 +76,13 @@ class TicketsController extends Controller
     return view('tickets.create', compact('ticketsPriorities', 'ticketsStatuses', 'ticketsTypes', 'locations', 'users', 'ticketsCannedFields', 'pageTitle'));
   }
 
-  public function store(Request $request)
+  /**
+   * Store the new Ticket
+   * @param  CreateTicketRequest $request
+   * @return [type]                       [description]
+   */
+  public function store(CreateTicketRequest $request)
   {
-    $this->validate($request, [
-      'user_id' => 'required',
-      'location_id' => 'required',
-      'ticket_status_id' => 'required',
-      'ticket_type_id' => 'required',
-      'ticket_priority_id' => 'required',
-      'subject' => 'required',
-      'description' => 'required'
-    ]);
-
     $ticket = new Ticket();
     $ticket->user_id = $request->user_id;
     $ticket->location_id = $request->location_id;
@@ -84,6 +100,10 @@ class TicketsController extends Controller
       $m->to($user->email, $user->name)->subject('New Ticket: #' . $ticket->id . ' - ' . $ticket->subject);
     });
 
+    Session::flash('status', 'success');
+    Session::flash('title', 'Ticket #' . $ticket->id);
+    Session::flash('message', 'Successfully logged');
+
     return redirect('tickets/' . $ticket->id);
   }
 
@@ -93,16 +113,8 @@ class TicketsController extends Controller
     return view('tickets.edit', compact('ticket', 'pageTitle'));
   }
 
-  public function update(Request $request, Ticket $ticket)
+  public function update(UpdateTicketRequest $request, Ticket $ticket)
   {
-    $this->validate($request, [
-      'user_id' => 'required',
-      'location_id' => 'required',
-      'ticket_status_id' => 'required',
-      'ticket_type_id' => 'required',
-      'ticket_priority_id' => 'required'
-    ]);
-
     $ticket->user_id = $request->user_id;
     $ticket->location_id = $request->location_id;
     $ticket->ticket_status_id = $request->ticket_status_id;
@@ -110,6 +122,10 @@ class TicketsController extends Controller
     $ticket->ticket_priority_id = $request->ticket_priority_id;
 
     $ticket->update();
+
+    Session::flash('status', 'success');
+    Session::flash('title', 'Ticket #' . $ticket->id);
+    Session::flash('message', 'Successfully updated');
 
     return redirect('tickets/' . $ticket->id);
   }

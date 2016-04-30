@@ -23,6 +23,12 @@ class CreateTicketsTable extends Migration
             $table->text('description');
             $table->dateTime('closed')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('location_id')->references('id')->on('locations');
+            $table->foreign('ticket_status_id')->references('id')->on('tickets_statuses');
+            $table->foreign('ticket_type_id')->references('id')->on('tickets_types');
+            $table->foreign('ticket_priority_id')->references('id')->on('tickets_priorities');
         });
     }
 

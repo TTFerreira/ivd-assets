@@ -18,6 +18,9 @@ class CreateTicketsEntriesTable extends Migration
             $table->integer('user_id')->unsigned()->index();
             $table->text('note');
             $table->timestamps();
+
+            $table->foreign('ticket_id')->references('id')->on('tickets');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

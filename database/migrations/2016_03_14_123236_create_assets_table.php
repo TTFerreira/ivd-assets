@@ -23,7 +23,12 @@ class CreateAssetsTable extends Migration
             $table->date('purchase_date')->nullable();
             $table->integer('warranty_months')->nullable();
             $table->integer('warranty_type')->nullable();
+            $table->integer('invoice_id')->nullable();
             $table->timestamps();
+
+            $table->foreign('model_id')->references('id')->on('asset_models');
+            $table->foreign('division_id')->references('id')->on('divisions');
+            $table->foreign('supplier_id')->references('id')->on('suppliers');
         });
     }
 
