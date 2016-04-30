@@ -64,15 +64,3 @@ $factory->define(App\AssetModel::class, function (Faker\Generator $faker) {
         'updated_at' => new Carbon\Carbon,
     ];
 });
-
-$factory->define(App\Asset::class, function (Faker\Generator $faker) {
-    return [
-        'manufacturer_id' => $faker->numberBetween($min = 1, $max = 4),
-        'asset_type_id' => $faker->numberBetween($min = 1, $max = 4),
-        'pcspec_id' => $faker->numberBetween($min = 1, $max = 4),
-        'asset_model' => $faker->regexify('[A-Z]{3}[0-9]{3}[A-Z]{2}'),
-        'part_number' => $faker->regexify('[A-Z]{3}[0-9]{3}[A-Z]{2}'),
-        'created_at' => new Carbon\Carbon,
-        'updated_at' => new Carbon\Carbon,
-    ];
-});
