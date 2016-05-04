@@ -7,6 +7,8 @@ use App\Manufacturer;
 use App\AssetType;
 use App\Pcspec;
 use Illuminate\Http\Request;
+use App\Http\Requests\AssetModels\StoreAssetModelRequest;
+use App\Http\Requests\AssetModels\UpdateAssetModelRequest;
 
 use App\Http\Requests;
 
@@ -39,14 +41,8 @@ class AssetModelsController extends Controller
     return view('models.create', compact('manufacturers', 'asset_types', 'pcspecs', 'pageTitle'));
   }
 
-  public function store(Request $request)
+  public function store(StoreAssetModelRequest $request)
   {
-    $this->validate($request, [
-      'manufacturer_id' => 'required',
-      'asset_type_id' => 'required',
-      'asset_model' => 'required'
-    ]);
-
     $asset_model = new AssetModel();
     $asset_model->manufacturer_id = $request->manufacturer_id;
     $asset_model->asset_type_id = $request->asset_type_id;
@@ -68,14 +64,8 @@ class AssetModelsController extends Controller
     return view('models.edit', compact('asset_model', 'manufacturers', 'asset_types', 'pcspecs', 'pageTitle'));
   }
 
-  public function update(Request $request, AssetModel $asset_model)
+  public function update(UpdateAssetModelRequest $request, AssetModel $asset_model)
   {
-    $this->validate($request, [
-      'manufacturer_id' => 'required',
-      'asset_type_id' => 'required',
-      'asset_model' => 'required'
-    ]);
-
     $asset_model->update($request->all());
 
     return redirect('models');

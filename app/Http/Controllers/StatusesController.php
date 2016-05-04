@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Status;
+use App\Http\Requests\Statuses\StoreStatusRequest;
+use App\Http\Requests\Statuses\UpdateStatusRequest;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -32,12 +34,8 @@ class StatusesController extends Controller
     return view('statuses.create', compact('pageTitle'));
   }
 
-  public function store(Request $request)
+  public function store(StoreStatusRequest $request)
   {
-    $this->validate($request, [
-      'name' => 'required|unique:statuses,name'
-    ]);
-
     $status = new Status();
     $status->name = $request->name;
 
@@ -52,12 +50,8 @@ class StatusesController extends Controller
     return view('statuses.edit', compact('status', 'pageTitle'));
   }
 
-  public function update(Request $request, Status $status)
+  public function update(UpdateStatusRequest $request, Status $status)
   {
-    $this->validate($request, [
-      'name' => 'required|unique:statuses,name,'.$status->id
-    ]);
-
     $status->update($request->all());
 
     return redirect('statuses');

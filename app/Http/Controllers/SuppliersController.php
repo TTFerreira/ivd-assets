@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Supplier;
+use App\Http\Requests\Suppliers\StoreSupplierRequest;
+use App\Http\Requests\Suppliers\UpdateSupplierRequest;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -33,12 +35,8 @@ class SuppliersController extends Controller
     return view('suppliers.create', compact('pageTitle'));
   }
 
-  public function store(Request $request)
+  public function store(StoreSupplierRequest $request)
   {
-    $this->validate($request, [
-      'name' => 'required|unique:suppliers,name'
-    ]);
-
     $supplier = new Supplier();
     $supplier->name = $request->name;
 
@@ -53,12 +51,8 @@ class SuppliersController extends Controller
     return view('suppliers.edit', compact('supplier', 'pageTitle'));
   }
 
-  public function update(Request $request, Supplier $supplier)
+  public function update(UpdateSupplierRequest $request, Supplier $supplier)
   {
-    $this->validate($request, [
-      'name' => 'required|unique:suppliers,name,'.$supplier->id
-    ]);
-
     $supplier->update($request->all());
 
     return redirect('suppliers');

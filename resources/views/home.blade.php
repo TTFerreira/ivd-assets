@@ -2,33 +2,6 @@
 
 @section('main-content')
 	<div class="row">
-		<div class="col-md-12">
-      <div class="box box-primary">
-        <div class="box-header with-border">
-          <h3 class="box-title">Budgets - {{$year}}</h3>
-        </div>
-        <div class="box-body">
-					@foreach($divisions as $division)
-						<?php $budget = DB::table('budgets')->where('division_id', $division->id)->first();
-						$date = $year . '%';
-						$sum = DB::table('invoices')->where([['division_id', $division->id], ['invoiced_date', 'like', $date],])->sum('total');
-						$remaining = $budget->total - $sum; ?>
-						<div class="col-sm-3 col-xs-6">
-	            <div class="description-block border-right">
-	              {{-- <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 17%</span> --}}
-	              <h3 class="description-header">{{$division->name}}</h3>
-	              <h5 class="description-header">Remaining: R{{number_format($remaining,2)}}</h5>
-	              <span class="description-text">Spent: </span>
-	              <span class="description-text">R{{number_format($sum,2)}}</span>
-	            </div>
-	            <!-- /.description-block -->
-	          </div>
-					@endforeach
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="row">
 		<div class="col-md-5 col-xs-12">
       <div class="box box-primary">
         <div class="box-header with-border">

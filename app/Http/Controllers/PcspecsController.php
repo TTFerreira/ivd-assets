@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Pcspec;
+use App\Http\Requests\Pcspecs\StorePcspecRequest;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -32,14 +33,8 @@ class PcspecsController extends Controller
     return view('pcspecs.create', compact('pageTitle'));
   }
 
-  public function store(Request $request)
+  public function store(StorePcspecRequest $request)
   {
-    $this->validate($request, [
-      'cpu' => 'required|unique:pcspecs,cpu',
-      'ram' => 'required',
-      'hdd' => 'required'
-    ]);
-
     $pcspec = new Pcspec();
     $pcspec->cpu = $request->cpu;
     $pcspec->ram = $request->ram;
@@ -56,14 +51,8 @@ class PcspecsController extends Controller
     return view('pcspecs.edit', compact('pcspec', 'pageTitle'));
   }
 
-  public function update(Request $request, Pcspec $pcspec)
+  public function update(StorePcspecRequest $request, Pcspec $pcspec)
   {
-    $this->validate($request, [
-      'cpu' => 'required|unique:pcspecs,cpu,'.$pcspec->id,
-      'ram' => 'required',
-      'hdd' => 'required'
-    ]);
-
     $pcspec->update($request->all());
 
     return redirect('pcspecs');

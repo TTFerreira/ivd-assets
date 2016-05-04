@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Manufacturer;
+use App\Http\Requests\Manufacturers\StoreManufacturerRequest;
+use App\Http\Requests\Manufacturers\UpdateManufacturerRequest;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -23,7 +25,6 @@ class ManufacturersController extends Controller
 
   public function show(Manufacturer $manufacturer)
   {
-    //$location->load('notes.user');
     return view('manufacturers.show', compact('manufacturer'));
   }
 
@@ -33,12 +34,8 @@ class ManufacturersController extends Controller
     return view('manufacturers.create', compact('pageTitle'));
   }
 
-  public function store(Request $request)
+  public function store(StoreManufacturerRequest $request)
   {
-    $this->validate($request, [
-      'name' => 'required|unique:manufacturers,name'
-    ]);
-
     $manufacturer = new Manufacturer();
     $manufacturer->name = $request->name;
 
@@ -53,12 +50,8 @@ class ManufacturersController extends Controller
     return view('manufacturers.edit', compact('manufacturer', 'pageTitle'));
   }
 
-  public function update(Request $request, Manufacturer $manufacturer)
+  public function update(UpdateManufacturerRequest $request, Manufacturer $manufacturer)
   {
-    $this->validate($request, [
-      'name' => 'required|unique:manufacturers,name,'.$manufacturer->id
-    ]);
-
     $manufacturer->update($request->all());
 
     return redirect('manufacturers');

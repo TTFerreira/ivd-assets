@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Budget;
 use App\Division;
+use App\Http\Requests\Budgets\StoreBudgetRequest;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -34,14 +35,8 @@ class BudgetsController extends Controller
     return view('budgets.create', compact('divisions', 'pageTitle'));
   }
 
-  public function store(Request $request)
+  public function store(StoreBudgetRequest $request)
   {
-    $this->validate($request, [
-      'division_id' => 'required',
-      'year' => 'required',
-      'total' => 'required|numeric|between:0, 99999999.99'
-    ]);
-
     $budget = new Budget();
     $budget->division_id = $request->division_id;
     $budget->year = $request->year;
@@ -59,14 +54,8 @@ class BudgetsController extends Controller
     return view('budgets.edit', compact('budget', 'divisions', 'pageTitle'));
   }
 
-  public function update(Request $request, Budget $budget)
+  public function update(StoreBudgetRequest $request, Budget $budget)
   {
-    $this->validate($request, [
-      'division_id' => 'required',
-      'year' => 'required',
-      'total' => 'required|numeric|between:0, 99999999.99'
-    ]);
-
     $budget->update($request->all());
 
     return redirect('budgets');

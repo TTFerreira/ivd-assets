@@ -20,6 +20,10 @@ class CreateAssetModelsTable extends Migration
             $table->string('asset_model');
             $table->string('part_number')->nullable();
             $table->timestamps();
+
+            $table->foreign('manufacturer_id')->references('id')->on('manufacturers');
+            $table->foreign('asset_type_id')->references('id')->on('asset_types');
+            $table->foreign('pcspec_id')->references('id')->on('pcspecs');
         });
     }
 

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\AssetType;
 use Illuminate\Http\Request;
+use App\Http\Requests\AssetTypes\StoreAssetTypeRequest;
+use App\Http\Requests\AssetTypes\UpdateAssetTypeRequest;
 
 use App\Http\Requests;
 
@@ -32,13 +34,8 @@ class AssetTypesController extends Controller
     return view('asset-types.create', compact('pageTitle'));
   }
 
-  public function store(Request $request)
+  public function store(StoreAssetTypeRequest $request)
   {
-    $this->validate($request, [
-      'type_name' => 'required|unique:asset_types,type_name',
-      'abbreviation' => 'required|unique:asset_types,abbreviation'
-    ]);
-
     $asset_type = new AssetType();
     $asset_type->type_name = $request->type_name;
     $asset_type->abbreviation = $request->abbreviation;
@@ -54,13 +51,8 @@ class AssetTypesController extends Controller
     return view('asset-types.edit', compact('asset_type', 'pageTitle'));
   }
 
-  public function update(Request $request, AssetType $asset_type)
+  public function update(UpdateAssetTypeRequest $request, AssetType $asset_type)
   {
-    $this->validate($request, [
-      'type_name' => 'required|unique:asset_types,type_name,'.$asset_type->id,
-      'abbreviation' => 'required|unique:asset_types,abbreviation,'.$asset_type->id
-    ]);
-
     $asset_type->update($request->all());
 
     return redirect('asset-types');

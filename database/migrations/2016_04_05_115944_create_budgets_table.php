@@ -18,6 +18,8 @@ class CreateBudgetsTable extends Migration
             $table->string('year');
             $table->decimal('total', 8, 2);
             $table->timestamps();
+
+            $table->foreign('division_id')->references('id')->on('divisions');
         });
     }
 

@@ -34,6 +34,13 @@
           </form>
         </div>
       </div>
+      @if(count($errors))
+        <ul>
+          @foreach($errors->all() as $error)
+            <li>{{$error}}</li>
+          @endforeach
+        </ul>
+      @endif
     </div>
     <div class="col-md-4">
       <div class="box box-primary">
@@ -46,17 +53,9 @@
         </div>
       </div>
     </div>
-
-      @if(count($errors))
-        <ul>
-          @foreach($errors->all() as $error)
-            <li>{{$error}}</li>
-          @endforeach
-        </ul>
-      @endif
     </div>
     <div class="text-center"><a class="btn btn-primary" href="{{ URL::previous() }}">Back</a></div>
-  </div>
+
 @endsection
 
 @section('footer')

@@ -16,7 +16,6 @@ class CreateAssetTypesTable extends Migration
             $table->increments('id');
             $table->string('type_name');
             $table->string('abbreviation');
-            $table->timestamps();
         });
     }
 

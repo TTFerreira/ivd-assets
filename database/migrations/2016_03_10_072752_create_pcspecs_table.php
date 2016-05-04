@@ -17,7 +17,6 @@ class CreatePcspecsTable extends Migration
             $table->string('cpu');
             $table->string('ram');
             $table->string('hdd');
-            $table->timestamps();
         });
     }
 
