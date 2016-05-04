@@ -9,7 +9,7 @@ use App\User;
 use Auth;
 use Session;
 use Illuminate\Http\Request;
-use App\Http\Requests\Tickets\CreateNoteForTicketRequest;
+use App\Http\Requests\Tickets\StoreNoteForTicketRequest;
 
 use App\Http\Requests;
 
@@ -20,7 +20,7 @@ class TicketsEntriesController extends Controller
     $this->middleware('auth');
   }
 
-  public function store(CreateNoteForTicketRequest $request, Ticket $ticket)
+  public function store(StoreNoteForTicketRequest $request, Ticket $ticket)
   {
     $ticketEntry = new TicketsEntry();
     $ticketEntry->ticket_id = $ticket->id;

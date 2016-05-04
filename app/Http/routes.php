@@ -100,23 +100,23 @@ Route::group(['middleware' => ['web']], function () {
 
   Route::get('admin', 'PagesController@getTicketConfig');
 
-  Route::get('admin/ticket-statuses', 'PagesController@getTicketStatuses');
-  Route::get('admin/ticket-statuses/create', 'PagesController@createTicketStatus');
-  Route::get('admin/ticket-statuses/{ticketsStatus}/edit', 'PagesController@editTicketStatus');
-  Route::patch('admin/ticket-statuses/{ticketsStatus}/update', 'PagesController@updateTicketStatus');
-  Route::post('admin/ticket-statuses', 'PagesController@storeTicketStatus');
+  Route::get('admin/ticket-statuses', 'TicketsStatusesController@index');
+  Route::get('admin/ticket-statuses/create', 'TicketsStatusesController@create');
+  Route::get('admin/ticket-statuses/{ticketsStatus}/edit', 'TicketsStatusesController@edit');
+  Route::patch('admin/ticket-statuses/{ticketsStatus}/update', 'TicketsStatusesController@update');
+  Route::post('admin/ticket-statuses', 'TicketsStatusesController@store');
 
-  Route::get('admin/ticket-priorities', 'PagesController@getTicketPriorities');
-  Route::get('admin/ticket-priorities/create', 'PagesController@createTicketPriority');
-  Route::get('admin/ticket-priorities/{ticketsPriority}/edit', 'PagesController@editTicketPriority');
-  Route::patch('admin/ticket-priorities/{ticketsPriority}/update', 'PagesController@updateTicketPriority');
-  Route::post('admin/ticket-priorities', 'PagesController@storeTicketPriority');
+  Route::get('admin/ticket-priorities', 'TicketsPrioritiesController@index');
+  Route::get('admin/ticket-priorities/create', 'TicketsPrioritiesController@create');
+  Route::get('admin/ticket-priorities/{ticketsPriority}/edit', 'TicketsPrioritiesController@edit');
+  Route::patch('admin/ticket-priorities/{ticketsPriority}/update', 'TicketsPrioritiesController@update');
+  Route::post('admin/ticket-priorities', 'TicketsPrioritiesController@store');
 
-  Route::get('admin/ticket-types', 'PagesController@getTicketTypes');
-  Route::get('admin/ticket-types/create', 'PagesController@createTicketType');
-  Route::get('admin/ticket-types/{ticketsType}/edit', 'PagesController@editTicketType');
-  Route::patch('admin/ticket-types/{ticketsType}/update', 'PagesController@updateTicketType');
-  Route::post('admin/ticket-types', 'PagesController@storeTicketType');
+  Route::get('admin/ticket-types', 'TicketsTypesController@index');
+  Route::get('admin/ticket-types/create', 'TicketsTypesController@create');
+  Route::get('admin/ticket-types/{ticketsType}/edit', 'TicketsTypesController@edit');
+  Route::patch('admin/ticket-types/{ticketsType}/update', 'TicketsTypesController@update');
+  Route::post('admin/ticket-types', 'TicketsTypesController@store');
 
   Route::get('admin/ticket-canned-fields', 'TicketsCannedFieldsController@index');
   Route::get('admin/ticket-canned-fields/create', 'TicketsCannedFieldsController@create');

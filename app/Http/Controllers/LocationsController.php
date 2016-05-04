@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Location;
+use App\Http\Requests\Locations\StoreLocationRequest;
+use App\Http\Requests\Locations\UpdateLocationRequest;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -33,14 +35,8 @@ class LocationsController extends Controller
     return view('locations.create', compact('pageTitle'));
   }
 
-  public function store(Request $request)
+  public function store(StoreLocationRequest $request)
   {
-    $this->validate($request, [
-      'building' => 'required',
-      'office' => 'required',
-      'location_name' => 'required|unique:locations,location_name'
-    ]);
-
     $location = new Location();
     $location->building = $request->building;
     $location->office = $request->office;
@@ -57,14 +53,8 @@ class LocationsController extends Controller
     return view('locations.edit', compact('location', 'pageTitle'));
   }
 
-  public function update(Request $request, Location $location)
+  public function update(UpdateLocationRequest $request, Location $location)
   {
-    $this->validate($request, [
-      'building' => 'required',
-      'office' => 'required',
-      'location_name' => 'required|unique:locations,location_name,'.$location->id
-    ]);
-
     $location->update($request->all());
 
     return redirect('locations');

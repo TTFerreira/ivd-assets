@@ -14,7 +14,7 @@ use App\TicketsCannedField;
 use Carbon\Carbon;
 use Session;
 use Illuminate\Http\Request;
-use App\Http\Requests\Tickets\CreateTicketRequest;
+use App\Http\Requests\Tickets\StoreTicketRequest;
 use App\Http\Requests\Tickets\UpdateTicketRequest;
 
 use App\Http\Requests;
@@ -81,7 +81,7 @@ class TicketsController extends Controller
    * @param  CreateTicketRequest $request
    * @return [type]                       [description]
    */
-  public function store(CreateTicketRequest $request)
+  public function store(StoreTicketRequest $request)
   {
     $ticket = new Ticket();
     $ticket->user_id = $request->user_id;

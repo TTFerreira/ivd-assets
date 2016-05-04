@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Tickets;
+namespace App\Http\Requests\TicketsCannedFields;
 
 use App\Http\Requests\Request;
 
-class CreateTicketRequest extends Request
+class StoreTicketsCannedFieldRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,20 +23,20 @@ class CreateTicketRequest extends Request
      */
     public function rules()
     {
-        return [
-          'user_id' => 'required',
-          'location_id' => 'required',
-          'ticket_status_id' => 'required',
-          'ticket_type_id' => 'required',
-          'ticket_priority_id' => 'required',
-          'subject' => 'required',
-          'description' => 'required'
-        ];
+      return [
+        'user_id' => 'required',
+        'location_id' => 'required',
+        'ticket_status_id' => 'required',
+        'ticket_type_id' => 'required',
+        'ticket_priority_id' => 'required',
+        'subject' => 'required',
+        'description' => 'required'
+      ];
     }
 
     /**
-     * Custom error messages
-     * 
+     * Custom error messages for fields
+     *
      * @return array
      */
     public function messages()

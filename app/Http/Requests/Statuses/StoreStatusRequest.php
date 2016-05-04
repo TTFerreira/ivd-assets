@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Tickets;
+namespace App\Http\Requests\Statuses;
 
 use App\Http\Requests\Request;
 
-class CreateNoteForTicketRequest extends Request
+class StoreStatusRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,20 +23,21 @@ class CreateNoteForTicketRequest extends Request
      */
     public function rules()
     {
-        return [
-          'note' => 'required'
-        ];
+      return [
+        'name' => 'required|unique:statuses,name'
+      ];
     }
 
     /**
      * Custom error messages for fields
-     * 
+     *
      * @return array
      */
     public function messages()
     {
       return [
-        'note.required' => 'You must enter your note.'
+        'name.required' => 'You must enter a Status.',
+        'name.unique' => 'Status \'' . $this->name . '\' already exists. You must enter a unique Status.',
       ];
     }
 }

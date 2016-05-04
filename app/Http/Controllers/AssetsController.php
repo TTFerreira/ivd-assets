@@ -14,7 +14,9 @@ use App\WarrantyType;
 use App\Invoice;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Http\Requests\Assets\StoreAssetRequest;
 use DB;
+use Auth;
 
 use App\Http\Requests;
 
@@ -77,14 +79,8 @@ class AssetsController extends Controller
     return view('assets.create', compact('asset_models', 'divisions', 'suppliers', 'movements', 'manufacturers', 'warranty_types', 'invoices', 'pageTitle'));
   }
 
-  public function store(Request $request)
+  public function store(StoreAssetRequest $request)
   {
-    $this->validate($request, [
-      'asset_model_id' => 'required',
-      'division_id' => 'required',
-      'supplier_id' => 'required',
-      'warranty_type_id' => 'required'
-    ]);
     $count = \DB::table('assets')->count() + 1;
     $asset = new Asset();
     $asset->serial_number = $request->serial_number;
@@ -101,11 +97,13 @@ class AssetsController extends Controller
 
     $asset->save();
 
+    $user = Auth::user()->id;
+
     $movement = new Movement();
     $movement->asset_id = $asset->id;
     $movement->location_id = 1;
     $movement->status_id = 1;
-
+    $movement->user_id = $user;
     $movement->save();
 
     $asset->movement_id = $movement->id;
@@ -128,7 +126,7 @@ class AssetsController extends Controller
     return view('assets.edit', compact('asset', 'asset_models', 'divisions', 'suppliers', 'movements', 'manufacturers', 'invoices', 'warranty_types', 'pageTitle'));
   }
 
-  public function update(Request $request, Asset $asset)
+  public function update(StoreAssetRequest $request, Asset $asset)
   {
     $this->validate($request, [
       'asset_model_id' => 'required',

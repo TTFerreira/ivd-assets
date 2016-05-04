@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Division;
+use App\Http\Requests\Divisions\StoreDivisionRequest;
+use App\Http\Requests\Divisions\UpdateDivisionRequest;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -33,12 +35,8 @@ class DivisionsController extends Controller
     return view('divisions.create', compact('pageTitle'));
   }
 
-  public function store(Request $request)
+  public function store(StoreDivisionRequest $request)
   {
-    $this->validate($request, [
-      'name' => 'required|unique:divisions,name'
-    ]);
-
     $division = new Division();
     $division->name = $request->name;
 
@@ -53,12 +51,8 @@ class DivisionsController extends Controller
     return view('divisions.edit', compact('division', 'pageTitle'));
   }
 
-  public function update(Request $request, Division $division)
+  public function update(UpdateDivisionRequest $request, Division $division)
   {
-    $this->validate($request, [
-      'name' => 'required|unique:divisions,name,'.$division->id
-    ]);
-
     $division->update($request->all());
 
     return redirect('divisions');

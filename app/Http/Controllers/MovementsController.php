@@ -6,7 +6,9 @@ use App\Movement;
 use App\Asset;
 use App\Location;
 use App\Status;
+use App\Http\Requests\Movements\StoreMovementRequest;
 use Illuminate\Http\Request;
+use Auth;
 
 use App\Http\Requests;
 
@@ -35,43 +37,20 @@ class MovementsController extends Controller
     return view('movements.move', compact('asset', 'assets', 'locations', 'statuses', 'pageTitle'));
   }
 
-  public function store(Request $request, Asset $asset)
+  public function store(StoreMovementRequest $request, Asset $asset)
   {
-    $this->validate($request, [
-      'location_id' => 'required',
-      'status_id' => 'required'
-    ]);
+    $user = Auth::user()->id;
 
     $movement = new Movement();
     $movement->asset_id = $asset->id;
     $movement->location_id = $request->location_id;
     $movement->status_id = $request->status_id;
+    $movement->user_id = $user;
 
     $movement->save();
 
     $asset->movement_id = $movement->id;
     $asset->update();
-
-    return redirect('assets');
-  }
-
-  public function edit(Movement $movement)
-  {
-    $assets = Asset::all();
-    $locations = Location::all();
-    $statuses = Status::all();
-    return view('movements.edit', compact('movement', 'assets', 'locations', 'statuses'));
-  }
-
-  public function update(Request $request, Movement $movement)
-  {
-    $this->validate($request, [
-      'asset_id' => 'required',
-      'location_id' => 'required',
-      'status_id' => 'required'
-    ]);
-
-    $movement->update($request->all());
 
     return redirect('assets');
   }

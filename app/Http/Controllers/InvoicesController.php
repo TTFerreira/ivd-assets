@@ -10,6 +10,8 @@ use App\Division;
 use App\Http\Requests;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\Invoices\StoreInvoiceRequest;
+use App\Http\Requests\Invoices\UpdateInvoiceRequest;
 use Illuminate\Http\Response;
 
 class InvoicesController extends Controller
@@ -40,17 +42,8 @@ class InvoicesController extends Controller
     return view('invoices.create', compact('suppliers', 'divisions', 'pageTitle'));
   }
 
-  public function store(Request $request)
+  public function store(StoreInvoiceRequest $request)
   {
-    $this->validate($request, [
-      'invoice_number' => 'required|unique:invoices,invoice_number',
-      'order_number' => 'required|unique:invoices,order_number',
-      'division_id' => 'required',
-      'supplier_id' => 'required',
-      'invoiced_date' => 'required',
-      'total' => 'required|numeric|between:0, 99999999.99'
-    ]);
-
     $invoice = new Invoice();
     $invoice->invoice_number = $request->invoice_number;
     $invoice->order_number = $request->order_number;
@@ -77,17 +70,8 @@ class InvoicesController extends Controller
     return view('invoices.edit', compact('invoice', 'suppliers', 'divisions', 'pageTitle'));
   }
 
-  public function update(Request $request, Invoice $invoice)
+  public function update(UpdateInvoiceRequest $request, Invoice $invoice)
   {
-    $this->validate($request, [
-      'invoice_number' => 'required|unique:invoices,invoice_number,'.$invoice->id,
-      'order_number' => 'required|unique:invoices,order_number,'.$invoice->id,
-      'division_id' => 'required',
-      'supplier_id' => 'required',
-      'invoiced_date' => 'required',
-      'total' => 'required|numeric|between:0, 99999999.99'
-    ]);
-
     if ($request->invoice_number != $invoice->invoice_number) {
       Storage::move('invoices/' . $invoice->invoice_number . '.pdf', 'invoices/' . $request->invoice_number  . '.pdf');
     }
