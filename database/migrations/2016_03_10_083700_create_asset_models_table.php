@@ -16,14 +16,13 @@ class CreateAssetModelsTable extends Migration
             $table->increments('id');
             $table->integer('manufacturer_id')->unsigned()->index();
             $table->integer('asset_type_id')->unsigned()->index();
-            $table->integer('pcspec_id')->unsigned()->index();
+            $table->integer('pcspec_id')->nullable();
             $table->string('asset_model');
             $table->string('part_number')->nullable();
             $table->timestamps();
 
             $table->foreign('manufacturer_id')->references('id')->on('manufacturers');
             $table->foreign('asset_type_id')->references('id')->on('asset_types');
-            $table->foreign('pcspec_id')->references('id')->on('pcspecs');
         });
     }
 
