@@ -11,7 +11,7 @@
           <form method="POST" action="{{ url('tickets') }}">
             {{csrf_field()}}
             <div class="form-group">
-              <label for="user_id">Agent</label>
+              <label for="user_id">@if ($errors->has('user_id'))<span class="text-red">Agent <small>'{!!$errors->first('user_id')!!}'</small></span>@else Agent @endif</label>
               <select class="form-control user_id" name="user_id">
                 <option value = "{{$ticket->user_id or ''}}">{{$ticket->user_id or ''}}</option>
                 @foreach($users as $user)

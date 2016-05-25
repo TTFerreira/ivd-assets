@@ -123,4 +123,7 @@ Route::group(['middleware' => ['web']], function () {
   Route::post('admin/ticket-canned-fields', 'TicketsCannedFieldsController@store');
 
   Route::post('canned', 'TicketsCannedFieldsController@canned');
+
+  Route::get('admin/storeroom', 'StoreroomsController@index');
+  Route::patch('admin/storeroom/update', 'StoreroomsController@update');
 });

@@ -13,6 +13,7 @@ use App\Status;
 use App\WarrantyType;
 use App\Invoice;
 use Carbon\Carbon;
+use Session;
 use Illuminate\Http\Request;
 use App\Http\Requests\Assets\StoreAssetRequest;
 use DB;
@@ -76,7 +77,23 @@ class AssetsController extends Controller
     $manufacturers = Manufacturer::all();
     $warranty_types = WarrantyType::all();
     $invoices = Invoice::all();
-    return view('assets.create', compact('asset_models', 'divisions', 'suppliers', 'movements', 'manufacturers', 'warranty_types', 'invoices', 'pageTitle'));
+    $storeroom = Location::where('storeroom', 1)->first();
+
+    if(isset($storeroom))
+    {
+      return view('assets.create', compact('asset_models', 'divisions', 'suppliers', 'movements', 'manufacturers', 'warranty_types', 'invoices', 'pageTitle'));
+    }
+    else
+    {
+      $pageTitle = 'Default Storeroom';
+      $locations = Location::all();
+
+      Session::flash('status', 'warning');
+      Session::flash('title', 'No Default Storeroom Set');
+      Session::flash('message', 'You must select a Default Storeroom before creating Assets.');
+
+      return view('admin.storeroom.index', compact('locations', 'pageTitle'));
+    }
   }
 
   public function store(StoreAssetRequest $request)

@@ -25,7 +25,6 @@ class LocationsController extends Controller
 
   public function show(Location $location)
   {
-    //$location->load('notes.user');
     return view('locations.show', compact('location'));
   }
 

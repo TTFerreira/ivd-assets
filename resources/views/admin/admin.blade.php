@@ -2,7 +2,7 @@
 
 @section('main-content')
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-4">
       <div class="box box-primary">
         <div class="box-header with-border">
           <h3 class="box-title">Ticket Configurations</h3>
@@ -23,9 +23,19 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-4">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Storeroom</h3>
+        </div>
+        <div class="box-body">
+          <a href="/admin/storeroom" class="btn btn-app">
+            <i class="fa fa-bank"></i> Set Storeroom
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
       <div class="box box-primary">
         <div class="box-header with-border">
           <h3 class="box-title">Emails</h3>
