@@ -41,16 +41,16 @@
         <div class="box-body">
           <form method="POST" action="{{ url('locations') }}">
             {{csrf_field()}}
-            <div class="form-group">
-              <label for="building">Building</label>
+            <div class="form-group @if ($errors->has('building')) has-error @endif">
+              <label for="building">Building @if ($errors->has('building')): {{$errors->first('building')}} @endif</label>
               <input type="text" name="building" class="form-control" value="{{old('building')}}">
             </div>
-            <div class="form-group">
-              <label for="office">Office</label>
+            <div class="form-group @if ($errors->has('office')) has-error @endif">
+              <label for="office">Office @if ($errors->has('office')): {{$errors->first('office')}} @endif</label>
               <input type="text"  name="office" class="form-control" value="{{old('office')}}">
             </div>
-            <div class="form-group">
-              <label for="location_name">Location Name</label>
+            <div class="form-group @if ($errors->has('location_name')) has-error @endif">
+              <label for="location_name">Location Name @if ($errors->has('location_name')): {{$errors->first('location_name')}} @endif</label>
               <input type="text"  name="location_name" class="form-control" value="{{old('location_name')}}">
             </div>
 
@@ -60,20 +60,15 @@
           </form>
         </div>
       </div>
+    </div>
   </div>
   <script>
     $(document).ready(function() {
       $('#table').DataTable( {
-          columnDefs: [ {
-              targets: [ 0 ],
-              orderData: [ 0, 1 ]
-          }, {
-              targets: [ 1 ],
-              orderData: [ 1, 0 ]
-          }, {
-              targets: [ 1 ],
-              orderData: [ 1, 0 ]
-          } ]
+        columnDefs: [ {
+          orderable: false, targets: 3
+        } ],
+        order: [[ 0, "desc" ]]
       } );
     } );
   </script>
