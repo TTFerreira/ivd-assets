@@ -2,13 +2,12 @@
 
 @section('main-content')
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-9">
       <div class="box box-primary">
         <div class="box-header with-border">
           <h3 class="box-title">{{$pageTitle}}</h3>
         </div>
         <div class="box-body">
-          <p><a href="locations/create"><button type="button" class="btn btn-default" name="create-new-location" data-toggle="tooltip" data-original-title="Create New Location"><span class='glyphicon glyphicon-plus' aria-hidden='true'></span> <b>Create New Location</b></button></a></p>
           <table id="table" class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
@@ -34,6 +33,33 @@
         </div>
       </div>
     </div>
+    <div class="col-md-3">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Create New Location</h3>
+        </div>
+        <div class="box-body">
+          <form method="POST" action="{{ url('locations') }}">
+            {{csrf_field()}}
+            <div class="form-group">
+              <label for="building">Building</label>
+              <input type="text" name="building" class="form-control" value="{{old('building')}}">
+            </div>
+            <div class="form-group">
+              <label for="office">Office</label>
+              <input type="text"  name="office" class="form-control" value="{{old('office')}}">
+            </div>
+            <div class="form-group">
+              <label for="location_name">Location Name</label>
+              <input type="text"  name="location_name" class="form-control" value="{{old('location_name')}}">
+            </div>
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">Add New Location</button>
+            </div>
+          </form>
+        </div>
+      </div>
   </div>
   <script>
     $(document).ready(function() {

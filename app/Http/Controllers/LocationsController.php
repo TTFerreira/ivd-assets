@@ -28,12 +28,6 @@ class LocationsController extends Controller
     return view('locations.show', compact('location'));
   }
 
-  public function create()
-  {
-    $pageTitle = 'Create Location';
-    return view('locations.create', compact('pageTitle'));
-  }
-
   public function store(StoreLocationRequest $request)
   {
     $location = new Location();

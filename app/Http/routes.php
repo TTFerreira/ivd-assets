@@ -17,7 +17,6 @@ Route::group(['middleware' => ['web']], function () {
   Route::get('dashboard', 'HomeController@index');
 
   Route::get('locations', 'LocationsController@index');
-  Route::get('locations/create', 'LocationsController@create');
   Route::get('locations/{location}/edit', 'LocationsController@edit');
   Route::patch('locations/{location}/update', 'LocationsController@update');
   Route::post('locations', 'LocationsController@store');
