@@ -38,18 +38,10 @@
                 </ul>
             </li>
             <li class="treeview">
-                <a href="#"><i class='fa fa-shopping-cart'></i> <span>Suppliers</span> <i class="fa fa-angle-left pull-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a href="{{ url('/suppliers')}}">View Suppliers</a></li>
-                    <li><a href="{{ url('/suppliers/create')}}">Create Supplier</a></li>
-                </ul>
+                <a href="{{ url('/suppliers')}}"><i class='fa fa-shopping-cart'></i> <span>Suppliers</span></a>
             </li>
             <li class="treeview">
-                <a href="#"><i class='fa fa-building'></i> <span>Locations</span> <i class="fa fa-angle-left pull-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a href="{{ url('/locations')}}">View Locations</a></li>
-                    <li><a href="{{ url('/locations/create')}}">Create Location</a></li>
-                </ul>
+                <a href="{{ url('/locations')}}"><i class='fa fa-building'></i> <span>Locations</span></a>
             </li>
             <li class="treeview">
                 <a href="#"><i class='fa fa-group'></i> <span>Divisions</span> <i class="fa fa-angle-left pull-right"></i></a>

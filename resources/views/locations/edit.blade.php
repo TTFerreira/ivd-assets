@@ -11,17 +11,20 @@
           <form method="POST" action="/locations/{{$location->id}}/update">
             {{method_field('PATCH')}}
             {{csrf_field()}}
-            <div class="form-group">
+            <div class="form-group {{ hasErrorForClass($errors, 'building') }}">
               <label for="building">Building</label>
               <input type="text" name="building" class="form-control" value="{{$location->building}}">
+              {{ hasErrorForField($errors, 'building') }}
             </div>
-            <div class="form-group">
+            <div class="form-group {{ hasErrorForClass($errors, 'office') }}">
               <label for="office">Office</label>
               <input type="text"  name="office" class="form-control" value="{{$location->office}}">
+              {{ hasErrorForField($errors, 'office') }}
             </div>
-            <div class="form-group">
+            <div class="form-group {{ hasErrorForClass($errors, 'location_name') }}">
               <label for="location_name">Location Name</label>
               <input type="text"  name="location_name" class="form-control" value="{{$location->location_name}}">
+              {{ hasErrorForField($errors, 'location_name') }}
             </div>
 
             <div class="form-group">
@@ -30,14 +33,6 @@
           </form>
         </div>
       </div>
-
-      @if(count($errors))
-        <ul>
-          @foreach($errors->all() as $error)
-            <li>{{$error}}</li>
-          @endforeach
-        </ul>
-      @endif
     </div>
   </div>
 @endsection

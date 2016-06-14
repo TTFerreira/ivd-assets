@@ -16,6 +16,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'name' => $faker->name,
         'email' => $faker->safeEmail,
         'password' => bcrypt(str_random(10)),
+        'api_token' => str_random(60),
         'remember_token' => str_random(10),
     ];
 });
@@ -31,6 +32,7 @@ $factory->define(App\Location::class, function (Faker\Generator $faker) {
         'building' => $faker->regexify('[A-H]{1}[1-5]{2}'),
         'office' => $faker->numerify('###'),
         'location_name' => $faker->secondaryAddress,
+        'storeroom' => 0
     ];
 });
 

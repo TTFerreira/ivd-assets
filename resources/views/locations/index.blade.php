@@ -41,17 +41,20 @@
         <div class="box-body">
           <form method="POST" action="{{ url('locations') }}">
             {{csrf_field()}}
-            <div class="form-group @if ($errors->has('building')) has-error @endif">
-              <label for="building">Building @if ($errors->has('building')): {{$errors->first('building')}} @endif</label>
+            <div class="form-group {{ hasErrorForClass($errors, 'building') }}">
+              <label for="building">Building</label>
               <input type="text" name="building" class="form-control" value="{{old('building')}}">
+              {{ hasErrorForField($errors, 'building') }}
             </div>
-            <div class="form-group @if ($errors->has('office')) has-error @endif">
-              <label for="office">Office @if ($errors->has('office')): {{$errors->first('office')}} @endif</label>
+            <div class="form-group {{ hasErrorForClass($errors, 'office') }}">
+              <label for="office">Office</label>
               <input type="text"  name="office" class="form-control" value="{{old('office')}}">
+              {{ hasErrorForField($errors, 'office') }}
             </div>
-            <div class="form-group @if ($errors->has('location_name')) has-error @endif">
-              <label for="location_name">Location Name @if ($errors->has('location_name')): {{$errors->first('location_name')}} @endif</label>
+            <div class="form-group {{ hasErrorForClass($errors, 'location_name') }}">
+              <label for="location_name">Location Name</label>
               <input type="text"  name="location_name" class="form-control" value="{{old('location_name')}}">
+              {{ hasErrorForField($errors, 'location_name') }}
             </div>
 
             <div class="form-group">
@@ -68,7 +71,7 @@
         columnDefs: [ {
           orderable: false, targets: 3
         } ],
-        order: [[ 0, "desc" ]]
+        order: [[ 2, "asc" ]]
       } );
     } );
   </script>

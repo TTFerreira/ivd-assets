@@ -46,7 +46,6 @@ Route::group(['middleware' => ['web']], function () {
   Route::post('pcspecs', 'PcspecsController@store');
 
   Route::get('statuses', 'StatusesController@index');
-  Route::get('statuses/create', 'StatusesController@create');
   Route::get('statuses/{status}/edit', 'StatusesController@edit');
   Route::patch('statuses/{status}/update', 'StatusesController@update');
   Route::post('statuses', 'StatusesController@store');

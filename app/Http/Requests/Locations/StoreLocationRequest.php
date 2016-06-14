@@ -41,7 +41,7 @@ class StoreLocationRequest extends Request
         'building.required' => 'You must enter the Building Number/Name.',
         'office.required' => 'You must enter the Office Number.',
         'location_name.required' => 'You must enter a Location Name.',
-        'location_name.unique' => 'Location Name \'' . $this->location_name . '\' already exists. You must enter a unique Location Name.',
+        'location_name.unique' => '\'' . $this->location_name . '\' already exists. You must enter a unique Location Name.',
       ];
     }
 }

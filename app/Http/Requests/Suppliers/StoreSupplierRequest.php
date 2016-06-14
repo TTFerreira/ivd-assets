@@ -37,7 +37,7 @@ class StoreSupplierRequest extends Request
     {
       return [
         'name.required' => 'You must enter a Supplier\'s Name.',
-        'name.unique' => 'Supplier \'' . $this->name . '\' already exists. You must enter a unique Supplier Name.',
+        'name.unique' => '\'' . $this->name . '\' already exists. You must enter a unique Supplier Name.',
       ];
     }
 }

@@ -17,7 +17,7 @@ class CreateLocationsTable extends Migration
             $table->string('building');
             $table->string('office');
             $table->string('location_name');
-            $table->boolean('storeroom');
+            $table->boolean('storeroom')->default(0);
         });
     }
 

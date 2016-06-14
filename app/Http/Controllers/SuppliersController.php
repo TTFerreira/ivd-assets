@@ -29,12 +29,6 @@ class SuppliersController extends Controller
     return view('suppliers.show', compact('supplier'));
   }
 
-  public function create()
-  {
-    $pageTitle = 'Create New Supplier';
-    return view('suppliers.create', compact('pageTitle'));
-  }
-
   public function store(StoreSupplierRequest $request)
   {
     $supplier = new Supplier();
