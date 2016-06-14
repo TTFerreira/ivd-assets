@@ -23,22 +23,10 @@ class AssetModelsController extends Controller
   {
     $pageTitle = 'View Models';
     $asset_models = AssetModel::all();
-    return view('models.index', compact('asset_models', 'pageTitle'));
-  }
-
-  public function show(AssetModel $asset_model)
-  {
-    $pageTitle = 'View Model';
-    return view('models.show', compact('asset_model', 'pageTitle'));
-  }
-
-  public function create()
-  {
-    $pageTitle = 'Create New Model';
     $manufacturers = Manufacturer::all();
     $asset_types = AssetType::all();
     $pcspecs = Pcspec::all();
-    return view('models.create', compact('manufacturers', 'asset_types', 'pcspecs', 'pageTitle'));
+    return view('models.index', compact('asset_models', 'pageTitle', 'manufacturers', 'asset_types', 'pcspecs'));
   }
 
   public function store(StoreAssetModelRequest $request)

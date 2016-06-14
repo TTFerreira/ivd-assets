@@ -57,7 +57,6 @@ Route::group(['middleware' => ['web']], function () {
   Route::post('suppliers', 'SuppliersController@store');
 
   Route::get('models', 'AssetModelsController@index');
-  Route::get('models/create', 'AssetModelsController@create');
   Route::get('models/{asset_model}/edit', 'AssetModelsController@edit');
   Route::patch('models/{asset_model}/update', 'AssetModelsController@update');
   Route::post('models', 'AssetModelsController@store');
