@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Manufacturer;
+use Session;
 use App\Http\Requests\Manufacturers\StoreManufacturerRequest;
 use App\Http\Requests\Manufacturers\UpdateManufacturerRequest;
 use Illuminate\Http\Request;
@@ -18,7 +19,7 @@ class ManufacturersController extends Controller
 
   public function index()
   {
-    $pageTitle = 'View Manufacturers';
+    $pageTitle = 'Manufacturers';
     $manufacturers = Manufacturer::all();
     return view('manufacturers.index', compact('manufacturers', 'pageTitle'));
   }
@@ -28,18 +29,16 @@ class ManufacturersController extends Controller
     return view('manufacturers.show', compact('manufacturer'));
   }
 
-  public function create()
-  {
-    $pageTitle = 'Create New Manufacturer';
-    return view('manufacturers.create', compact('pageTitle'));
-  }
-
   public function store(StoreManufacturerRequest $request)
   {
     $manufacturer = new Manufacturer();
     $manufacturer->name = $request->name;
 
     $manufacturer->save();
+
+    Session::flash('status', 'success');
+    Session::flash('title', $manufacturer->name);
+    Session::flash('message', 'Successfully created');
 
     return redirect('manufacturers');
   }
@@ -53,6 +52,10 @@ class ManufacturersController extends Controller
   public function update(UpdateManufacturerRequest $request, Manufacturer $manufacturer)
   {
     $manufacturer->update($request->all());
+
+    Session::flash('status', 'success');
+    Session::flash('title', $manufacturer->name);
+    Session::flash('message', 'Successfully updated');
 
     return redirect('manufacturers');
   }

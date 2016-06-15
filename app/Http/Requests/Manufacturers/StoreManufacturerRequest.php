@@ -37,7 +37,7 @@ class StoreManufacturerRequest extends Request
     {
       return [
         'name.required' => 'You must enter a Manufacturer\'s Name.',
-        'name.unique' => 'Manufacturer \'' . $this->name . '\' already exists. You must enter a unique Manufacturer Name.',
+        'name.unique' => '\'' . $this->name . '\' already exists. You must enter a unique Manufacturer Name.',
       ];
     }
 }
