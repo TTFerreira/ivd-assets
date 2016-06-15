@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Supplier;
+use Session;
 use App\Http\Requests\Suppliers\StoreSupplierRequest;
 use App\Http\Requests\Suppliers\UpdateSupplierRequest;
 use Illuminate\Http\Request;
@@ -23,18 +24,16 @@ class SuppliersController extends Controller
     return view('suppliers.index', compact('suppliers', 'pageTitle'));
   }
 
-  public function show(Supplier $supplier)
-  {
-    //$location->load('notes.user');
-    return view('suppliers.show', compact('supplier'));
-  }
-
   public function store(StoreSupplierRequest $request)
   {
     $supplier = new Supplier();
     $supplier->name = $request->name;
 
     $supplier->save();
+
+    Session::flash('status', 'success');
+    Session::flash('title', $supplier->name);
+    Session::flash('message', 'Successfully created');
 
     return redirect('suppliers');
   }
@@ -48,6 +47,10 @@ class SuppliersController extends Controller
   public function update(UpdateSupplierRequest $request, Supplier $supplier)
   {
     $supplier->update($request->all());
+
+    Session::flash('status', 'success');
+    Session::flash('title', $supplier->name);
+    Session::flash('message', 'Successfully updated');
 
     return redirect('suppliers');
   }

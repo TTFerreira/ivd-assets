@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Location;
+use Session;
 use App\Http\Requests\Locations\StoreLocationRequest;
 use App\Http\Requests\Locations\UpdateLocationRequest;
 use Illuminate\Http\Request;
@@ -23,11 +24,6 @@ class LocationsController extends Controller
     return view('locations.index', compact('locations', 'pageTitle'));
   }
 
-  public function show(Location $location)
-  {
-    return view('locations.show', compact('location'));
-  }
-
   public function store(StoreLocationRequest $request)
   {
     $location = new Location();
@@ -36,6 +32,10 @@ class LocationsController extends Controller
     $location->location_name = $request->location_name;
 
     $location->save();
+
+    Session::flash('status', 'success');
+    Session::flash('title', $location->location_name);
+    Session::flash('message', 'Successfully created');
 
     return redirect('locations');
   }
@@ -49,6 +49,10 @@ class LocationsController extends Controller
   public function update(UpdateLocationRequest $request, Location $location)
   {
     $location->update($request->all());
+
+    Session::flash('status', 'success');
+    Session::flash('title', $location->location_name);
+    Session::flash('message', 'Successfully updated');
 
     return redirect('locations');
   }

@@ -23,11 +23,6 @@ class PcspecsController extends Controller
     return view('pcspecs.index', compact('pcspecs', 'pageTitle'));
   }
 
-  public function show(Pcspec $pcspec)
-  {
-    return view('pcspecs.show', compact('pcspec'));
-  }
-
   public function store(StorePcspecRequest $request)
   {
     $pcspec = new Pcspec();

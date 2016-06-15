@@ -61,4 +61,11 @@
       } );
     } );
   </script>
+  @if(Session::has('status'))
+    <script>
+      $(document).ready(function() {
+        Command: toastr["{{Session::get('status')}}"]("{{Session::get('message')}}", "{{Session::get('title')}}");
+      });
+    </script>
+  @endif
 @endsection

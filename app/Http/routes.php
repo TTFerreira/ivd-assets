@@ -34,7 +34,6 @@ Route::group(['middleware' => ['web']], function () {
   Route::post('divisions', 'DivisionsController@store');
 
   Route::get('manufacturers', 'ManufacturersController@index');
-  Route::get('manufacturers/create', 'ManufacturersController@create');
   Route::get('manufacturers/{manufacturer}/edit', 'ManufacturersController@edit');
   Route::patch('manufacturers/{manufacturer}/update', 'ManufacturersController@update');
   Route::post('manufacturers', 'ManufacturersController@store');
