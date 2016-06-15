@@ -16,7 +16,7 @@ class LocationTest extends TestCase
 
     $this->actingAs($user)
          ->visit('/locations')
-         ->see('View Locations');
+         ->see('Locations');
   }
 
   public function testCreateNewLocation()

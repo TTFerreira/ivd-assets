@@ -11,7 +11,7 @@
           <form method="POST" action="/models/{{$asset_model->id}}/update">
             {{method_field('PATCH')}}
             {{csrf_field()}}
-            <div class="form-group">
+            <div class="form-group {{ hasErrorForClass($errors, 'asset_type_id') }}">
               <label for="asset_type_id">Asset Type</label>
               <select class="form-control asset_type_id" name="asset_type_id">
                 @foreach($asset_types as $asset_type)
@@ -22,8 +22,9 @@
                   value="{{$asset_type->id}}">{{$asset_type->type_name}}</option>
                 @endforeach
               </select>
+              {{ hasErrorForField($errors, 'asset_type_id') }}
             </div>
-            <div class="form-group">
+            <div class="form-group {{ hasErrorForClass($errors, 'manufacturer_id') }}">
               <label for="manufacturer_id">Manufacturer</label>
               <select class="form-control manufacturer_id" name="manufacturer_id">
                 @foreach($manufacturers as $manufacturer)
@@ -34,16 +35,19 @@
                   value="{{$manufacturer->id}}">{{$manufacturer->name}}</option>
                 @endforeach
               </select>
+              {{ hasErrorForField($errors, 'manufacturer_id') }}
             </div>
-            <div class="form-group">
+            <div class="form-group {{ hasErrorForClass($errors, 'asset_model') }}">
               <label for="asset_model">Model Name</label>
               <input type="text"  name="asset_model" class="form-control" value="{{$asset_model->asset_model}}">
+              {{ hasErrorForField($errors, 'asset_model') }}
             </div>
-            <div class="form-group">
+            <div class="form-group {{ hasErrorForClass($errors, 'part_number') }}">
               <label for="part_number">Part Number (Optional)</label>
               <input type="text"  name="part_number" class="form-control" value="{{$asset_model->part_number}}">
+              {{ hasErrorForField($errors, 'part_number') }}
             </div>
-            <div class="form-group">
+            <div class="form-group {{ hasErrorForClass($errors, 'pcspec_id') }}">
               <label for="pcspec_id">PC Specification</label>
               <select class="form-control pcspec_id" name="pcspec_id">
                 <option value=""></option>
@@ -55,6 +59,7 @@
                   value="{{$pcspec->id}}">{{$pcspec->cpu}}, {{$pcspec->ram}}, {{$pcspec->hdd}}</option>
                 @endforeach
               </select>
+              {{ hasErrorForField($errors, 'pcspec_id') }}
             </div>
 
             <div class="form-group">
@@ -63,14 +68,6 @@
           </form>
         </div>
       </div>
-
-      @if(count($errors))
-        <ul>
-          @foreach($errors->all() as $error)
-            <li>{{$error}}</li>
-          @endforeach
-        </ul>
-      @endif
     </div>
   </div>
 @endsection

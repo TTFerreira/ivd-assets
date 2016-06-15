@@ -11,7 +11,7 @@
   function hasErrorForField($errors, $column) {
     if(count($errors)) {
       if ($errors->has($column)) {
-        return '<span class="help-block">' . $errors->first($column) . '</span>';
+        print '<span class="help-block">' . $errors->first($column) . '</span>';
       }
     }
   }

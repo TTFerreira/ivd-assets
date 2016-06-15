@@ -6,6 +6,7 @@ use App\AssetModel;
 use App\Manufacturer;
 use App\AssetType;
 use App\Pcspec;
+use Session;
 use Illuminate\Http\Request;
 use App\Http\Requests\AssetModels\StoreAssetModelRequest;
 use App\Http\Requests\AssetModels\UpdateAssetModelRequest;
@@ -40,6 +41,10 @@ class AssetModelsController extends Controller
 
     $asset_model->save();
 
+    Session::flash('status', 'success');
+    Session::flash('title', $asset_model->manufacturer->name . ' - ' . $asset_model->asset_model);
+    Session::flash('message', 'Successfully created');
+
     return redirect('models');
   }
 
@@ -55,6 +60,10 @@ class AssetModelsController extends Controller
   public function update(UpdateAssetModelRequest $request, AssetModel $asset_model)
   {
     $asset_model->update($request->all());
+
+    Session::flash('status', 'success');
+    Session::flash('title', $asset_model->manufacturer->name . ' - ' . $asset_model->asset_model);
+    Session::flash('message', 'Successfully updated');
 
     return redirect('models');
   }
