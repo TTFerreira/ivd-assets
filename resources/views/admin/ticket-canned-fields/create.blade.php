@@ -65,7 +65,7 @@
             </div>
 
             <div class="form-group">
-              <button type="submit" class="btn btn-primary">Add New Ticket Canned Fields</button>
+              <button type="submit" class="btn btn-primary"><b>Add New Ticket Canned Fields</b></button>
             </div>
           </form>
         </div>

@@ -11,33 +11,28 @@
           <form method="POST" action="/pcspecs/{{$pcspec->id}}/update">
             {{method_field('PATCH')}}
             {{csrf_field()}}
-            <div class="form-group">
+            <div class="form-group {{ hasErrorForClass($errors, 'cpu') }}">
               <label for="cpu">CPU</label>
               <input type="text" name="cpu" class="form-control" value="{{$pcspec->cpu}}">
+              {{ hasErrorForField($errors, 'cpu') }}
             </div>
-            <div class="form-group">
+            <div class="form-group {{ hasErrorForClass($errors, 'ram') }}">
               <label for="ram">RAM</label>
               <input type="text"  name="ram" class="form-control" value="{{$pcspec->ram}}">
+              {{ hasErrorForField($errors, 'ram') }}
             </div>
-            <div class="form-group">
+            <div class="form-group {{ hasErrorForClass($errors, 'hdd') }}">
               <label for="hdd">HDD</label>
               <input type="text"  name="hdd" class="form-control" value="{{$pcspec->hdd}}">
+              {{ hasErrorForField($errors, 'hdd') }}
             </div>
 
             <div class="form-group">
-              <button type="submit" class="btn btn-primary">Edit PC Specification</button>
+              <button type="submit" class="btn btn-primary"><b>Edit PC Specification</b></button>
             </div>
           </form>
         </div>
       </div>
-
-      @if(count($errors))
-        <ul>
-          @foreach($errors->all() as $error)
-            <li>{{$error}}</li>
-          @endforeach
-        </ul>
-      @endif
     </div>
   </div>
 @endsection

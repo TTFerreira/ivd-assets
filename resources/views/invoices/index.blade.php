@@ -8,7 +8,7 @@
           <h3 class="box-title">{{$pageTitle}}</h3>
         </div>
         <div class="box-body">
-          <p><a href="/invoices/create"><button type="button" class="btn btn-default" name="create-new-invoice" data-toggle="tooltip" data-original-title="Create New Invoice"><span class='glyphicon glyphicon-plus' aria-hidden='true'></span> <b>Create New Invoice</b></button></a></p>
+          <p><a href="/invoices/create"><button type="button" class="btn btn-default" name="create-new-invoice" data-toggle="tooltip" data-original-title="Create New Invoice"><span class='fa fa-plus' aria-hidden='true'></span> <b>Create New Invoice</b></button></a></p>
           <table id="table" class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
@@ -31,7 +31,7 @@
                     <td>{{$invoice->division->name}}</td>
                     <td>{{$invoice->supplier->name}}</td>
                     <td>{{$invoice->invoiced_date}}</td>
-                    <td><a href="/invoices/{{ $invoice->id }}" target="_blank">View</a> | <a href="/invoices/{{ $invoice->id }}/edit">Edit</a></td>
+                    <td><a href="/invoices/{{ $invoice->id }}" target="_blank">View</a> | <a href="/invoices/{{ $invoice->id }}/edit" class="btn btn-primary"><span class='fa fa-pencil' aria-hidden='true'></span> <b>Edit</b></a></td>
                   </div>
                 </tr>
               @endforeach

@@ -55,7 +55,7 @@
             </div>
 
             <div class="form-group">
-              <button type="submit" class="btn btn-primary">Add New Invoice</button>
+              <button type="submit" class="btn btn-primary"><b>Add New Invoice</b></button>
             </div>
           </form>
         </div>

@@ -58,7 +58,7 @@
           <h3 class="box-title">Assets</h3>
         </div>
         <div class="box-body">
-          <p><a href="assets/create"><button type="button" class="btn btn-default" name="create-new-asset" data-toggle="tooltip" data-original-title="Create New Asset"><span class='glyphicon glyphicon-plus' aria-hidden='true'></span> <b>Create New Asset</b></button></a></p>
+          <p><a href="assets/create"><button type="button" class="btn btn-default" name="create-new-asset" data-toggle="tooltip" data-original-title="Create New Asset"><span class='fa fa-plus' aria-hidden='true'></span> <b>Create New Asset</b></button></a></p>
           <table id="table" class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
@@ -111,7 +111,7 @@
                       @endif
                       {{$asset->movement->status->name}}</span>
                     </td>
-                    <td><a href="/assets/{{ $asset->id }}/move">Move</a> | <a href="/movements/{{ $asset->id }}/history">History</a> | <a href="/assets/{{ $asset->id }}/edit">Edit</a></td>
+                    <td><a href="/assets/{{ $asset->id }}/move">Move</a> | <a href="/movements/{{ $asset->id }}/history">History</a> | <a href="/assets/{{ $asset->id }}/edit" class="btn btn-primary"><span class='fa fa-pencil' aria-hidden='true'></span> <b>Edit</b></a></td>
                     <td>{{$asset->supplier->name}}</td>
                     <td>{{$asset->purchase_date}}</td>
                     <td>{{$asset->warranty_months}}</td>

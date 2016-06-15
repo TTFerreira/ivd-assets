@@ -54,7 +54,7 @@
                 </div>
 
                 <div class="form-group">
-                  <button type="submit" class="btn btn-primary">Add New Note</button>
+                  <button type="submit" class="btn btn-primary"><b>Add New Note</b></button>
                 </div>
               </form>
             </div>
@@ -145,7 +145,7 @@
             </div>
 
             <div class="form-group">
-              <button type="submit" class="btn btn-primary">Update Ticket</button>
+              <button type="submit" class="btn btn-primary"><b>Update Ticket</b></button>
             </div>
           </form>
         </div>

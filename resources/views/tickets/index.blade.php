@@ -8,7 +8,7 @@
           <h3 class="box-title">{{$pageTitle}}</h3>
         </div>
         <div class="box-body">
-          <p><a href="tickets/create"><button type="button" class="btn btn-default" name="create-new-ticket" data-toggle="tooltip" data-original-title="Create New Ticket"><span class='glyphicon glyphicon-plus' aria-hidden='true'></span> <b>Create New Ticket</b></button></a></p>
+          <p><a href="tickets/create"><button type="button" class="btn btn-default" name="create-new-ticket" data-toggle="tooltip" data-original-title="Create New Ticket"><span class='fa fa-plus' aria-hidden='true'></span> <b>Create New Ticket</b></button></a></p>
           <table id="table" class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
@@ -31,7 +31,7 @@
                     <td>{{$ticket->ticket_status->status}}</td>
                     <td>{{$ticket->ticket_priority->priority}}</td>
                     <td>{{$ticket->subject}}</td>
-                    <td><a href="/tickets/{{ $ticket->id }}">View</a></td>
+                    <td><a href="/tickets/{{ $ticket->id }}"><b>View</b></a></td>
                   </div>
                 </tr>
               @endforeach

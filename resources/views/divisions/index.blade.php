@@ -8,7 +8,7 @@
           <h3 class="box-title">{{$pageTitle}}</h3>
         </div>
         <div class="box-body">
-          <p><a href="divisions/create"><button type="button" class="btn btn-default" name="create-new-division" data-toggle="tooltip" data-original-title="Create New Division"><span class='glyphicon glyphicon-plus' aria-hidden='true'></span> <b>Create New Division</b></button></a></p>
+          <p><a href="divisions/create"><button type="button" class="btn btn-default" name="create-new-division" data-toggle="tooltip" data-original-title="Create New Division"><span class='fa fa-plus' aria-hidden='true'></span> <b>Create New Division</b></button></a></p>
           <table id="table" class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
@@ -21,7 +21,7 @@
                 <tr>
                   <div>
                     <td>{{$division->name}}</td>
-                    <td><a href="/divisions/{{ $division->id }}/edit">Edit</a></td>
+                    <td><a href="/divisions/{{ $division->id }}/edit" class="btn btn-primary"><span class='fa fa-pencil' aria-hidden='true'></span> <b>Edit</b></a></td>
                   </div>
                 </tr>
               @endforeach

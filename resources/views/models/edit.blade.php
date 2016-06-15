@@ -63,7 +63,7 @@
             </div>
 
             <div class="form-group">
-              <button type="submit" class="btn btn-primary">Edit Model</button>
+              <button type="submit" class="btn btn-primary"><b>Edit Model</b></button>
             </div>
           </form>
         </div>

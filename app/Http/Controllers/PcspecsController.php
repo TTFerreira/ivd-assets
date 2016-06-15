@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Pcspec;
+use Session;
 use App\Http\Requests\Pcspecs\StorePcspecRequest;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,7 @@ class PcspecsController extends Controller
 
   public function index()
   {
-    $pageTitle = 'View PC Specifications';
+    $pageTitle = 'PC Specifications';
     $pcspecs = Pcspec::all();
     return view('pcspecs.index', compact('pcspecs', 'pageTitle'));
   }
@@ -25,12 +26,6 @@ class PcspecsController extends Controller
   public function show(Pcspec $pcspec)
   {
     return view('pcspecs.show', compact('pcspec'));
-  }
-
-  public function create()
-  {
-    $pageTitle = 'Create New PC Specification';
-    return view('pcspecs.create', compact('pageTitle'));
   }
 
   public function store(StorePcspecRequest $request)
@@ -41,6 +36,10 @@ class PcspecsController extends Controller
     $pcspec->hdd = $request->hdd;
 
     $pcspec->save();
+
+    Session::flash('status', 'success');
+    Session::flash('title', $pcspec->cpu . ', ' . $pcspec->ram . ', ' . $pcspec->hdd);
+    Session::flash('message', 'Successfully created');
 
     return redirect('pcspecs');
   }
@@ -54,6 +53,10 @@ class PcspecsController extends Controller
   public function update(StorePcspecRequest $request, Pcspec $pcspec)
   {
     $pcspec->update($request->all());
+
+    Session::flash('status', 'success');
+    Session::flash('title', $pcspec->cpu . ', ' . $pcspec->ram . ', ' . $pcspec->hdd);
+    Session::flash('message', 'Successfully updated');
 
     return redirect('pcspecs');
   }

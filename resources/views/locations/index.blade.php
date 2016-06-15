@@ -24,7 +24,7 @@
                     <td>{{$location->building}}</td>
                     <td>{{$location->office}}</td>
                     <td>{{$location->location_name}}</td>
-                    <td><a href="/locations/{{ $location->id }}/edit">Edit</a></td>
+                    <td><a href="/locations/{{ $location->id }}/edit" class="btn btn-primary"><span class='fa fa-pencil' aria-hidden='true'></span> <b>Edit</b></a></td>
                   </div>
                 </tr>
               @endforeach
@@ -58,7 +58,7 @@
             </div>
 
             <div class="form-group">
-              <button type="submit" class="btn btn-primary">Add New Location</button>
+              <button type="submit" class="btn btn-primary"><b>Add New Location</b></button>
             </div>
           </form>
         </div>

@@ -28,7 +28,7 @@
               </div>
 
               <div class="form-group">
-                <button type="submit" class="btn btn-primary">Set as Default Storeroom</button>
+                <button type="submit" class="btn btn-primary"><b>Set as Default Storeroom</b></button>
               </div>
             </form>
         </div>

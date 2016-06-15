@@ -8,7 +8,7 @@
           <h3 class="box-title">{{$pageTitle}}</h3>
         </div>
         <div class="box-body">
-          <p><a href="budgets/create"><button type="button" class="btn btn-default" name="create-new-budget" data-toggle="tooltip" data-original-title="Create New Budget"><span class='glyphicon glyphicon-plus' aria-hidden='true'></span> <b>Create New Budget</b></button></a></p>
+          <p><a href="budgets/create"><button type="button" class="btn btn-default" name="create-new-budget" data-toggle="tooltip" data-original-title="Create New Budget"><span class='fa fa-plus' aria-hidden='true'></span> <b>Create New Budget</b></button></a></p>
           <table id="table" class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
@@ -25,7 +25,7 @@
                     <td>{{$budget->division->name}}</td>
                     <td>{{$budget->year}}</td>
                     <td>R{{number_format($budget->total,2)}}</td>
-                    <td><a href="/budgets/{{ $budget->id }}/edit">Edit</a></td>
+                    <td><a href="/budgets/{{ $budget->id }}/edit" class="btn btn-primary"><span class='fa fa-pencil' aria-hidden='true'></span> <b>Edit</b></a></td>
                   </div>
                 </tr>
               @endforeach

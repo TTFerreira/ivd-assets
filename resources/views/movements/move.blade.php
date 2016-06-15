@@ -29,7 +29,7 @@
               </select>
             </div>
             <div class="form-group">
-              <button type="submit" class="btn btn-primary">Move Asset</button>
+              <button type="submit" class="btn btn-primary"><b>Move Asset</b></button>
             </div>
           </form>
         </div>

@@ -40,7 +40,6 @@ Route::group(['middleware' => ['web']], function () {
   Route::post('manufacturers', 'ManufacturersController@store');
 
   Route::get('pcspecs', 'PcspecsController@index');
-  Route::get('pcspecs/create', 'PcspecsController@create');
   Route::get('pcspecs/{pcspec}/edit', 'PcspecsController@edit');
   Route::patch('pcspecs/{pcspec}/update', 'PcspecsController@update');
   Route::post('pcspecs', 'PcspecsController@store');

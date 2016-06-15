@@ -60,7 +60,7 @@
               </div>
 
               <div class="form-group">
-                <button type="submit" class="btn btn-primary">Edit Invoice</button>
+                <button type="submit" class="btn btn-primary"><b>Edit Invoice</b></button>
               </div>
             </form>
             <div class="text-center"><a class="btn btn-primary" href="{{ URL::previous() }}">Back</a></div>

@@ -20,7 +20,7 @@
                 <tr>
                   <div>
                     <td>{{$supplier->name}}</td>
-                    <td><a href="/suppliers/{{ $supplier->id }}/edit">Edit</a></td>
+                    <td><a href="/suppliers/{{ $supplier->id }}/edit" class="btn btn-primary"><span class='fa fa-pencil' aria-hidden='true'></span> <b>Edit</b></a></td>
                   </div>
                 </tr>
               @endforeach
@@ -44,7 +44,7 @@
             </div>
 
             <div class="form-group">
-              <button type="submit" class="btn btn-primary">Add New Supplier</button>
+              <button type="submit" class="btn btn-primary"><b>Add New Supplier</b></button>
             </div>
           </form>
         </div>

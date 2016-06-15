@@ -17,7 +17,7 @@
             </div>
 
             <div class="form-group">
-              <button type="submit" class="btn btn-primary">Edit Ticket Priority</button>
+              <button type="submit" class="btn btn-primary"><b>Edit Ticket Priority</b></button>
             </div>
           </form>
         </div>

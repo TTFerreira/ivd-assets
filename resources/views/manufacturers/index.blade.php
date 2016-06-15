@@ -8,7 +8,7 @@
           <h3 class="box-title">{{$pageTitle}}</h3>
         </div>
         <div class="box-body">
-          <p><a href="manufacturers/create"><button type="button" class="btn btn-default" name="create-new-manufacturer" data-toggle="tooltip" data-original-title="Create New Manufacturer"><span class='glyphicon glyphicon-plus' aria-hidden='true'></span> <b>Create New Manufacturer</b></button></a></p>
+          <p><a href="manufacturers/create"><button type="button" class="btn btn-default" name="create-new-manufacturer" data-toggle="tooltip" data-original-title="Create New Manufacturer"><span class='fa fa-plus' aria-hidden='true'></span> <b>Create New Manufacturer</b></button></a></p>
           <table id="table" class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
@@ -21,7 +21,7 @@
                 <tr>
                   <div>
                     <td>{{$manufacturer->name}}</td>
-                    <td><a href="/manufacturers/{{ $manufacturer->id }}/edit">Edit</a></td>
+                    <td><a href="/manufacturers/{{ $manufacturer->id }}/edit" class="btn btn-primary"><span class='fa fa-pencil' aria-hidden='true'></span> <b>Edit</b></a></td>
                   </div>
                 </tr>
               @endforeach

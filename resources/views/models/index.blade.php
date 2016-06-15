@@ -8,7 +8,7 @@
           <h3 class="box-title">{{$pageTitle}}</h3>
         </div>
         <div class="box-body">
-          <p><a href="models/create"><button type="button" class="btn btn-default" name="create-new-model" data-toggle="tooltip" data-original-title="Create New Model"><span class='glyphicon glyphicon-plus' aria-hidden='true'></span> <b>Create New Model</b></button></a></p>
+          <p><a href="models/create"><button type="button" class="btn btn-default" name="create-new-model" data-toggle="tooltip" data-original-title="Create New Model"><span class='fa fa-plus' aria-hidden='true'></span> <b>Create New Model</b></button></a></p>
           <table id="table" class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
@@ -27,7 +27,7 @@
                     <td>{{$asset_model->asset_model}}</td>
                     <td>{{$asset_model->asset_type->type_name}}</td>
                     <td>{{$asset_model->pcspec->cpu or ''}} {{$asset_model->pcspec->ram or ''}} {{$asset_model->pcspec->hdd or ''}}</td>
-                    <td><a href="/models/{{ $asset_model->id }}/edit">Edit</a></td>
+                    <td><a href="/models/{{ $asset_model->id }}/edit" class="btn btn-primary"><span class='fa fa-pencil' aria-hidden='true'></span> <b>Edit</b></a></td>
                   </div>
                 </tr>
               @endforeach
