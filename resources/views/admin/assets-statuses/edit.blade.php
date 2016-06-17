@@ -8,12 +8,13 @@
           <h3 class="box-title">{{$pageTitle}}</h3>
         </div>
         <div class="box-body">
-          <form method="POST" action="/statuses/{{$status->id}}/update">
+          <form method="POST" action="/admin/assets-statuses/{{$status->id}}/update">
             {{method_field('PATCH')}}
             {{csrf_field()}}
-            <div class="form-group">
+            <div class="form-group {{ hasErrorForClass($errors, 'name') }}">
               <label for="name">Status</label>
               <input type="text" name="name" class="form-control" value="{{$status->name}}">
+              {{ hasErrorForField($errors, 'name') }}
             </div>
 
             <div class="form-group">
@@ -22,14 +23,6 @@
           </form>
         </div>
       </div>
-
-      @if(count($errors))
-        <ul>
-          @foreach($errors->all() as $error)
-            <li>{{$error}}</li>
-          @endforeach
-        </ul>
-      @endif
     </div>
   </div>
 @endsection

@@ -35,9 +35,6 @@
                 <a href="{{ url('/divisions')}}"><i class='fa fa-group'></i> <span>Divisions</span></a>
             </li>
             <li class="treeview">
-                <a href="{{ url('/statuses')}}"><i class='fa fa-check'></i> <span>Statuses</span></a>
-            </li>
-            <li class="treeview">
                 <a href="#"><i class='fa fa-usd'></i> <span>Invoices and Budgets</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{ url('/invoices')}}">Invoices</a></li>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Status;
+use Session;
 use App\Http\Requests\Statuses\StoreStatusRequest;
 use App\Http\Requests\Statuses\UpdateStatusRequest;
 use Illuminate\Http\Request;
@@ -18,20 +19,9 @@ class StatusesController extends Controller
 
   public function index()
   {
-    $pageTitle = 'View Statuses';
+    $pageTitle = 'Statuses';
     $statuses = Status::all();
-    return view('statuses.index', compact('statuses', 'pageTitle'));
-  }
-
-  public function show(Status $status)
-  {
-    return view('statuses.show', compact('status'));
-  }
-
-  public function create()
-  {
-    $pageTitle = 'Create New Status';
-    return view('statuses.create', compact('pageTitle'));
+    return view('admin.assets-statuses.index', compact('statuses', 'pageTitle'));
   }
 
   public function store(StoreStatusRequest $request)
@@ -41,19 +31,27 @@ class StatusesController extends Controller
 
     $status->save();
 
-    return redirect('statuses');
+    Session::flash('status', 'success');
+    Session::flash('title', $status->name);
+    Session::flash('message', 'Successfully created');
+
+    return redirect('admin/assets-statuses');
   }
 
   public function edit(Status $status)
   {
     $pageTitle = 'Edit Status - ' . $status->name;
-    return view('statuses.edit', compact('status', 'pageTitle'));
+    return view('admin.assets-statuses.edit', compact('status', 'pageTitle'));
   }
 
   public function update(UpdateStatusRequest $request, Status $status)
   {
     $status->update($request->all());
 
-    return redirect('statuses');
+    Session::flash('status', 'success');
+    Session::flash('title', $status->name);
+    Session::flash('message', 'Successfully updated');
+
+    return redirect('admin/assets-statuses');
   }
 }

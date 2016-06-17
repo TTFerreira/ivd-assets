@@ -2,7 +2,7 @@
 
 @section('main-content')
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="box box-primary">
         <div class="box-header with-border">
           <h3 class="box-title">Ticket Configurations</h3>
@@ -23,7 +23,19 @@
         </div>
       </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-2">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Assets Statuses</h3>
+        </div>
+        <div class="box-body">
+          <a href="/admin/assets-statuses" class="btn btn-app">
+            <i class="fa fa-check"></i> Assets Statuses
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
       <div class="box box-primary">
         <div class="box-header with-border">
           <h3 class="box-title">Storeroom</h3>
@@ -35,7 +47,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-2">
       <div class="box box-primary">
         <div class="box-header with-border">
           <h3 class="box-title">Emails</h3>

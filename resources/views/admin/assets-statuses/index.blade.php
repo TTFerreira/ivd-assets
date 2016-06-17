@@ -11,16 +11,16 @@
           <table id="table" class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
-                <th>Manufacturer</th>
+                <th>Status</th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
-              @foreach($manufacturers as $manufacturer)
+              @foreach($statuses as $status)
                 <tr>
                   <div>
-                    <td>{{$manufacturer->name}}</td>
-                    <td><a href="/manufacturers/{{ $manufacturer->id }}/edit" class="btn btn-primary"><span class='fa fa-pencil' aria-hidden='true'></span> <b>Edit</b></a></td>
+                    <td>{{$status->name}}</td>
+                    <td><a href="/admin/assets-statuses/{{ $status->id }}/edit" class="btn btn-primary"><span class='fa fa-pencil' aria-hidden='true'></span> <b>Edit</b></a></td>
                   </div>
                 </tr>
               @endforeach
@@ -32,19 +32,19 @@
     <div class="col-md-3">
       <div class="box box-primary">
         <div class="box-header with-border">
-          <h3 class="box-title">{{$pageTitle}}</h3>
+          <h3 class="box-title">Create New Status</h3>
         </div>
         <div class="box-body">
-          <form method="POST" action="{{ url('manufacturers') }}">
+          <form method="POST" action="{{ url('admin/assets-statuses') }}">
             {{csrf_field()}}
             <div class="form-group {{ hasErrorForClass($errors, 'name') }}">
-              <label for="name">Manufacturer Name</label>
+              <label for="name">Status</label>
               <input type="text" name="name" class="form-control" value="{{old('name')}}">
               {{ hasErrorForField($errors, 'name') }}
             </div>
 
             <div class="form-group">
-              <button type="submit" class="btn btn-primary"><b>Add New Manufacturer</b></button>
+              <button type="submit" class="btn btn-primary"><b>Add New Status</b></button>
             </div>
           </form>
         </div>

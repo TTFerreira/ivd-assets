@@ -43,11 +43,6 @@ Route::group(['middleware' => ['web']], function () {
   Route::patch('pcspecs/{pcspec}/update', 'PcspecsController@update');
   Route::post('pcspecs', 'PcspecsController@store');
 
-  Route::get('statuses', 'StatusesController@index');
-  Route::get('statuses/{status}/edit', 'StatusesController@edit');
-  Route::patch('statuses/{status}/update', 'StatusesController@update');
-  Route::post('statuses', 'StatusesController@store');
-
   Route::get('suppliers', 'SuppliersController@index');
   Route::get('suppliers/create', 'SuppliersController@create');
   Route::get('suppliers/{supplier}/edit', 'SuppliersController@edit');
@@ -92,6 +87,11 @@ Route::group(['middleware' => ['web']], function () {
   Route::post('tickets/{ticket}', 'TicketsEntriesController@store');
 
   Route::get('admin', 'PagesController@getTicketConfig');
+
+  Route::get('admin/assets-statuses', 'StatusesController@index');
+  Route::get('admin/assets-statuses/{status}/edit', 'StatusesController@edit');
+  Route::patch('admin/assets-statuses/{status}/update', 'StatusesController@update');
+  Route::post('admin/assets-statuses', 'StatusesController@store');
 
   Route::get('admin/ticket-statuses', 'TicketsStatusesController@index');
   Route::get('admin/ticket-statuses/create', 'TicketsStatusesController@create');

@@ -86,7 +86,7 @@
             </div>
 
             <div class="form-group">
-              <button type="submit" class="btn btn-primary">Add New Model</button>
+              <button type="submit" class="btn btn-primary"><b>Add New Model</b></button>
             </div>
           </form>
         </div>

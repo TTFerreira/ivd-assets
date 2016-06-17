@@ -51,7 +51,7 @@
             </div>
 
             <div class="form-group">
-              <button type="submit" class="btn btn-primary">Add New Asset Type</button>
+              <button type="submit" class="btn btn-primary"><b>Add New Asset Type</b></button>
             </div>
           </form>
         </div>
