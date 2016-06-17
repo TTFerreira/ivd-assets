@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Invoice;
 use App\Supplier;
 use App\Division;
+use Session;
 use App\Http\Requests;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -23,23 +24,11 @@ class InvoicesController extends Controller
 
   public function index()
   {
-    $pageTitle = 'View Invoices';
+    $pageTitle = 'Invoices';
     $invoices = Invoice::all();
-    return view('invoices.index', compact('invoices', 'pageTitle'));
-  }
-
-  public function show(Invoice $invoice)
-  {
-    $filepath = storage_path() . "/app/invoices/" . $invoice->invoice_number . ".pdf";
-    return response()->file($filepath);
-  }
-
-  public function create()
-  {
-    $pageTitle = 'Create New Invoice';
     $suppliers = Supplier::all();
     $divisions = Division::all();
-    return view('invoices.create', compact('suppliers', 'divisions', 'pageTitle'));
+    return view('invoices.index', compact('invoices', 'suppliers', 'divisions', 'pageTitle'));
   }
 
   public function store(StoreInvoiceRequest $request)
@@ -58,6 +47,10 @@ class InvoicesController extends Controller
     }
 
     $invoice->save();
+
+    Session::flash('status', 'success');
+    Session::flash('title', 'Invoice ' . $invoice->invoice_number);
+    Session::flash('message', 'Successfully created');
 
     return redirect('invoices');
   }
@@ -84,7 +77,9 @@ class InvoicesController extends Controller
 
     $invoice->update($request->all());
 
-
+    Session::flash('status', 'success');
+    Session::flash('title', 'Invoice ' . $invoice->invoice_number);
+    Session::flash('message', 'Successfully updated');
 
     return redirect('invoices');
   }

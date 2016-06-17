@@ -22,13 +22,11 @@ Route::group(['middleware' => ['web']], function () {
   Route::post('locations', 'LocationsController@store');
 
   Route::get('asset-types', 'AssetTypesController@index');
-  Route::get('asset-types/create', 'AssetTypesController@create');
   Route::get('asset-types/{asset_type}/edit', 'AssetTypesController@edit');
   Route::patch('asset-types/{asset_type}/update', 'AssetTypesController@update');
   Route::post('asset-types', 'AssetTypesController@store');
 
   Route::get('divisions', 'DivisionsController@index');
-  Route::get('divisions/create', 'DivisionsController@create');
   Route::get('divisions/{division}/edit', 'DivisionsController@edit');
   Route::patch('divisions/{division}/update', 'DivisionsController@update');
   Route::post('divisions', 'DivisionsController@store');
@@ -44,7 +42,6 @@ Route::group(['middleware' => ['web']], function () {
   Route::post('pcspecs', 'PcspecsController@store');
 
   Route::get('suppliers', 'SuppliersController@index');
-  Route::get('suppliers/create', 'SuppliersController@create');
   Route::get('suppliers/{supplier}/edit', 'SuppliersController@edit');
   Route::patch('suppliers/{supplier}/update', 'SuppliersController@update');
   Route::post('suppliers', 'SuppliersController@store');
@@ -65,8 +62,6 @@ Route::group(['middleware' => ['web']], function () {
   Route::post('assets/{asset}/store', 'MovementsController@store');
 
   Route::get('invoices', 'InvoicesController@index');
-  Route::get('invoices/create', 'InvoicesController@create');
-  Route::get('invoices/{invoice}', 'InvoicesController@show');
   Route::get('invoices/{invoice}/edit', 'InvoicesController@edit');
   Route::patch('invoices/{invoice}/update', 'InvoicesController@update');
   Route::post('invoices', 'InvoicesController@store');

@@ -29,7 +29,8 @@ class StoreInvoiceRequest extends Request
         'invoiced_date' => 'required',
         'total' => 'required|numeric|between:0, 99999999.99',
         'division_id' => 'required',
-        'supplier_id' => 'required'
+        'supplier_id' => 'required',
+        'file' => 'mimes:pdf'
       ];
     }
 
@@ -50,7 +51,7 @@ class StoreInvoiceRequest extends Request
         'total.numeric' => 'You must enter only numbers for the Invoice Total.',
         'total.between:0, 99999999.99' => 'You must enter an amount between 0 and 99999999.99 for the Invoice Total.',
         'division_id.required' => 'You must select the Division.',
-        'supplier_id.required' => 'You must select the Supplier.',
+        'supplier_id.required' => 'You must select the Supplier.'
       ];
     }
 }
