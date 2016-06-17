@@ -2,13 +2,12 @@
 
 @section('main-content')
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-9">
       <div class="box box-primary">
         <div class="box-header with-border">
           <h3 class="box-title">{{$pageTitle}}</h3>
         </div>
         <div class="box-body">
-          <p><a href="/asset-types/create"><button type="button" class="btn btn-default" name="create-new-asset-type" data-toggle="tooltip" data-original-title="Create New Asset Type"><span class='fa fa-plus' aria-hidden='true'></span> <b>Create New Asset Type</b></button></a></p>
           <table id="table" class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
@@ -32,21 +31,47 @@
         </div>
       </div>
     </div>
+    <div class="col-md-3">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Create New Asset Type</h3>
+        </div>
+        <div class="box-body">
+          <form method="POST" action="{{ url('asset-types') }}">
+            {{csrf_field()}}
+            <div class="form-group {{ hasErrorForClass($errors, 'type_name') }}">
+              <label for="type_name">Asset Type Name</label>
+              <input type="text" name="type_name" class="form-control" value="{{old('type_name')}}">
+              {{ hasErrorForField($errors, 'type_name') }}
+            </div>
+            <div class="form-group {{ hasErrorForClass($errors, 'abbreviation') }}">
+              <label for="abbreviation">Abbreviation</label>
+              <input type="text"  name="abbreviation" class="form-control" value="{{old('abbreviation')}}">
+              {{ hasErrorForField($errors, 'abbreviation') }}
+            </div>
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">Add New Asset Type</button>
+            </div>
+          </form>
+        </div>
+      </div>
   </div>
   <script>
     $(document).ready(function() {
       $('#table').DataTable( {
-          columnDefs: [ {
-              targets: [ 0 ],
-              orderData: [ 0, 1 ]
-          }, {
-              targets: [ 1 ],
-              orderData: [ 1, 0 ]
-          }, {
-              targets: [ 2 ],
-              orderData: [ 2, 0 ]
-          } ]
+        columnDefs: [ {
+          orderable: false, targets: 2
+        } ],
+        order: [[ 0, "asc" ]]
       } );
     } );
   </script>
+  @if(Session::has('status'))
+    <script>
+      $(document).ready(function() {
+        Command: toastr["{{Session::get('status')}}"]("{{Session::get('message')}}", "{{Session::get('title')}}");
+      });
+    </script>
+  @endif
 @endsection

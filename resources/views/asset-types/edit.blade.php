@@ -11,13 +11,15 @@
             <form method="POST" action="/asset-types/{{$asset_type->id}}/update">
               {{method_field('PATCH')}}
               {{csrf_field()}}
-              <div class="form-group">
+              <div class="form-group {{ hasErrorForClass($errors, 'type_name') }}">
                 <label for="type_name">Asset Type Name</label>
                 <input type="text" name="type_name" class="form-control" value="{{$asset_type->type_name}}">
+                {{ hasErrorForField($errors, 'type_name') }}
               </div>
-              <div class="form-group">
+              <div class="form-group {{ hasErrorForClass($errors, 'abbreviation') }}">
                 <label for="abbreviation">Abbreviation</label>
                 <input type="text"  name="abbreviation" class="form-control" value="{{$asset_type->abbreviation}}">
+                {{ hasErrorForField($errors, 'abbreviation') }}
               </div>
 
               <div class="form-group">
@@ -26,14 +28,6 @@
             </form>
           </div>
         </div>
-
-      @if(count($errors))
-        <ul>
-          @foreach($errors->all() as $error)
-            <li>{{$error}}</li>
-          @endforeach
-        </ul>
-      @endif
     </div>
   </div>
 @endsection
