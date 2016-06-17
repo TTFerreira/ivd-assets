@@ -31,6 +31,7 @@ class PcSpecTest extends TestCase
          ->type('500GB', 'hdd')
          ->press('Add New PC Specification')
          ->seePageIs('/pcspecs')
+         ->see('Successfully created')
          ->seeInDatabase('pcspecs', ['cpu' => 'Core i3 5123', 'ram' => '4GB', 'hdd' => '500GB']);
   }
 
@@ -46,6 +47,7 @@ class PcSpecTest extends TestCase
          ->type('500GB', 'hdd')
          ->press('Add New PC Specification')
          ->seePageIs('/pcspecs')
+         ->see('Successfully created')
          ->seeInDatabase('pcspecs', ['cpu' => 'Core i3 5123', 'ram' => '4GB', 'hdd' => '500GB']);
 
     $pcspec = App\PcSpec::get()->last();
@@ -58,6 +60,7 @@ class PcSpecTest extends TestCase
          ->type('500GB', 'hdd')
          ->press('Edit PC Specification')
          ->seePageIs('/pcspecs')
+         ->see('Successfully updated')
          ->seeInDatabase('pcspecs', ['cpu' => 'Core i7 5555', 'ram' => '8GB', 'hdd' => '500GB']);
   }
 }

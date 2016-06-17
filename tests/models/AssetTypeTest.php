@@ -48,7 +48,7 @@ class AssetTypeTest extends TestCase
            ->see('Successfully created')
            ->seeInDatabase('asset_types', ['type_name' => 'Random Type', 'abbreviation' => 'Random Abbreviation']);
 
-      $assetType = App\Location::get()->last();
+      $assetType = App\AssetType::get()->last();
 
       $this->actingAs($user)
            ->visit('/asset-types/' . $assetType->id . '/edit')

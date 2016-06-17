@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Division;
+use Session;
 use App\Http\Requests\Divisions\StoreDivisionRequest;
 use App\Http\Requests\Divisions\UpdateDivisionRequest;
 use Illuminate\Http\Request;
@@ -18,21 +19,9 @@ class DivisionsController extends Controller
 
   public function index()
   {
-    $pageTitle = 'View Divisions';
+    $pageTitle = 'Divisions';
     $divisions = Division::all();
     return view('divisions.index', compact('divisions', 'pageTitle'));
-  }
-
-  public function show(Division $division)
-  {
-    //$location->load('notes.user');
-    return view('divisions.show', compact('division'));
-  }
-
-  public function create()
-  {
-    $pageTitle = 'Create New Division';
-    return view('divisions.create', compact('pageTitle'));
   }
 
   public function store(StoreDivisionRequest $request)
@@ -41,6 +30,10 @@ class DivisionsController extends Controller
     $division->name = $request->name;
 
     $division->save();
+
+    Session::flash('status', 'success');
+    Session::flash('title', $division->name);
+    Session::flash('message', 'Successfully created');
 
     return redirect('divisions');
   }
@@ -54,6 +47,10 @@ class DivisionsController extends Controller
   public function update(UpdateDivisionRequest $request, Division $division)
   {
     $division->update($request->all());
+
+    Session::flash('status', 'success');
+    Session::flash('title', $division->name);
+    Session::flash('message', 'Successfully updated');
 
     return redirect('divisions');
   }

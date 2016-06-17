@@ -31,6 +31,7 @@ class LocationTest extends TestCase
          ->type('Test Location', 'location_name')
          ->press('Add New Location')
          ->seePageIs('/locations')
+         ->see('Successfully created')
          ->seeInDatabase('locations', ['building' => 'F14', 'office' => '123', 'location_name' => 'Test Location']);
   }
 
@@ -46,6 +47,7 @@ class LocationTest extends TestCase
          ->type('Test Location', 'location_name')
          ->press('Add New Location')
          ->seePageIs('/locations')
+         ->see('Successfully created')
          ->seeInDatabase('locations', ['building' => 'F14', 'office' => '123', 'location_name' => 'Test Location']);
 
     $location = App\Location::get()->last();
@@ -58,6 +60,7 @@ class LocationTest extends TestCase
          ->type('Other Location', 'location_name')
          ->press('Edit Location')
          ->seePageIs('/locations')
+         ->see('Successfully updated')
          ->seeInDatabase('locations', ['building' => 'A11', 'office' => '456', 'location_name' => 'Other Location']);
   }
 }
