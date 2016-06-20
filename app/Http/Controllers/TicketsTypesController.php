@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\TicketsType;
+use Session;
 use App\Http\Requests\TicketsTypes\StoreTicketsTypeRequest;
 use App\Http\Requests\TicketsTypes\UpdateTicketsTypeRequest;
 use Illuminate\Http\Request;
@@ -23,13 +24,6 @@ class TicketsTypesController extends Controller
     return view('admin.ticket-types.index', compact('pageTitle', 'ticketsTypes'));
   }
 
-  public function create()
-  {
-    $pageTitle = 'Create New Ticket Type';
-    $ticketsTypes = TicketsType::all();
-    return view('admin.ticket-types.create', compact('pageTitle', 'ticketsTypes'));
-  }
-
   public function store(StoreTicketsTypeRequest $request)
   {
     $this->validate($request, [
@@ -41,7 +35,11 @@ class TicketsTypesController extends Controller
 
     $ticketsType->save();
 
-    return redirect('admin/ticket-types/create');
+    Session::flash('status', 'success');
+    Session::flash('title', 'Canned Ticket Fields');
+    Session::flash('message', 'Successfully created');
+
+    return redirect('admin/ticket-types');
   }
 
   public function edit(TicketsType $ticketsType)
@@ -58,6 +56,10 @@ class TicketsTypesController extends Controller
     ]);
 
     $ticketsType->update($request->all());
+
+    Session::flash('status', 'success');
+    Session::flash('title', 'Canned Ticket Fields');
+    Session::flash('message', 'Successfully updated');
 
     return redirect('/admin/ticket-types');
   }

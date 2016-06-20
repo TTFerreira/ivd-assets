@@ -2,13 +2,12 @@
 
 @section('main-content')
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-9">
       <div class="box box-primary">
         <div class="box-header with-border">
           <h3 class="box-title">{{$pageTitle}}</h3>
         </div>
         <div class="box-body">
-          <p><a href="/admin/ticket-types/create"><button type="button" class="btn btn-default" name="create-new-ticket-type" data-toggle="tooltip" data-original-title="Create New Ticket Type"><span class='fa fa-plus' aria-hidden='true'></span> <b>Create New Ticket Type</b></button></a></p>
           <table id="table" class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
@@ -30,13 +29,42 @@
         </div>
       </div>
     </div>
+    <div class="col-md-3">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Create Ticket Type</h3>
+        </div>
+        <div class="box-body">
+          <form method="POST" action="{{ url('admin/ticket-types') }}">
+            {{csrf_field()}}
+            <div class="form-group {{ hasErrorForClass($errors, 'type') }}">
+              <label for="type">Type</label>
+              <input type="text"  name="type" class="form-control" value="{{old('type')}}">
+              {{ hasErrorForField($errors, 'type') }}
+            </div>
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary"><b>Add New Ticket Type</b></button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
     <script>
       $(document).ready(function() {
         $('#table').DataTable( {
           columnDefs: [ {
             orderable: false, targets: 1
-          } ]
+          } ],
+          order: [[ 0, "asc" ]]
         } );
       } );
     </script>
+    @if(Session::has('status'))
+      <script>
+        $(document).ready(function() {
+          Command: toastr["{{Session::get('status')}}"]("{{Session::get('message')}}", "{{Session::get('title')}}");
+        });
+      </script>
+    @endif
 @endsection

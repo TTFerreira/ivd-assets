@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\TicketsStatus;
+use Session;
 use App\Http\Requests\TicketsStatuses\StoreTicketsStatusRequest;
 use App\Http\Requests\TicketsStatuses\UpdateTicketsStatusRequest;
 use Illuminate\Http\Request;
@@ -23,13 +24,6 @@ class TicketsStatusesController extends Controller
     return view('admin.ticket-statuses.index', compact('pageTitle', 'ticketsStatuses'));
   }
 
-  public function create()
-  {
-    $pageTitle = 'Create New Ticket Status';
-    $ticketsStatuses = TicketsStatus::all();
-    return view('admin.ticket-statuses.create', compact('pageTitle', 'ticketsStatuses'));
-  }
-
   public function store(StoreTicketsStatusRequest $request)
   {
     $ticketsStatus = new TicketsStatus();
@@ -37,7 +31,11 @@ class TicketsStatusesController extends Controller
 
     $ticketsStatus->save();
 
-    return redirect('admin/ticket-statuses/create');
+    Session::flash('status', 'success');
+    Session::flash('title', 'Canned Ticket Fields');
+    Session::flash('message', 'Successfully created');
+
+    return redirect('admin/ticket-statuses');
   }
 
   public function edit(TicketsStatus $ticketsStatus)
@@ -50,6 +48,10 @@ class TicketsStatusesController extends Controller
   public function update(UpdateTicketsStatusRequest $request, TicketsStatus $ticketsStatus)
   {
     $ticketsStatus->update($request->all());
+
+    Session::flash('status', 'success');
+    Session::flash('title', 'Canned Ticket Fields');
+    Session::flash('message', 'Successfully updated');
 
     return redirect('/admin/ticket-statuses');
   }

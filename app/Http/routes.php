@@ -89,7 +89,6 @@ Route::group(['middleware' => ['web']], function () {
   Route::post('admin/assets-statuses', 'StatusesController@store');
 
   Route::get('admin/ticket-statuses', 'TicketsStatusesController@index');
-  Route::get('admin/ticket-statuses/create', 'TicketsStatusesController@create');
   Route::get('admin/ticket-statuses/{ticketsStatus}/edit', 'TicketsStatusesController@edit');
   Route::patch('admin/ticket-statuses/{ticketsStatus}/update', 'TicketsStatusesController@update');
   Route::post('admin/ticket-statuses', 'TicketsStatusesController@store');
@@ -101,7 +100,6 @@ Route::group(['middleware' => ['web']], function () {
   Route::post('admin/ticket-priorities', 'TicketsPrioritiesController@store');
 
   Route::get('admin/ticket-types', 'TicketsTypesController@index');
-  Route::get('admin/ticket-types/create', 'TicketsTypesController@create');
   Route::get('admin/ticket-types/{ticketsType}/edit', 'TicketsTypesController@edit');
   Route::patch('admin/ticket-types/{ticketsType}/update', 'TicketsTypesController@update');
   Route::post('admin/ticket-types', 'TicketsTypesController@store');

@@ -37,7 +37,7 @@ class TicketsPrioritiesController extends Controller
 
     $ticketsPriority->save();
 
-    return redirect('admin/ticket-priorities/create');
+    return redirect('admin/ticket-priorities');
   }
 
   public function edit(TicketsPriority $ticketsPriority)
