@@ -11,7 +11,7 @@
           <form method="POST" action="/admin/ticket-canned-fields/{{$ticketsCannedField->id}}/update">
             {{method_field('PATCH')}}
             {{csrf_field()}}
-            <div class="form-group">
+            <div class="form-group {{ hasErrorForClass($errors, 'user_id') }}">
               <label for="user_id">Agent</label>
               <select class="form-control user_id" name="user_id">
                 <option value = ""></option>
@@ -23,8 +23,9 @@
                   >{{$user->name}}</option>
                 @endforeach
               </select>
+              {{ hasErrorForField($errors, 'user_id') }}
             </div>
-            <div class="form-group">
+            <div class="form-group {{ hasErrorForClass($errors, 'location_id') }}">
               <label for="location_id">Location</label>
               <select class="form-control location_id" name="location_id">
                 @foreach($locations as $location)
@@ -35,8 +36,9 @@
                   >{{$location->location_name}}</option>
                 @endforeach
               </select>
+              {{ hasErrorForField($errors, 'location_id') }}
             </div>
-            <div class="form-group">
+            <div class="form-group {{ hasErrorForClass($errors, 'ticket_status_id') }}">
               <label for="ticket_status_id">Status</label>
               <select class="form-control ticket_status_id" name="ticket_status_id">
                 @foreach($ticketsStatuses as $ticketStatus)
@@ -47,8 +49,9 @@
                   >{{$ticketStatus->status}}</option>
                 @endforeach
               </select>
+              {{ hasErrorForField($errors, 'ticket_status_id') }}
             </div>
-            <div class="form-group">
+            <div class="form-group {{ hasErrorForClass($errors, 'ticket_type_id') }}">
               <label for="ticket_type_id">Type</label>
               <select class="form-control ticket_type_id" name="ticket_type_id">
                 @foreach($ticketsTypes as $ticketType)
@@ -59,8 +62,9 @@
                   >{{$ticketType->type}}</option>
                 @endforeach
               </select>
+              {{ hasErrorForField($errors, 'ticket_type_id') }}
             </div>
-            <div class="form-group">
+            <div class="form-group {{ hasErrorForClass($errors, 'ticket_priority_id') }}">
               <label for="ticket_priority_id">Priority</label>
               <select class="form-control ticket_priority_id" name="ticket_priority_id">
                 @foreach($ticketsPriorities as $ticketPriority)
@@ -71,14 +75,17 @@
                   >{{$ticketPriority->priority}}</option>
                 @endforeach
               </select>
+              {{ hasErrorForField($errors, 'ticket_priority_id') }}
             </div>
-            <div class="form-group">
+            <div class="form-group {{ hasErrorForClass($errors, 'subject') }}">
               <label for="subject">Subject</label>
               <input type="text" class="form-control" name="subject" value="{{$ticketsCannedField->subject}}">
+              {{ hasErrorForField($errors, 'subject') }}
             </div>
-            <div class="form-group">
+            <div class="form-group {{ hasErrorForClass($errors, 'description') }}">
               <label for="description">Description</label>
               <textarea class="form-control" rows="5" name="description">{{$ticketsCannedField->description}}</textarea>
+              {{ hasErrorForField($errors, 'description') }}
             </div>
 
             <div class="form-group">
@@ -87,14 +94,6 @@
           </form>
         </div>
       </div>
-
-      @if(count($errors))
-        <ul>
-          @foreach($errors->all() as $error)
-            <li>{{$error}}</li>
-          @endforeach
-        </ul>
-      @endif
     </div>
   </div>
 @endsection

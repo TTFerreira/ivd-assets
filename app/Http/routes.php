@@ -107,7 +107,6 @@ Route::group(['middleware' => ['web']], function () {
   Route::post('admin/ticket-types', 'TicketsTypesController@store');
 
   Route::get('admin/ticket-canned-fields', 'TicketsCannedFieldsController@index');
-  Route::get('admin/ticket-canned-fields/create', 'TicketsCannedFieldsController@create');
   Route::get('admin/ticket-canned-fields/{ticketsCannedField}/edit', 'TicketsCannedFieldsController@edit');
   Route::patch('admin/ticket-canned-fields/{ticketsCannedField}/update', 'TicketsCannedFieldsController@update');
   Route::post('admin/ticket-canned-fields', 'TicketsCannedFieldsController@store');

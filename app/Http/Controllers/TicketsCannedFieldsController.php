@@ -10,6 +10,7 @@ use App\TicketsType;
 use App\Location;
 use App\User;
 use App\Ticket;
+use Session;
 use App\Http\Requests\TicketsCannedFields\StoreTicketsCannedFieldRequest;
 use Illuminate\Http\Request;
 
@@ -24,20 +25,14 @@ class TicketsCannedFieldsController extends Controller
 
   public function index()
   {
-    $pageTitle = 'View Canned Tickets';
+    $pageTitle = 'Canned Ticket Fields';
     $ticketsCannedFields = TicketsCannedField::all();
-    return view('admin.ticket-canned-fields.index', compact('pageTitle', 'ticketsCannedFields'));
-  }
-
-  public function create()
-  {
-    $pageTitle = 'Create New Ticket Canned Fields';
     $ticketsPriorities = TicketsPriority::all();
     $ticketsStatuses = TicketsStatus::all();
     $ticketsTypes = TicketsType::all();
     $locations = Location::all();
     $users = User::all();
-    return view('admin.ticket-canned-fields.create', compact('ticketsPriorities', 'ticketsStatuses', 'ticketsTypes', 'locations', 'users', 'pageTitle'));
+    return view('admin.ticket-canned-fields.index', compact('pageTitle', 'ticketsCannedFields', 'ticketsPriorities', 'ticketsStatuses', 'ticketsTypes', 'locations', 'users'));
   }
 
   public function store(StoreTicketsCannedFieldRequest $request)
@@ -52,6 +47,10 @@ class TicketsCannedFieldsController extends Controller
     $ticket->description = $request->description;
 
     $ticket->save();
+
+    Session::flash('status', 'success');
+    Session::flash('title', 'Canned Ticket Fields');
+    Session::flash('message', 'Successfully created');
 
     return redirect('admin/ticket-canned-fields');
   }
@@ -92,6 +91,10 @@ class TicketsCannedFieldsController extends Controller
     $ticketsCannedField->description = $request->description;
 
     $ticketsCannedField->update();
+
+    Session::flash('status', 'success');
+    Session::flash('title', 'Canned Ticket Fields');
+    Session::flash('message', 'Successfully updated');
 
     return redirect('admin/ticket-canned-fields');
   }
