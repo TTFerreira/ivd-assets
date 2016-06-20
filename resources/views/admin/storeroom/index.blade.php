@@ -17,7 +17,7 @@
             <form method="POST" action="/admin/storeroom/update">
               {{method_field('PATCH')}}
               {{csrf_field()}}
-              <div class="form-group">
+              <div class="form-group {{ hasErrorForClass($errors, 'store') }}">
                 <label for="store">Default Storeroom</label>
                 <select class="form-control store" name="store">
                   <option value = ""></option>
@@ -25,6 +25,7 @@
                       <option value="{{$location->id}}">{{$location->building}} - {{$location->location_name}}</option>
                   @endforeach
                 </select>
+                {{ hasErrorForField($errors, 'store') }}
               </div>
 
               <div class="form-group">
@@ -33,31 +34,26 @@
             </form>
         </div>
       </div>
-      @if(count($errors))
-        <ul>
-          @foreach($errors->all() as $error)
-            <li>{{$error}}</li>
-          @endforeach
-        </ul>
-      @endif
     </div>
+  </div>
 
+  <script>
+    $(document).ready(function() {
+      $('#table').DataTable( {
+        columnDefs: [ {
+          orderable: false, targets: 1
+        } ],
+        order: [[ 0, "asc" ]]
+      } );
+    } );
+  </script>
+  @if(Session::has('status'))
     <script>
       $(document).ready(function() {
-        $('#table').DataTable( {
-          columnDefs: [ {
-            orderable: false, targets: 1
-          } ]
-        } );
-      } );
+        Command: toastr["{{Session::get('status')}}"]("{{Session::get('message')}}", "{{Session::get('title')}}")
+      });
     </script>
-    @if(Session::has('status'))
-      <script>
-        $(document).ready(function() {
-          Command: toastr["{{Session::get('status')}}"]("{{Session::get('message')}}", "{{Session::get('title')}}")
-        });
-      </script>
-    @endif
+  @endif
 @endsection
 
 @section('footer')

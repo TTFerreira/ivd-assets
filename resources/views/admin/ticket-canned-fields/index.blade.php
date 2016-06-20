@@ -106,15 +106,15 @@
       </div>
     </div>
     <script>
-    $(document).ready(function() {
-      $('#table').DataTable( {
-        columnDefs: [ {
-          orderable: false, targets: 1
-        } ],
-        order: [[ 0, "asc" ]]
+      $(document).ready(function() {
+        $('#table').DataTable( {
+          columnDefs: [ {
+            orderable: false, targets: 1
+          } ],
+          order: [[ 0, "asc" ]]
+        } );
       } );
-    } );
-  </script>
+    </script>
   @if(Session::has('status'))
     <script>
       $(document).ready(function() {
