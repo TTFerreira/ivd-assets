@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\TicketsPriority;
+use Session;
 use App\Http\Requests\TicketsPriorities\StoreTicketsPriorityRequest;
 use App\Http\Requests\TicketsPriorities\UpdateTicketsPriorityRequest;
 use Illuminate\Http\Request;
@@ -23,19 +24,16 @@ class TicketsPrioritiesController extends Controller
     return view('admin.ticket-priorities.index', compact('pageTitle', 'ticketsPriorities'));
   }
 
-  public function create()
-  {
-    $pageTitle = 'Create New Ticket Priority';
-    $ticketsPriorities = TicketsPriority::all();
-    return view('admin.ticket-priorities.create', compact('pageTitle', 'ticketsPriorities'));
-  }
-
   public function store(StoreTicketsPriorityRequest $request)
   {
     $ticketsPriority = new TicketsPriority();
     $ticketsPriority->priority = $request->priority;
 
     $ticketsPriority->save();
+
+    Session::flash('status', 'success');
+    Session::flash('title', 'Ticket Priority: ' . $ticketsPriority->priority);
+    Session::flash('message', 'Successfully created');
 
     return redirect('admin/ticket-priorities');
   }
@@ -50,6 +48,10 @@ class TicketsPrioritiesController extends Controller
   public function update(UpdateTicketsPriorityRequest $request, TicketsPriority $ticketsPriority)
   {
     $ticketsPriority->update($request->all());
+
+    Session::flash('status', 'success');
+    Session::flash('title', 'Ticket Priority: ' . $ticketsPriority->priority);
+    Session::flash('message', 'Successfully updated');
 
     return redirect('/admin/ticket-priorities');
   }

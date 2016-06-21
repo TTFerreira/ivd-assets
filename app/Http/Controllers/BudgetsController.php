@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Budget;
 use App\Division;
+use Session;
 use App\Http\Requests\Budgets\StoreBudgetRequest;
 use Illuminate\Http\Request;
 
@@ -18,21 +19,10 @@ class BudgetsController extends Controller
 
   public function index()
   {
-    $pageTitle = 'View Budgets';
+    $pageTitle = 'Budgets';
     $budgets = Budget::all();
-    return view('budgets.index', compact('budgets', 'pageTitle'));
-  }
-
-  public function show(Budget $budget)
-  {
-    return view('budgets.show', compact('budget'));
-  }
-
-  public function create()
-  {
-    $pageTitle = 'Create New Budget';
     $divisions = Division::all();
-    return view('budgets.create', compact('divisions', 'pageTitle'));
+    return view('budgets.index', compact('budgets', 'divisions', 'pageTitle'));
   }
 
   public function store(StoreBudgetRequest $request)
@@ -43,6 +33,10 @@ class BudgetsController extends Controller
     $budget->total = $request->total;
 
     $budget->save();
+
+    Session::flash('status', 'success');
+    Session::flash('title', 'Budget for ' . $budget->year);
+    Session::flash('message', 'Successfully created');
 
     return redirect('budgets');
   }
@@ -57,6 +51,10 @@ class BudgetsController extends Controller
   public function update(StoreBudgetRequest $request, Budget $budget)
   {
     $budget->update($request->all());
+
+    Session::flash('status', 'success');
+    Session::flash('title', 'Budget for ' . $budget->year);
+    Session::flash('message', 'Successfully updated');
 
     return redirect('budgets');
   }

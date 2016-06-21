@@ -11,9 +11,10 @@
           <form method="POST" action="/admin/ticket-priorities/{{$ticketsPriority->id}}/update">
             {{method_field('PATCH')}}
             {{csrf_field()}}
-            <div class="form-group">
+            <div class="form-group {{ hasErrorForClass($errors, 'priority') }}">
               <label for="priority">Priority</label>
               <input type="text" name="priority" class="form-control" value="{{$ticketsPriority->priority}}">
+              {{ hasErrorForField($errors, 'priority') }}
             </div>
 
             <div class="form-group">
@@ -22,14 +23,6 @@
           </form>
         </div>
       </div>
-
-      @if(count($errors))
-        <ul>
-          @foreach($errors->all() as $error)
-            <li>{{$error}}</li>
-          @endforeach
-        </ul>
-      @endif
     </div>
     <div class="col-md-6">
       <div class="box box-primary">

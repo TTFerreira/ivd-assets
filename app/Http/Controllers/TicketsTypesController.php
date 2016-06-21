@@ -36,7 +36,7 @@ class TicketsTypesController extends Controller
     $ticketsType->save();
 
     Session::flash('status', 'success');
-    Session::flash('title', 'Canned Ticket Fields');
+    Session::flash('title', 'Ticket Type: ' . $ticketsType->type);
     Session::flash('message', 'Successfully created');
 
     return redirect('admin/ticket-types');
@@ -58,7 +58,7 @@ class TicketsTypesController extends Controller
     $ticketsType->update($request->all());
 
     Session::flash('status', 'success');
-    Session::flash('title', 'Canned Ticket Fields');
+    Session::flash('title', 'Ticket Type: ' . $ticketsType->type);
     Session::flash('message', 'Successfully updated');
 
     return redirect('/admin/ticket-types');

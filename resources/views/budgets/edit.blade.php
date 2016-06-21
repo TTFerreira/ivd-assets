@@ -11,7 +11,7 @@
           <form method="POST" action="/budgets/{{$budget->id}}/update">
             {{method_field('PATCH')}}
             {{csrf_field()}}
-            <div class="form-group">
+            <div class="form-group {{ hasErrorForClass($errors, 'division_id') }}">
               <label for="division_id">Division</label>
               <select class="form-control division_id" name="division_id">
                 @foreach($divisions as $division)
@@ -19,19 +19,22 @@
                     @if($budget->division_id == $division->id)
                       selected
                     @endif
-                  value="{{$budget->id}}">{{$division->name}}</option>
+                  value="{{$division->id}}">{{$division->name}}</option>
                 @endforeach
               </select>
+              {{ hasErrorForField($errors, 'division_id') }}
             </div>
-            <div class="form-group">
+            <div class="form-group {{ hasErrorForClass($errors, 'year') }}">
               <label for="year">Year</label>
               <input type="text"  name="year" class="form-control" value="{{$budget->year}}">
+              {{ hasErrorForField($errors, 'year') }}
             </div>
-            <div class="form-group">
+            <div class="form-group {{ hasErrorForClass($errors, 'total') }}">
               <label for="total">Budget Total</label>
               <div class="input-group">
                 <div class="input-group-addon">R</div>
                 <input type="text"  name="total" class="form-control" value="{{$budget->total}}">
+                {{ hasErrorForField($errors, 'total') }}
               </div>
             </div>
 
@@ -41,14 +44,6 @@
           </form>
         </div>
       </div>
-
-      @if(count($errors))
-        <ul>
-          @foreach($errors->all() as $error)
-            <li>{{$error}}</li>
-          @endforeach
-        </ul>
-      @endif
     </div>
   </div>
 @endsection
@@ -56,13 +51,6 @@
   <script type="text/javascript">
     $(document).ready(function() {
       $(".division_id").select2();
-    });
-  </script>
-  <script>
-    $(":input").keypress(function(event){
-      if (event.which == '10' || event.which == '13') {
-        event.preventDefault();
-      }
     });
   </script>
 @endsection

@@ -67,8 +67,6 @@ Route::group(['middleware' => ['web']], function () {
   Route::post('invoices', 'InvoicesController@store');
 
   Route::get('budgets', 'BudgetsController@index');
-  Route::get('budgets/create', 'BudgetsController@create');
-  Route::get('budgets/{budget}', 'BudgetsController@show');
   Route::get('budgets/{budget}/edit', 'BudgetsController@edit');
   Route::patch('budgets/{budget}/update', 'BudgetsController@update');
   Route::post('budgets', 'BudgetsController@store');
@@ -94,7 +92,6 @@ Route::group(['middleware' => ['web']], function () {
   Route::post('admin/ticket-statuses', 'TicketsStatusesController@store');
 
   Route::get('admin/ticket-priorities', 'TicketsPrioritiesController@index');
-  Route::get('admin/ticket-priorities/create', 'TicketsPrioritiesController@create');
   Route::get('admin/ticket-priorities/{ticketsPriority}/edit', 'TicketsPrioritiesController@edit');
   Route::patch('admin/ticket-priorities/{ticketsPriority}/update', 'TicketsPrioritiesController@update');
   Route::post('admin/ticket-priorities', 'TicketsPrioritiesController@store');

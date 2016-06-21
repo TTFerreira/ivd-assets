@@ -32,7 +32,7 @@ class TicketsStatusesController extends Controller
     $ticketsStatus->save();
 
     Session::flash('status', 'success');
-    Session::flash('title', 'Canned Ticket Fields');
+    Session::flash('title', 'Ticket Status: ' . $ticketsStatus->status);
     Session::flash('message', 'Successfully created');
 
     return redirect('admin/ticket-statuses');
@@ -50,7 +50,7 @@ class TicketsStatusesController extends Controller
     $ticketsStatus->update($request->all());
 
     Session::flash('status', 'success');
-    Session::flash('title', 'Canned Ticket Fields');
+    Session::flash('title', 'Ticket Status: ' . $ticketsStatus->status);
     Session::flash('message', 'Successfully updated');
 
     return redirect('/admin/ticket-statuses');
