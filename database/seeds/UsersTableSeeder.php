@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
@@ -11,13 +12,30 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-      factory(App\User::class, 4)->create();
+      $now = new Carbon();
+
       DB::table('users')->insert([
         'name' => 'Terry Ferreira',
         'email' => 'terry@pixelcandy.co.za',
         'password' => bcrypt('secret'),
         'api_token' => str_random(60),
-        'remember_token' => str_random(10),
+        'created_at' => $now
+      ]);
+
+      DB::table('users')->insert([
+        'name' => 'Admin Doe',
+        'email' => 'admindoe@pixelcandy.co.za',
+        'password' => bcrypt('secret'),
+        'api_token' => str_random(60),
+        'created_at' => $now
+      ]);
+
+      DB::table('users')->insert([
+        'name' => 'User Doe',
+        'email' => 'userdoe@pixelcandy.co.za',
+        'password' => bcrypt('secret'),
+        'api_token' => str_random(60),
+        'created_at' => $now
       ]);
     }
 }

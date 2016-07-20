@@ -8,7 +8,7 @@
           <h3 class="box-title">{{$pageTitle}}</h3>
         </div>
         <div class="box-body">
-          <form method="POST" action="/models/{{$asset_model->id}}/update">
+          <form method="POST" action="/models/{{$asset_model->id}}">
             {{method_field('PATCH')}}
             {{csrf_field()}}
             <div class="form-group {{ hasErrorForClass($errors, 'asset_type_id') }}">

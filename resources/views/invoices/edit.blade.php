@@ -8,7 +8,7 @@
           <h3 class="box-title">{{$pageTitle}}</h3>
         </div>
         <div class="box-body">
-            <form method="POST" action="/invoices/{{$invoice->id}}/update" enctype="multipart/form-data">
+            <form method="POST" action="/invoices/{{$invoice->id}}" enctype="multipart/form-data">
               {{method_field('PATCH')}}
               {{csrf_field()}}
               <div class="form-group {{ hasErrorForClass($errors, 'invoice_number') }}">

@@ -19,13 +19,18 @@ class DatabaseSeeder extends Seeder
       $this->call(TicketsPrioritiesTableSeeder::class);
       $this->call(StatusesTableSeeder::class);
       $this->call(WarrantyTypesTableSeeder::class);
+      $this->call(RolesTableSeeder::class);
+      $this->call(PermissionsTableSeeder::class);
+      $this->call(AddPermissionsTableSeeder::class);
+      $this->call(UsersTableSeeder::class);
+      $this->call(AssignRolesTableSeeder::class);
 
       /**
        * The commented lines are those that can be used to generate data for testing.
        * Uncomment those you'd like to seed before running 'artisan db:seed'.
        */
 
-      $this->call(UsersTableSeeder::class);
+      // $this->call(UsersTableSeeder::class);
       $this->call(DivisionsTableSeeder::class);
       $this->call(LocationsTableSeeder::class);
       $this->call(SuppliersTableSeeder::class);

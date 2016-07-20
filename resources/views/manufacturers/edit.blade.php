@@ -8,7 +8,7 @@
           <h3 class="box-title">{{$pageTitle}}</h3>
         </div>
         <div class="box-body">
-          <form method="POST" action="/manufacturers/{{$manufacturer->id}}/update">
+          <form method="POST" action="/manufacturers/{{$manufacturer->id}}">
             {{method_field('PATCH')}}
             {{csrf_field()}}
             <div class="form-group {{ hasErrorForClass($errors, 'name') }}">

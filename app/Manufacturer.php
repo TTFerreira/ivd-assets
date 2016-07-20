@@ -9,8 +9,8 @@ class Manufacturer extends Model
   protected $fillable = ['name'];
   public $timestamps = false;
 
-  public function assetModel()
+  public function asset_model()
   {
-    return $this->hasMany(AssetModel::class);
+    return $this->belongsTo(AssetModel::class);
   }
 }
