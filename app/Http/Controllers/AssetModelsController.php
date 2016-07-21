@@ -24,9 +24,9 @@ class AssetModelsController extends Controller
   {
     $pageTitle = 'View Models';
     $asset_models = AssetModel::all();
-    $manufacturers = Manufacturer::all();
-    $asset_types = AssetType::all();
-    $pcspecs = Pcspec::all();
+    $manufacturers = Manufacturer::orderBy('name')->get();
+    $asset_types = AssetType::orderBy('type_name')->get();
+    $pcspecs = Pcspec::orderBy('cpu')->get();
     return view('models.index', compact('asset_models', 'pageTitle', 'manufacturers', 'asset_types', 'pcspecs'));
   }
 
@@ -51,9 +51,9 @@ class AssetModelsController extends Controller
   public function edit(AssetModel $asset_model)
   {
     $pageTitle = 'Edit Model - ' . $asset_model->manufacturer->name .  ' ' . $asset_model->asset_model;
-    $manufacturers = Manufacturer::all();
-    $asset_types = AssetType::all();
-    $pcspecs = Pcspec::all();
+    $manufacturers = Manufacturer::orderBy('name')->get();
+    $asset_types = AssetType::orderBy('type_name')->get();
+    $pcspecs = Pcspec::orderBy('cpu')->get();
     return view('models.edit', compact('asset_model', 'manufacturers', 'asset_types', 'pcspecs', 'pageTitle'));
   }
 
