@@ -19,11 +19,11 @@ class DatabaseSeeder extends Seeder
       $this->call(TicketsPrioritiesTableSeeder::class);
       $this->call(StatusesTableSeeder::class);
       $this->call(WarrantyTypesTableSeeder::class);
+      $this->call(AssetTypesTableSeeder::class);
+      $this->call(ManufacturersTableSeeder::class);
       $this->call(RolesTableSeeder::class);
       $this->call(PermissionsTableSeeder::class);
       $this->call(AddPermissionsTableSeeder::class);
-      $this->call(UsersTableSeeder::class);
-      $this->call(AssignRolesTableSeeder::class);
 
       /**
        * The commented lines are those that can be used to generate data for testing.
@@ -31,12 +31,11 @@ class DatabaseSeeder extends Seeder
        */
 
       // $this->call(UsersTableSeeder::class);
-      $this->call(DivisionsTableSeeder::class);
-      $this->call(LocationsTableSeeder::class);
-      $this->call(SuppliersTableSeeder::class);
-      $this->call(PcspecsTableSeeder::class);
-      $this->call(AssetTypesTableSeeder::class);
-      $this->call(ManufacturersTableSeeder::class);
-      $this->call(AssetModelsTableSeeder::class);
+      // $this->call(AssignRolesTableSeeder::class);
+      // $this->call(DivisionsTableSeeder::class);
+      // $this->call(LocationsTableSeeder::class);
+      // $this->call(SuppliersTableSeeder::class);
+      // $this->call(PcspecsTableSeeder::class);
+      // $this->call(AssetModelsTableSeeder::class);
     }
 }
