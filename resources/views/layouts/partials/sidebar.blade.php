@@ -46,9 +46,6 @@
                       <li><a href="{{ url('/budgets')}}">Budgets</a></li>
                   </ul>
               </li>
-            @endrole
-            <!-- Only Super Admins and Admins can see the following menu item -->
-            @role(['super-admin', 'admin'])
               <li><a href="{{ url('/admin')}}"><i class='fa fa-gear'></i> Admin</a></li>
             @endrole
         </ul><!-- /.sidebar-menu -->

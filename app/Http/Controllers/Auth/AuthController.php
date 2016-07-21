@@ -75,4 +75,9 @@ class AuthController extends Controller
         return redirect('login');
     }
 
+    public function register()
+    {
+      return redirect('login');
+    }
+
 }

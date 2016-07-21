@@ -110,16 +110,18 @@ Route::group(['middleware' => ['web']], function () {
     ]);
   });
 
-  // Assets
-  Route::resource('/assets', 'AssetsController', [
-    'only' => ['index', 'edit', 'update', 'store', 'create'],
-    'parameters' => 'singular'
-  ]);
+  Route::group(['middleware' => ['auth', 'role:super-admin|admin']], function () {
+    // Assets
+    Route::resource('/assets', 'AssetsController', [
+      'only' => ['index', 'edit', 'update', 'store', 'create'],
+      'parameters' => 'singular'
+    ]);
 
-  // Assets Movements and History
-  Route::get('movements/{asset}/history', 'MovementsController@show');
-  Route::get('assets/{asset}/move', 'MovementsController@create');
-  Route::post('assets/{asset}/store', 'MovementsController@store');
+    // Assets Movements and History
+    Route::get('assets/{asset}/history', 'MovementsController@show');
+    Route::get('assets/{asset}/move', 'MovementsController@create');
+    Route::post('assets/{asset}/store', 'MovementsController@store');
+  });
 
   // Canned Ticket Entries
   Route::post('canned', 'TicketsCannedFieldsController@canned');
