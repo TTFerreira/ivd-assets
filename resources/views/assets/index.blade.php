@@ -148,7 +148,9 @@
           { "visible": false },
           { "visible": false },
           { "visible": false }
-        ],
+        ], columnDefs: [{
+          orderable: false, targets: 7
+        }]
     } );
   } );
   </script>
