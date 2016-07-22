@@ -28,10 +28,30 @@
                     <td>{{$ticket->id}}</td>
                     <td>{{$ticket->user->name}}</td>
                     <td>{{$ticket->location->location_name}}</td>
-                    <td>{{$ticket->ticket_status->status}}</td>
-                    <td>{{$ticket->ticket_priority->priority}}</td>
+                    <td>
+                      @if($ticket->ticket_status->status == 'Open')
+                        <span class="label label-success">
+                      @elseif($ticket->ticket_status->status == 'Pending')
+                        <span class="label label-info">
+                      @elseif($ticket->ticket_status->status == 'Resolved')
+                        <span class="label label-warning">
+                      @elseif($ticket->ticket_status->status == 'Closed')
+                        <span class="label label-danger">
+                      @endif
+                      {{$ticket->ticket_status->status}}</span>
+                    </td>
+                    <td>
+                      @if($ticket->ticket_priority->priority == 'Low')
+                        <span class="label label-success">
+                      @elseif($ticket->ticket_priority->priority == 'Medium')
+                        <span class="label label-warning">
+                      @elseif($ticket->ticket_priority->priority == 'High')
+                        <span class="label label-danger">
+                      @endif
+                      {{$ticket->ticket_priority->priority}}</span>
+                    </td>
                     <td>{{$ticket->subject}}</td>
-                    <td><a href="/tickets/{{ $ticket->id }}"><b>View</b></a></td>
+                    <td><a href="/tickets/{{ $ticket->id }}" class="btn btn-primary"><span class="fa fa-ticket" aria-hidden="true"></span> <b>View</b></a></td>
                   </div>
                 </tr>
               @endforeach
