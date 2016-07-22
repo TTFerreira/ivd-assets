@@ -67,6 +67,7 @@
     <script>
       $(document).ready(function() {
         var table = $('#table').DataTable( {
+          responsive: true,
           columnDefs: [ {
             orderable: false, targets: 6
           } ],
