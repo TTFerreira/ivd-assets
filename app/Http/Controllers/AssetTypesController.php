@@ -26,11 +26,8 @@ class AssetTypesController extends Controller
 
   public function store(StoreAssetTypeRequest $request)
   {
-    $asset_type = new AssetType();
-    $asset_type->type_name = $request->type_name;
-    $asset_type->abbreviation = $request->abbreviation;
-
-    $asset_type->save();
+    AssetType::create($request->all());
+    $asset_type = AssetType::get()->last();
 
     Session::flash('status', 'success');
     Session::flash('title', $asset_type->type_name);

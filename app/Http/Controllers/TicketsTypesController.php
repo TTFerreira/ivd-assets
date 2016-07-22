@@ -26,14 +26,8 @@ class TicketsTypesController extends Controller
 
   public function store(StoreTicketsTypeRequest $request)
   {
-    $this->validate($request, [
-      'type' => 'required|unique:tickets_types,type'
-    ]);
-
-    $ticketsType = new TicketsType();
-    $ticketsType->type = $request->type;
-
-    $ticketsType->save();
+    TicketsType::create($request->all());
+    $ticketsType = TicketsType::get()->last();
 
     Session::flash('status', 'success');
     Session::flash('title', 'Ticket Type: ' . $ticketsType->type);
@@ -51,10 +45,6 @@ class TicketsTypesController extends Controller
 
   public function update(UpdateTicketsTypeRequest $request, TicketsType $ticketsType)
   {
-    $this->validate($request, [
-      'type' => 'required|unique:tickets_types,type'
-    ]);
-
     $ticketsType->update($request->all());
 
     Session::flash('status', 'success');

@@ -26,12 +26,8 @@ class LocationsController extends Controller
 
   public function store(StoreLocationRequest $request)
   {
-    $location = new Location();
-    $location->building = $request->building;
-    $location->office = $request->office;
-    $location->location_name = $request->location_name;
-
-    $location->save();
+    Location::create($request->all());
+    $location = Location::get()->last();
 
     Session::flash('status', 'success');
     Session::flash('title', $location->location_name);

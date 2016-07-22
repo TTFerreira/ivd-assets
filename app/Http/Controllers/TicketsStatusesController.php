@@ -26,10 +26,8 @@ class TicketsStatusesController extends Controller
 
   public function store(StoreTicketsStatusRequest $request)
   {
-    $ticketsStatus = new TicketsStatus();
-    $ticketsStatus->status = $request->status;
-
-    $ticketsStatus->save();
+    TicketsStatus::create($request->all());
+    $ticketsStatus = TicketsStatus::get()->last();
 
     Session::flash('status', 'success');
     Session::flash('title', 'Ticket Status: ' . $ticketsStatus->status);

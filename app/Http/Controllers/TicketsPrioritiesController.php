@@ -26,10 +26,8 @@ class TicketsPrioritiesController extends Controller
 
   public function store(StoreTicketsPriorityRequest $request)
   {
-    $ticketsPriority = new TicketsPriority();
-    $ticketsPriority->priority = $request->priority;
-
-    $ticketsPriority->save();
+    TicketsPriority::create($request->all());
+    $ticketsPriority = TicketsPriority::get()->last();
 
     Session::flash('status', 'success');
     Session::flash('title', 'Ticket Priority: ' . $ticketsPriority->priority);

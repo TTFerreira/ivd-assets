@@ -83,16 +83,8 @@ class TicketsController extends Controller
    */
   public function store(StoreTicketRequest $request)
   {
-    $ticket = new Ticket();
-    $ticket->user_id = $request->user_id;
-    $ticket->location_id = $request->location_id;
-    $ticket->ticket_status_id = $request->ticket_status_id;
-    $ticket->ticket_type_id = $request->ticket_type_id;
-    $ticket->ticket_priority_id = $request->ticket_priority_id;
-    $ticket->subject = $request->subject;
-    $ticket->description = $request->description;
-
-    $ticket->save();
+    Ticket::create($request->all());
+    $ticket = Ticket::get()->last();
 
     $user = User::findOrFail($ticket->user_id);
 
@@ -115,13 +107,7 @@ class TicketsController extends Controller
 
   public function update(UpdateTicketRequest $request, Ticket $ticket)
   {
-    $ticket->user_id = $request->user_id;
-    $ticket->location_id = $request->location_id;
-    $ticket->ticket_status_id = $request->ticket_status_id;
-    $ticket->ticket_type_id = $request->ticket_type_id;
-    $ticket->ticket_priority_id = $request->ticket_priority_id;
-
-    $ticket->update();
+    $ticket->update($request->all());
 
     Session::flash('status', 'success');
     Session::flash('title', 'Ticket #' . $ticket->id);

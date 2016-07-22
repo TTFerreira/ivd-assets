@@ -116,10 +116,13 @@ class AssetsController extends Controller
 
     $user = Auth::user()->id;
 
+    $storeroom = Location::where('storeroom', '=', 1)->first();
+    $status = Status::where('name', '=', 'Ready to Deploy')->first();
+
     $movement = new Movement();
     $movement->asset_id = $asset->id;
-    $movement->location_id = 1;
-    $movement->status_id = 1;
+    $movement->location_id = $storeroom->id;
+    $movement->status_id = $status->id;
     $movement->user_id = $user;
     $movement->save();
 

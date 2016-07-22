@@ -26,10 +26,8 @@ class SuppliersController extends Controller
 
   public function store(StoreSupplierRequest $request)
   {
-    $supplier = new Supplier();
-    $supplier->name = $request->name;
-
-    $supplier->save();
+    Supplier::create($request->all());
+    $supplier = Supplier::get()->last();
 
     Session::flash('status', 'success');
     Session::flash('title', $supplier->name);

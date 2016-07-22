@@ -32,14 +32,8 @@ class AssetModelsController extends Controller
 
   public function store(StoreAssetModelRequest $request)
   {
-    $asset_model = new AssetModel();
-    $asset_model->manufacturer_id = $request->manufacturer_id;
-    $asset_model->asset_type_id = $request->asset_type_id;
-    $asset_model->pcspec_id = $request->pcspec_id;
-    $asset_model->asset_model = $request->asset_model;
-    $asset_model->part_number = $request->part_number;
-
-    $asset_model->save();
+    AssetModel::create($request->all());
+    $asset_model = AssetModel::get()->last();
 
     Session::flash('status', 'success');
     Session::flash('title', $asset_model->manufacturer->name . ' - ' . $asset_model->asset_model);

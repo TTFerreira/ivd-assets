@@ -76,7 +76,7 @@
           <h3 class="box-title">Ticket Details</h3>
         </div>
         <div class="box-body">
-          <form method="POST" action="/tickets/{{$ticket->id}}/update">
+          <form method="POST" action="/tickets/{{$ticket->id}}">
             {{method_field('PATCH')}}
             {{csrf_field()}}
             <div class="form-group">

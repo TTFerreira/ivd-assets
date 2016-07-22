@@ -25,12 +25,8 @@ class PcspecsController extends Controller
 
   public function store(StorePcspecRequest $request)
   {
-    $pcspec = new Pcspec();
-    $pcspec->cpu = $request->cpu;
-    $pcspec->ram = $request->ram;
-    $pcspec->hdd = $request->hdd;
-
-    $pcspec->save();
+    Pcspec::create($request->all());
+    $pcspec = Pcspec::get()->last();
 
     Session::flash('status', 'success');
     Session::flash('title', $pcspec->cpu . ', ' . $pcspec->ram . ', ' . $pcspec->hdd);

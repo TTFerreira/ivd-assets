@@ -26,10 +26,8 @@ class StatusesController extends Controller
 
   public function store(StoreStatusRequest $request)
   {
-    $status = new Status();
-    $status->name = $request->name;
-
-    $status->save();
+    Status::create($request->all());
+    $status = Status::get()->last();
 
     Session::flash('status', 'success');
     Session::flash('title', $status->name);

@@ -26,10 +26,8 @@ class DivisionsController extends Controller
 
   public function store(StoreDivisionRequest $request)
   {
-    $division = new Division();
-    $division->name = $request->name;
-
-    $division->save();
+    Division::create($request->all());
+    $division = Division::get()->last();
 
     Session::flash('status', 'success');
     Session::flash('title', $division->name);

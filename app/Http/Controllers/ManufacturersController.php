@@ -31,10 +31,8 @@ class ManufacturersController extends Controller
 
   public function store(StoreManufacturerRequest $request)
   {
-    $manufacturer = new Manufacturer();
-    $manufacturer->name = $request->name;
-
-    $manufacturer->save();
+    Manufacturer::create($request->all());
+    $manufacturer = Manufacturer::get()->last();
 
     Session::flash('status', 'success');
     Session::flash('title', $manufacturer->name);

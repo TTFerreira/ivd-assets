@@ -27,12 +27,8 @@ class BudgetsController extends Controller
 
   public function store(StoreBudgetRequest $request)
   {
-    $budget = new Budget();
-    $budget->division_id = $request->division_id;
-    $budget->year = $request->year;
-    $budget->total = $request->total;
-
-    $budget->save();
+    Budget::create($request->all());
+    $budget = Budget::get()->last();
 
     Session::flash('status', 'success');
     Session::flash('title', 'Budget for ' . $budget->year);
