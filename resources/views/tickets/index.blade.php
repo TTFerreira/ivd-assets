@@ -29,26 +29,30 @@
                     <td>{{$ticket->user->name}}</td>
                     <td>{{$ticket->location->location_name}}</td>
                     <td>
-                      @if($ticket->ticket_status->status == 'Open')
-                        <span class="label label-success">
-                      @elseif($ticket->ticket_status->status == 'Pending')
-                        <span class="label label-info">
-                      @elseif($ticket->ticket_status->status == 'Resolved')
-                        <span class="label label-warning">
-                      @elseif($ticket->ticket_status->status == 'Closed')
-                        <span class="label label-danger">
-                      @endif
-                      {{$ticket->ticket_status->status}}</span>
+                      <div id="status{{$ticket->id}}">
+                        @if($ticket->ticket_status->status == 'Open')
+                          <span class="label label-success">
+                        @elseif($ticket->ticket_status->status == 'Pending')
+                          <span class="label label-info">
+                        @elseif($ticket->ticket_status->status == 'Resolved')
+                          <span class="label label-warning">
+                        @elseif($ticket->ticket_status->status == 'Closed')
+                          <span class="label label-danger">
+                        @endif
+                        {{$ticket->ticket_status->status}}</span>
+                      </div>
                     </td>
                     <td>
-                      @if($ticket->ticket_priority->priority == 'Low')
-                        <span class="label label-success">
-                      @elseif($ticket->ticket_priority->priority == 'Medium')
-                        <span class="label label-warning">
-                      @elseif($ticket->ticket_priority->priority == 'High')
-                        <span class="label label-danger">
-                      @endif
-                      {{$ticket->ticket_priority->priority}}</span>
+                      <div id="priority{{$ticket->id}}"
+                        @if($ticket->ticket_priority->priority == 'Low')
+                          <span class="label label-success">
+                        @elseif($ticket->ticket_priority->priority == 'Medium')
+                          <span class="label label-warning">
+                        @elseif($ticket->ticket_priority->priority == 'High')
+                          <span class="label label-danger">
+                        @endif
+                        {{$ticket->ticket_priority->priority}}</span>
+                      </div>
                     </td>
                     <td>{{$ticket->subject}}</td>
                     <td><a href="/tickets/{{ $ticket->id }}" class="btn btn-primary"><span class="fa fa-ticket" aria-hidden="true"></span> <b>View</b></a></td>
@@ -62,12 +66,32 @@
     </div>
     <script>
       $(document).ready(function() {
-        $('#table').DataTable( {
+        var table = $('#table').DataTable( {
           columnDefs: [ {
             orderable: false, targets: 6
           } ],
           order: [[ 0, "desc" ]]
         } );
+        // Get the status and priority columns' div IDs for each row.
+        // If the status or priority is clicked on, then the datatable will filter that word.
+        @foreach($tickets as $ticket)
+          var status = (function() {
+            var x = '#status' + {{$ticket->id}};
+            return x;
+          });
+          $(status()).click(function () {
+            table.search( "{{$ticket->ticket_status->status}}" ).draw();
+          });
+
+          var priority = (function() {
+            var x = '#priority' + {{$ticket->id}};
+            return x;
+          });
+          $(priority()).click(function () {
+            table.search( "{{$ticket->ticket_priority->priority}}" ).draw();
+          });
+        @endforeach
       } );
+
     </script>
 @endsection
