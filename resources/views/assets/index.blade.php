@@ -143,6 +143,9 @@
   <script>
   $(document).ready(function() {
     var table = $('#table').DataTable( {
+        responsive: {
+          details: false
+        },
         dom: 'B<"clear">lfrtip',
         buttons: [
             {

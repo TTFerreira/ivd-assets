@@ -1,6 +1,12 @@
+<h3>Hi {{$user->name}}</h3>
+
 <h4>A new ticket has been logged. Ticket Number: {{$ticket->id}}</h4>
 
-<a href="{{url('/tickets')}}/{{$ticket->id}}">View The Ticket Online</a>
+<h3>Ticket Details</h3>
+<h4>Subject: {{$ticket->subject}}</h4>
+<p>Description: {!!$ticket->description!!}</p>
+
+<hr>
 
 <ul>
   <li>Logged by: {{$ticket->user->name}}</li>
@@ -10,5 +16,6 @@
   <li>Priority: {{$ticket->ticket_priority->priority}}</li>
 </ul>
 
-<h4>Subject: {{$ticket->subject}}</h4>
-<p>Description: {!!$ticket->description!!}</p>
+<hr>
+
+<a href="{{url('/tickets')}}/{{$ticket->id}}">View The Ticket Online</a>

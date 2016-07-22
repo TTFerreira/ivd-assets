@@ -1,16 +1,15 @@
+<h3>Hi {{$user->name}}</h3>
+
 <h4>A new ticket note has been added to Ticket Number: {{$ticket->id}}</h4>
 
-<a href="{{url('/tickets')}}/{{$ticket->id}}">View The Ticket Online</a>
+<p><b>Note:</b> {!!$ticketEntry->note!!}</p>
 
-<p>Note: {!!$ticketEntry->note!!}</p>
+<hr>
 
-<ul>
-  <li>Logged by: {{$ticket->user->name}}</li>
-  <li>Location: {{$ticket->location->location_name}}</li>
-  <li>Status: {{$ticket->ticket_status->status}}</li>
-  <li>Type: {{$ticket->ticket_type->type}}</li>
-  <li>Priority: {{$ticket->ticket_priority->priority}}</li>
-</ul>
-
+<h3>Ticket Details</h3>
 <h4>Subject: {{$ticket->subject}}</h4>
 <p>Description: {!!$ticket->description!!}</p>
+
+<hr>
+
+<a href="{{url('/tickets')}}/{{$ticket->id}}">View The Ticket Online</a>
