@@ -143,11 +143,26 @@
   <script>
   $(document).ready(function() {
     var table = $('#table').DataTable( {
-        dom: 'Bfrtip',
+        dom: 'B<"clear">lfrtip',
         buttons: [
-            'copyHtml5',
-            'csvHtml5',
-            'excelHtml5'
+            {
+              extend: 'excel',
+              exportOptions: {
+                columns: [0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11]
+              }
+            },
+            {
+              extend: 'csv',
+              exportOptions: {
+                columns: [0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11]
+              }
+            },
+            {
+              extend: 'copy',
+              exportOptions: {
+                columns: [0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11]
+              }
+            }
         ],
         columns: [
           null,
