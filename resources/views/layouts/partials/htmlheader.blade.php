@@ -10,6 +10,8 @@
     <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
     <link href="{{ asset('/css/AdminLTE.css') }}" rel="stylesheet" type="text/css" />
+    <!-- Custom CSS style -->
+    <link href="{{ asset('/css/all.css') }}" rel="stylesheet" type="text/css" />
     <!-- AdminLTE Skin -->
     <link href="{{ asset('/css/skins/skin-blue.css') }}" rel="stylesheet" type="text/css" />
     <!-- iCheck -->

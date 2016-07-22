@@ -26,10 +26,10 @@
                 <tr>
                   <div>
                     <td>{{$ticket->id}}</td>
-                    <td>{{$ticket->user->name}}</td>
-                    <td>{{$ticket->location->location_name}}</td>
+                    <td><div class="hover-pointer" id="agent{{$ticket->id}}">{{$ticket->user->name}}</div></td>
+                    <td><div class="hover-pointer" id="location{{$ticket->id}}">{{$ticket->location->location_name}}</div></td>
                     <td>
-                      <div id="status{{$ticket->id}}">
+                      <div class="hover-pointer" id="status{{$ticket->id}}">
                         @if($ticket->ticket_status->status == 'Open')
                           <span class="label label-success">
                         @elseif($ticket->ticket_status->status == 'Pending')
@@ -43,7 +43,7 @@
                       </div>
                     </td>
                     <td>
-                      <div id="priority{{$ticket->id}}"
+                      <div class="hover-pointer" id="priority{{$ticket->id}}">
                         @if($ticket->ticket_priority->priority == 'Low')
                           <span class="label label-success">
                         @elseif($ticket->ticket_priority->priority == 'Medium')
@@ -72,9 +72,28 @@
           } ],
           order: [[ 0, "desc" ]]
         } );
-        // Get the status and priority columns' div IDs for each row.
-        // If the status or priority is clicked on, then the datatable will filter that word.
+        // Get the agent, locatoin, status and priority columns' div IDs for each row.
+        // If it is clicked on, then the datatable will filter that.
         @foreach($tickets as $ticket)
+          // Agent
+          var agent = (function() {
+            var x = '#agent' + {{$ticket->id}};
+            return x;
+          });
+          $(agent()).click(function () {
+            table.search( "{{$ticket->user->name}}" ).draw();
+          });
+
+          // Location
+          var location = (function() {
+            var x = '#location' + {{$ticket->id}};
+            return x;
+          });
+          $(location()).click(function () {
+            table.search( "{{$ticket->location->location_name}}" ).draw();
+          });
+
+          // Status
           var status = (function() {
             var x = '#status' + {{$ticket->id}};
             return x;
@@ -83,6 +102,7 @@
             table.search( "{{$ticket->ticket_status->status}}" ).draw();
           });
 
+          // Priority
           var priority = (function() {
             var x = '#priority' + {{$ticket->id}};
             return x;

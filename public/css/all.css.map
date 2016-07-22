@@ -1,0 +1,1 @@
+{"version":3,"sources":["custom.css"],"names":[],"mappings":"AAAA;AACA;AACA;AACA;AACA","file":"all.css","sourcesContent":[".hover-pointer:hover {\n  font-weight: bold;\n  cursor: pointer;\n}\n"],"sourceRoot":"/source/"}

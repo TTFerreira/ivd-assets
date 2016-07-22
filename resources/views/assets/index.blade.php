@@ -96,20 +96,34 @@
                     <td>{{$asset->asset_tag}}</td>
                     <td>{{$asset->model->asset_type->type_name}}</td>
                     <td>{{$asset->serial_number or ''}}</td>
-                    <td>{{$asset->model->manufacturer->name}} - {{$asset->model->asset_model}}</td>
-                    <td>{{$asset->movement->location->location_name}}</td>
-                    <td>{{$asset->division->name}}</td>
                     <td>
-                      @if($asset->movement->status->id == 1)
-                        <span class="label label-success">
-                      @elseif($asset->movement->status->id == 2)
-                        <span class="label label-info">
-                      @elseif($asset->movement->status->id == 3 || $asset->movement->status->id == 4)
-                        <span class="label label-warning">
-                      @elseif($asset->movement->status->id == 5 || $asset->movement->status->id == 6)
-                        <span class="label label-danger">
-                      @endif
-                      {{$asset->movement->status->name}}</span>
+                      <div id="model{{$asset->id}}" class="hover-pointer">
+                        {{$asset->model->manufacturer->name}} - {{$asset->model->asset_model}}
+                      </div>
+                    </td>
+                    <td>
+                      <div id="location{{$asset->id}}" class="hover-pointer">
+                        {{$asset->movement->location->location_name}}
+                      </div>
+                    </td>
+                    <td>
+                      <div id="division{{$asset->id}}" class="hover-pointer">
+                        {{$asset->division->name}}
+                      </div>
+                    </td>
+                    <td>
+                      <div id="status{{$asset->id}}" class="hover-pointer">
+                        @if($asset->movement->status->id == 1)
+                          <span class="label label-success">
+                        @elseif($asset->movement->status->id == 2)
+                          <span class="label label-info">
+                        @elseif($asset->movement->status->id == 3 || $asset->movement->status->id == 4)
+                          <span class="label label-warning">
+                        @elseif($asset->movement->status->id == 5 || $asset->movement->status->id == 6)
+                          <span class="label label-danger">
+                        @endif
+                        {{$asset->movement->status->name}}</span>
+                      </div>
                     </td>
                     <td><a href="/assets/{{ $asset->id }}/move" class="btn btn-primary"><span class="fa fa-send" aria-hidden="true"></span> <b>Move</b></a> | <a href="/assets/{{ $asset->id }}/history" class="btn btn-primary"><span class="fa fa-calendar" aria-hidden="true"></span> <b>History</b></a> | <a href="/assets/{{ $asset->id }}/edit" class="btn btn-primary"><span class="fa fa-pencil" aria-hidden="true"></span> <b>Edit</b></a></td>
                     <td>{{$asset->supplier->name}}</td>
@@ -128,7 +142,7 @@
   </div>
   <script>
   $(document).ready(function() {
-    $('#table').DataTable( {
+    var table = $('#table').DataTable( {
         dom: 'Bfrtip',
         buttons: [
             'copyHtml5',
@@ -152,6 +166,45 @@
           orderable: false, targets: 7
         }]
     } );
+    // Get the model, location, division and status columns' div IDs for each row.
+    // If it is clicked on, then the datatable will filter that.
+    @foreach($assets as $asset)
+      // Model
+      var model = (function() {
+        var x = '#model' + {{$asset->id}};
+        return x;
+      });
+      $(model()).click(function () {
+        table.search( "{{$asset->model->manufacturer->name}} - {{$asset->model->asset_model}}" ).draw();
+      });
+
+      // Location
+      var location = (function() {
+        var x = '#location' + {{$asset->id}};
+        return x;
+      });
+      $(location()).click(function () {
+        table.search( "{{$asset->movement->location->location_name}}" ).draw();
+      });
+
+      // Division
+      var division = (function() {
+        var x = '#division' + {{$asset->id}};
+        return x;
+      });
+      $(division()).click(function () {
+        table.search( "{{$asset->division->name}}" ).draw();
+      });
+
+      // Status
+      var status = (function() {
+        var x = '#status' + {{$asset->id}};
+        return x;
+      });
+      $(status()).click(function () {
+        table.search( "{{$asset->movement->status->name}}" ).draw();
+      });
+    @endforeach
   } );
   </script>
 @endsection
