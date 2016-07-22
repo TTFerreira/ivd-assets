@@ -16,7 +16,7 @@
     </div>
     <div class="col-md-3 col-sm-6 col-xs-12">
       <div class="info-box">
-        <span class="info-box-icon bg-aqua"><i class="fa fa-home"></i></span>
+        <span class="info-box-icon bg-aqua"><i class="fa fa-check-circle"></i></span>
 
         <div class="info-box-content">
           <span class="info-box-text">Deployed</span>
@@ -28,7 +28,7 @@
     </div>
     <div class="col-md-3 col-sm-6 col-xs-12">
       <div class="info-box">
-        <span class="info-box-icon bg-green"><i class="fa fa-check"></i></span>
+        <span class="info-box-icon bg-green"><i class="fa fa-plus-circle"></i></span>
 
         <div class="info-box-content">
           <span class="info-box-text">Ready to Deploy</span>
@@ -40,7 +40,7 @@
     </div>
     <div class="col-md-3 col-sm-6 col-xs-12">
       <div class="info-box">
-        <span class="info-box-icon bg-yellow"><i class="fa fa-wrench"></i></span>
+        <span class="info-box-icon bg-yellow"><i class="fa fa-times-circle"></i></span>
 
         <div class="info-box-content">
           <span class="info-box-text">Repairs</span>

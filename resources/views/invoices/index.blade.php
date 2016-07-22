@@ -108,7 +108,7 @@
   <script>
   $(document).ready(function() {
     $('#table').DataTable( {
-        dom: 'Bfrtip',
+        dom: 'B<"clear">lfrtip',
         buttons: [
             'copyHtml5',
             'csvHtml5',
