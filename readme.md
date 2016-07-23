@@ -55,6 +55,15 @@ php artisan migrate
 ### Database Seeds
 
 We have included several database seeds to create items required for the application to work.
+
+* Asset Types
+* Manufacturers
+* Warranty Types
+* Ticket Types
+* Ticket Statuses
+* Ticket Priorities
+* Roles
+
 You must run the database seed in order for the application to function.
 
 However, we have also included several extra seeds that you can include if you want some demo content.
@@ -67,7 +76,7 @@ Uncomment any extra seeds you would like to include, then run `db:seed`
 php artisan db:seed
 ```
 
-### Create Super Administrator User
+## Create Super Administrator User
 
 Run `php tinker`
 
@@ -82,12 +91,49 @@ $user = new App\User();
 $user->name = 'Your Name';
 $user->email = 'Your Email';
 $user->password = bcrypt('Your Password');
-$user-api_token = str_random(60);
+$user->api_token = str_random(60);
 $user->save();
 
 $superAdmin = App\Role::where('name', '=', 'super-admin')->first();
 
 $user->attachRole($superAdmin);
+```
+
+## Tests
+
+Create your test sqlite file.
+Within the `database` folder, create file named `testing.sqlite`
+If you want to use a different file, make sure to change the `sqlite_testing` section within `config/database.php` to reflect your file.
+
+Run `migrate` on the test Database
+
+```bash
+php artisan migrate --database=sqlite_testing
+```
+Edit `database/seeds/DatabaseSeeder.php`
+Uncomment ALL the Seeders
+
+Run `db:seed` on the test Database
+
+```bash
+php artisan db:seed --database=sqlite_testing
+```
+
+### PHPunit
+
+Run `phpunit` from the root folder to run all the tests for the application.
+
+To run a specific test, first get the name of test file, and the name of the test, from within the `tests` folder.
+Then run the command as follows.
+
+```bash
+phpunit tests/folder/filename -- filter=testname
+```
+
+Example
+
+```bash
+phpunit tests/models/StatusTest --filter=testCreateNewStatus
 ```
 
 ## License
