@@ -58,11 +58,11 @@
           <h3 class="box-title">Assets</h3>
         </div>
         <div class="box-body">
-          <p><a href="assets/create"><button type="button" class="btn btn-default" name="create-new-asset" data-toggle="tooltip" data-original-title="Create New Asset"><span class='fa fa-plus' aria-hidden='true'></span> <b>Create New Asset</b></button></a></p>
+          <p class="pull-right"><a href="assets/create"><button type="button" class="btn btn-default" name="create-new-asset" data-toggle="tooltip" data-original-title="Create New Asset"><span class='fa fa-plus' aria-hidden='true'></span> <b>Create New Asset</b></button></a></p>
           <table id="table" class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
-                <th>Asset Tag</th>
+                <th>Tag</th>
                 <th>Asset Type</th>
                 <th>Serial Number</th>
                 <th>Model</th>
@@ -144,7 +144,7 @@
   $(document).ready(function() {
     var table = $('#table').DataTable( {
         responsive: true,
-        dom: 'B<"clear">lfrtip',
+        dom: 'l<"clear">Bfrtip',
         buttons: [
             {
               extend: 'excel',
