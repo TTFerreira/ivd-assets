@@ -24,8 +24,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('migrate:reset')->daily();
-        $schedule->command('migrate')->daily();
-        $schedule->command('db:seed')->daily();
+        // $schedule->command('migrate:reset')->daily();
+        // $schedule->command('migrate')->daily();
+        // $schedule->command('db:seed')->daily();
     }
 }
