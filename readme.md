@@ -136,6 +136,16 @@ Example
 phpunit tests/models/StatusTest --filter=testCreateNewStatus
 ```
 
+There are currently 49 tests, with 419 assertions.
+
+## Credits
+
+[Acacha AdminLTE Laravel](https://github.com/acacha/adminlte-laravel)
+[Select2](https://select2.github.io/)
+[DataTables](https://datatables.net/)
+[toastr](http://codeseven.github.io/toastr/)
+
+
 ## License
 
 Licensed under the [MIT license](http://opensource.org/licenses/MIT).
