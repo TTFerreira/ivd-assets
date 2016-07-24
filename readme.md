@@ -6,7 +6,33 @@ I.V.D. Assets is a web application developed with Laravel 5.2, that caters to th
 * Ticketing System functionality
 * Different User Roles to safeguard Asset Information
 
-### Install
+## Demo
+
+[I.V.D. Assets Demo](https://assets-demo.terryferreira.com)
+
+The database is reset every 24 hours.
+
+### Demo Accounts
+
+#### Super Administrator
+Can use all functionality, and create/edit Locations, Divisions, Suppliers, Ticket Statuses, Priorities, Types and more.
+
+User Name: superadmin@terryferreira.com
+Password: superadmin
+
+#### Administrator
+Can use Assets and Tickets functionality.
+
+User Name: adminuser@terryferreira.com
+Password: adminuser
+
+#### End User
+Can only use Tickets functionality.
+
+User Name: useruser@terryferreira.com
+Password: useruser
+
+## Install
 
 Clone the repository
 
