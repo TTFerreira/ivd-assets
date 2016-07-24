@@ -24,8 +24,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-      $url = Config::get('app.url');
-      if ($url == 'assets-demo.terryferreira.com') {
+      if (env('APP_URL') == 'assets-demo.terryferreira.com') {
         $schedule->command('migrate:reset')->daily();
         $schedule->command('migrate')->daily();
         $schedule->command('db:seed')->daily();

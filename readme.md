@@ -104,7 +104,7 @@ php artisan db:seed
 
 ## Create Super Administrator User
 
-Run `php artisan tinker`
+Run `php tinker`
 
 ```bash
 php artisan tinker
