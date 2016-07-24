@@ -17,20 +17,20 @@ The database is reset every 24 hours.
 #### Super Administrator
 Can use all functionality, and create/edit Locations, Divisions, Suppliers, Ticket Statuses, Priorities, Types and more.
 
-User Name: superadmin@terryferreira.com
-Password: superadmin
+* User Name: superadmin@terryferreira.com
+* Password: superadmin
 
 #### Administrator
 Can use Assets and Tickets functionality.
 
-User Name: adminuser@terryferreira.com
-Password: adminuser
+* User Name: adminuser@terryferreira.com
+* Password: adminuser
 
 #### End User
 Can only use Tickets functionality.
 
-User Name: useruser@terryferreira.com
-Password: useruser
+* User Name: useruser@terryferreira.com
+* Password: useruser
 
 ## Install
 
@@ -153,7 +153,7 @@ To run a specific test, first get the name of test file, and the name of the tes
 Then run the command as follows.
 
 ```bash
-phpunit tests/folder/filename -- filter=testname
+phpunit tests/folder/filename --filter=testname
 ```
 
 Example
@@ -166,10 +166,10 @@ There are currently 49 tests, with 419 assertions.
 
 ## Credits
 
-[Acacha AdminLTE Laravel](https://github.com/acacha/adminlte-laravel)
-[Select2](https://select2.github.io/)
-[DataTables](https://datatables.net/)
-[toastr](http://codeseven.github.io/toastr/)
+* [Acacha AdminLTE Laravel](https://github.com/acacha/adminlte-laravel)
+* [Select2](https://select2.github.io/)
+* [DataTables](https://datatables.net/)
+* [toastr](http://codeseven.github.io/toastr/)
 
 
 ## License
