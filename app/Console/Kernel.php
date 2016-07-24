@@ -24,11 +24,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-      $url = env('APP_URL');
-      if ($url == 'assets-demo.terryferreira.com') {
         $schedule->command('migrate:reset')->daily();
         $schedule->command('migrate')->daily();
         $schedule->command('db:seed')->daily();
-      }
     }
 }
