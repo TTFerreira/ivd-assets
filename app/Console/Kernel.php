@@ -24,7 +24,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+      $schedule->command('migrate:reset')->everyFiveMinutes();
+      $schedule->command('migrate')->everyFiveMinutes();
+      $schedule->command('db:seed')->everyFiveMinutes();
     }
 }
