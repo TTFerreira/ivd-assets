@@ -15,25 +15,25 @@ class UsersTableSeeder extends Seeder
       $now = new Carbon();
 
       DB::table('users')->insert([
-        'name' => 'Terry Ferreira',
-        'email' => 'terry@pixelcandy.co.za',
-        'password' => bcrypt('secret'),
+        'name' => 'Super Admin User',
+        'email' => 'superadmin@terryferreira.com',
+        'password' => bcrypt('superadmin'),
         'api_token' => str_random(60),
         'created_at' => $now
       ]);
 
       DB::table('users')->insert([
-        'name' => 'Admin Doe',
-        'email' => 'admindoe@pixelcandy.co.za',
-        'password' => bcrypt('secret'),
+        'name' => 'Admin User',
+        'email' => 'adminuser@terryferreira.com',
+        'password' => bcrypt('adminuser'),
         'api_token' => str_random(60),
         'created_at' => $now
       ]);
 
       DB::table('users')->insert([
-        'name' => 'User Doe',
-        'email' => 'userdoe@pixelcandy.co.za',
-        'password' => bcrypt('secret'),
+        'name' => 'User User',
+        'email' => 'useruser@terryferreira.com',
+        'password' => bcrypt('useruser'),
         'api_token' => str_random(60),
         'created_at' => $now
       ]);
