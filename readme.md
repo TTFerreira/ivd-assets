@@ -6,6 +6,11 @@ I.V.D. Assets is a web application developed with Laravel 5.2, that caters to th
 * Ticketing System functionality
 * Different User Roles to safeguard Asset Information
 
+Work In Progress
+
+* Reports (Currently DataTables can be filtered and exported as .csv, .xslx or copied)
+* More functionality for Tickets (Attachments, Reports)
+
 ## Demo
 
 [I.V.D. Assets Demo](https://assets-demo.terryferreira.com)
