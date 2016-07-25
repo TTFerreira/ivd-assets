@@ -107,11 +107,27 @@
   <script>
   $(document).ready(function() {
     $('#table').DataTable( {
-        dom: 'B<"clear">lfrtip',
+        responsive: true,
+        dom: 'l<"clear">Bfrtip',
         buttons: [
-            'copyHtml5',
-            'csvHtml5',
-            'excelHtml5'
+            {
+              extend: 'excel',
+              exportOptions: {
+                columns: [0, 1, 2, 3, 4, 5]
+              }
+            },
+            {
+              extend: 'csv',
+              exportOptions: {
+                columns: [0, 1, 2, 3, 4, 5]
+              }
+            },
+            {
+              extend: 'copy',
+              exportOptions: {
+                columns: [0, 1, 2, 3, 4, 5]
+              }
+            }
         ],
         columnDefs: [ {
           orderable: false, targets: 6
