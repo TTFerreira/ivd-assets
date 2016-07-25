@@ -61,7 +61,7 @@ Route::group(['middleware' => ['web']], function () {
 
     // Invoices
     Route::resource('/invoices', 'InvoicesController', [
-      'only' => ['index', 'edit', 'update', 'store'],
+      'only' => ['index', 'edit', 'update', 'store', 'show'],
       'parameters' => 'singular'
     ]);
 

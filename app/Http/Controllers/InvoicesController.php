@@ -31,6 +31,12 @@ class InvoicesController extends Controller
     return view('invoices.index', compact('invoices', 'suppliers', 'divisions', 'pageTitle'));
   }
 
+  public function show(Invoice $invoice)
+  {
+    $filepath = storage_path() . "/app/invoices/" . $invoice->invoice_number . ".pdf";
+    return response()->file($filepath);
+  }
+
   public function store(StoreInvoiceRequest $request)
   {
     $invoice = new Invoice();
