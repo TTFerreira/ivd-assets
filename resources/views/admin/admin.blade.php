@@ -47,17 +47,5 @@
         </div>
       </div>
     </div>
-    <div class="col-md-2">
-      <div class="box box-primary">
-        <div class="box-header with-border">
-          <h3 class="box-title">Emails</h3>
-        </div>
-        <div class="box-body">
-          <a href="/admin/emails-tickets" class="btn btn-app">
-            <i class="fa fa-ticket"></i> Tickets
-          </a>
-        </div>
-      </div>
-    </div>
   </div>
 @endsection
