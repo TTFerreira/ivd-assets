@@ -17,6 +17,12 @@ Route::group(['middleware' => ['web']], function () {
   Route::get('dashboard', 'HomeController@index');
 
   Route::group(['middleware' => ['auth', 'role:super-admin']], function () {
+    // Users
+    Route::resource('/admin/users', 'UsersController', [
+      'only' => ['index', 'edit', 'update', 'store'],
+      'parameters' => 'singular'
+    ]);
+    
     // Locations
     Route::resource('/locations', 'LocationsController', [
       'only' => ['index', 'edit', 'update', 'store'],

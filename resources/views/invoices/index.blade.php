@@ -11,8 +11,8 @@
           <table id="table" class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
-                <th>Invoice Number</th>
-                <th>Order Number</th>
+                <th>Invoice</th>
+                <th>Order</th>
                 <th>Total</th>
                 <th>Division</th>
                 <th>Supplier</th>

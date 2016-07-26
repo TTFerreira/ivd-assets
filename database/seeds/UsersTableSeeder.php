@@ -21,21 +21,5 @@ class UsersTableSeeder extends Seeder
         'api_token' => str_random(60),
         'created_at' => $now
       ]);
-
-      DB::table('users')->insert([
-        'name' => 'Admin User',
-        'email' => 'adminuser@terryferreira.com',
-        'password' => bcrypt('adminuser'),
-        'api_token' => str_random(60),
-        'created_at' => $now
-      ]);
-
-      DB::table('users')->insert([
-        'name' => 'User User',
-        'email' => 'useruser@terryferreira.com',
-        'password' => bcrypt('useruser'),
-        'api_token' => str_random(60),
-        'created_at' => $now
-      ]);
     }
 }

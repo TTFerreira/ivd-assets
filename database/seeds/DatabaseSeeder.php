@@ -24,14 +24,16 @@ class DatabaseSeeder extends Seeder
       $this->call(RolesTableSeeder::class);
       $this->call(PermissionsTableSeeder::class);
       $this->call(AddPermissionsTableSeeder::class);
+      $this->call(UsersTableSeeder::class);
+      $this->call(AssignRolesTableSeeder::class);
 
       /**
        * The commented lines are those that can be used to generate data for testing.
        * Uncomment those you'd like to seed before running 'artisan db:seed'.
        */
 
-      // $this->call(UsersTableSeeder::class);
-      // $this->call(AssignRolesTableSeeder::class);
+      // $this->call(TestUsersTableSeeder::class);
+      // $this->call(TestAssignRolesTableSeeder::class);
       // $this->call(DivisionsTableSeeder::class);
       // $this->call(LocationsTableSeeder::class);
       // $this->call(SuppliersTableSeeder::class);

@@ -64,7 +64,7 @@
               <tr>
                 <th>Tag</th>
                 <th>Asset Type</th>
-                <th>Serial Number</th>
+                <th>S/N</th>
                 <th>Model</th>
                 <th>Location</th>
                 <th>Division</th>

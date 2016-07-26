@@ -94,6 +94,8 @@ We have included several database seeds to create items required for the applica
 * Ticket Statuses
 * Ticket Priorities
 * Roles
+* Default Super Administrator Account
+* Super Administrator Role for the Account
 
 You must run the database seed in order for the application to function.
 
@@ -107,28 +109,17 @@ Uncomment any extra seeds you would like to include, then run `db:seed`
 php artisan db:seed
 ```
 
-## Create Super Administrator User
+## Super Administrator User
 
-Run `php artisan tinker`
+A Super Administrator account is created during the normal `db:seed` and the role of Super Administrator is assigned to the account.
+After logging in to the application, head over to `admin/users/` and edit the user account to match your name, email and password.
+Password must be a minimum of 6 characters long.
+There must also be one (1) Super Administrator user at all times. So you cannot change the role of the only Super Administrator user account.
 
-```bash
-php artisan tinker
-```
+The login details for the account are as follows.
 
-Within `tinker`, create your Super Administrator and assign the `super-admin` role to the new user.
-
-```bash
-$user = new App\User();
-$user->name = 'Your Name';
-$user->email = 'Your Email';
-$user->password = bcrypt('Your Password');
-$user->api_token = str_random(60);
-$user->save();
-
-$superAdmin = App\Role::where('name', '=', 'super-admin')->first();
-
-$user->attachRole($superAdmin);
-```
+* User Name: superadmin@terryferreira.com
+* Password: superadmin
 
 ## Tests
 
