@@ -125,7 +125,13 @@
                         {{$asset->movement->status->name}}</span>
                       </div>
                     </td>
-                    <td><a href="/assets/{{ $asset->id }}/move" class="btn btn-primary"><span class="fa fa-send" aria-hidden="true"></span> <b>Move</b></a> | <a href="/assets/{{ $asset->id }}/history" class="btn btn-primary"><span class="fa fa-calendar" aria-hidden="true"></span> <b>History</b></a> | <a href="/assets/{{ $asset->id }}/edit" class="btn btn-primary"><span class="fa fa-pencil" aria-hidden="true"></span> <b>Edit</b></a></td>
+                    <td>
+                      <div class="btn-group">
+                        <a href="/assets/{{ $asset->id }}/move" class="btn btn-primary"><span class="fa fa-send" aria-hidden="true"></span> <b>Move</b></a>
+                        <a href="/assets/{{ $asset->id }}/history" class="btn btn-primary"><span class="fa fa-calendar" aria-hidden="true"></span> <b>History</b></a>
+                        <a href="/assets/{{ $asset->id }}/edit" class="btn btn-primary"><span class="fa fa-pencil" aria-hidden="true"></span> <b>Edit</b></a>
+                      </div>
+                    </td>
                     <td>{{$asset->supplier->name}}</td>
                     <td>{{$asset->purchase_date}}</td>
                     <td>{{$asset->warranty_months}}</td>

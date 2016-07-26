@@ -30,7 +30,12 @@
                     <td>{{$invoice->division->name}}</td>
                     <td>{{$invoice->supplier->name}}</td>
                     <td>{{$invoice->invoiced_date}}</td>
-                    <td><a href="/invoices/{{ $invoice->id }}" class="btn btn-primary"><span class='fa fa-usd' aria-hidden='true'></span> <b>View</b></a> | <a href="/invoices/{{ $invoice->id }}/edit" class="btn btn-primary"><span class='fa fa-pencil' aria-hidden='true'></span> <b>Edit</b></a></td>
+                    <td>
+                      <div class="btn-group">
+                        <a href="/invoices/{{ $invoice->id }}" class="btn btn-primary"><span class='fa fa-usd' aria-hidden='true'></span> <b>View</b></a>
+                        <a href="/invoices/{{ $invoice->id }}/edit" class="btn btn-primary"><span class='fa fa-pencil' aria-hidden='true'></span> <b>Edit</b></a>
+                      </div>
+                    </td>
                   </div>
                 </tr>
               @endforeach
