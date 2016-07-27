@@ -32,7 +32,7 @@ class PcspecsController extends Controller
     Session::flash('title', $pcspec->cpu . ', ' . $pcspec->ram . ', ' . $pcspec->hdd);
     Session::flash('message', 'Successfully created');
 
-    return redirect('pcspecs');
+    return redirect()->route('pcspecs.index');
   }
 
   public function edit(Pcspec $pcspec)
@@ -49,6 +49,6 @@ class PcspecsController extends Controller
     Session::flash('title', $pcspec->cpu . ', ' . $pcspec->ram . ', ' . $pcspec->hdd);
     Session::flash('message', 'Successfully updated');
 
-    return redirect('pcspecs');
+    return redirect()->route('pcspecs.index');
   }
 }

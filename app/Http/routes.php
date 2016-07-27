@@ -22,7 +22,7 @@ Route::group(['middleware' => ['web']], function () {
       'only' => ['index', 'edit', 'update', 'store'],
       'parameters' => 'singular'
     ]);
-    
+
     // Locations
     Route::resource('/locations', 'LocationsController', [
       'only' => ['index', 'edit', 'update', 'store'],

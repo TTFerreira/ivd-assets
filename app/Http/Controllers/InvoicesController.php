@@ -58,7 +58,7 @@ class InvoicesController extends Controller
     Session::flash('title', 'Invoice ' . $invoice->invoice_number);
     Session::flash('message', 'Successfully created');
 
-    return redirect('invoices');
+    return redirect()->route('invoices.index');
   }
 
   public function edit(Invoice $invoice)
@@ -87,6 +87,6 @@ class InvoicesController extends Controller
     Session::flash('title', 'Invoice ' . $invoice->invoice_number);
     Session::flash('message', 'Successfully updated');
 
-    return redirect('invoices');
+    return redirect()->route('invoices.index');
   }
 }

@@ -24,11 +24,6 @@ class ManufacturersController extends Controller
     return view('manufacturers.index', compact('manufacturers', 'pageTitle'));
   }
 
-  public function show(Manufacturer $manufacturer)
-  {
-    return view('manufacturers.show', compact('manufacturer'));
-  }
-
   public function store(StoreManufacturerRequest $request)
   {
     Manufacturer::create($request->all());
@@ -38,7 +33,7 @@ class ManufacturersController extends Controller
     Session::flash('title', $manufacturer->name);
     Session::flash('message', 'Successfully created');
 
-    return redirect('manufacturers');
+    return redirect()->route('manufacturers.index');
   }
 
   public function edit(Manufacturer $manufacturer)
@@ -55,6 +50,6 @@ class ManufacturersController extends Controller
     Session::flash('title', $manufacturer->name);
     Session::flash('message', 'Successfully updated');
 
-    return redirect('manufacturers');
+    return redirect()->route('manufacturers.index');
   }
 }

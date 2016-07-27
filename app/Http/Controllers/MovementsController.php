@@ -52,6 +52,6 @@ class MovementsController extends Controller
     $asset->movement_id = $movement->id;
     $asset->update();
 
-    return redirect('assets');
+    return redirect()->route('assets.index');
   }
 }

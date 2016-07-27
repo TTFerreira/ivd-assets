@@ -33,7 +33,7 @@ class DivisionsController extends Controller
     Session::flash('title', $division->name);
     Session::flash('message', 'Successfully created');
 
-    return redirect('divisions');
+    return redirect()->route('divisions.index');
   }
 
   public function edit(Division $division)
@@ -50,6 +50,6 @@ class DivisionsController extends Controller
     Session::flash('title', $division->name);
     Session::flash('message', 'Successfully updated');
 
-    return redirect('divisions');
+    return redirect()->route('divisions.index');
   }
 }

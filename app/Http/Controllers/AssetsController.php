@@ -130,7 +130,7 @@ class AssetsController extends Controller
 
     $asset->update();
 
-    return redirect('assets');
+    return redirect()->route('assets.index');
   }
 
   public function edit(Asset $asset)
@@ -157,6 +157,6 @@ class AssetsController extends Controller
 
     $asset->update($request->all());
 
-    return redirect('assets');
+    return redirect()->route('assets.index');
   }
 }

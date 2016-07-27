@@ -8,7 +8,6 @@
           <h3 class="box-title">{{$pageTitle}}</h3>
         </div>
         <div class="box-body">
-          <p><a href="/admin/ticket-priorities/create"><button type="button" class="btn btn-default" name="create-new-ticket-priority" data-toggle="tooltip" data-original-title="Create New Ticket Priority"><span class='fa fa-plus' aria-hidden='true'></span> <b>Create New Ticket Priority</b></button></a></p>
           <table id="table" class="table table-striped table-bordered table-hover">
             <thead>
               <tr>

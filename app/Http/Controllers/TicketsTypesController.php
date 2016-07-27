@@ -33,7 +33,7 @@ class TicketsTypesController extends Controller
     Session::flash('title', 'Ticket Type: ' . $ticketsType->type);
     Session::flash('message', 'Successfully created');
 
-    return redirect('admin/ticket-types');
+    return redirect()->route('admin.ticket-types.index');
   }
 
   public function edit(TicketsType $ticketsType)
@@ -51,6 +51,6 @@ class TicketsTypesController extends Controller
     Session::flash('title', 'Ticket Type: ' . $ticketsType->type);
     Session::flash('message', 'Successfully updated');
 
-    return redirect('/admin/ticket-types');
+    return redirect()->route('admin.ticket-types.index');
   }
 }

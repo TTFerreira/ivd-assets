@@ -33,7 +33,7 @@ class LocationsController extends Controller
     Session::flash('title', $location->location_name);
     Session::flash('message', 'Successfully created');
 
-    return redirect('locations');
+    return redirect()->route('locations.index');
   }
 
   public function edit(Location $location)
@@ -50,6 +50,6 @@ class LocationsController extends Controller
     Session::flash('title', $location->location_name);
     Session::flash('message', 'Successfully updated');
 
-    return redirect('locations');
+    return redirect()->route('locations.index');
   }
 }

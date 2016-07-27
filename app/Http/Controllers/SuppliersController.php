@@ -33,7 +33,7 @@ class SuppliersController extends Controller
     Session::flash('title', $supplier->name);
     Session::flash('message', 'Successfully created');
 
-    return redirect('suppliers');
+    return redirect()->route('suppliers.index');
   }
 
   public function edit(Supplier $supplier)
@@ -50,6 +50,6 @@ class SuppliersController extends Controller
     Session::flash('title', $supplier->name);
     Session::flash('message', 'Successfully updated');
 
-    return redirect('suppliers');
+    return redirect()->route('suppliers.index');
   }
 }

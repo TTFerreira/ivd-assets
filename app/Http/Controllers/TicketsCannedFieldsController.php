@@ -44,7 +44,7 @@ class TicketsCannedFieldsController extends Controller
     Session::flash('title', 'Canned Ticket Fields: ' . $ticketsCannedField->subject);
     Session::flash('message', 'Successfully created');
 
-    return redirect('admin/ticket-canned-fields');
+    return redirect()->route('admin.ticket-canned-fields.index');
   }
 
   public function canned(Request $request)
@@ -80,6 +80,6 @@ class TicketsCannedFieldsController extends Controller
     Session::flash('title', 'Canned Ticket Fields: ' . $ticketsCannedField->subject);
     Session::flash('message', 'Successfully updated');
 
-    return redirect('admin/ticket-canned-fields');
+    return redirect()->route('admin.ticket-canned-fields.index');
   }
 }

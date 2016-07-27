@@ -33,7 +33,7 @@ class AssetTypesController extends Controller
     Session::flash('title', $asset_type->type_name);
     Session::flash('message', 'Successfully created');
 
-    return redirect('asset-types');
+    return redirect()->route('asset-types.index');
   }
 
   public function edit(AssetType $asset_type)
@@ -50,6 +50,6 @@ class AssetTypesController extends Controller
     Session::flash('title', $asset_type->type_name);
     Session::flash('message', 'Successfully updated');
 
-    return redirect('asset-types');
+    return redirect()->route('asset-types.index');
   }
 }

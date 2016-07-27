@@ -33,7 +33,7 @@ class TicketsStatusesController extends Controller
     Session::flash('title', 'Ticket Status: ' . $ticketsStatus->status);
     Session::flash('message', 'Successfully created');
 
-    return redirect('admin/ticket-statuses');
+    return redirect()->route('admin.ticket-statuses.index');
   }
 
   public function edit(TicketsStatus $ticketsStatus)
@@ -51,6 +51,6 @@ class TicketsStatusesController extends Controller
     Session::flash('title', 'Ticket Status: ' . $ticketsStatus->status);
     Session::flash('message', 'Successfully updated');
 
-    return redirect('/admin/ticket-statuses');
+    return redirect()->route('admin.ticket-statuses.index');
   }
 }

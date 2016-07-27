@@ -33,7 +33,7 @@ class TicketsPrioritiesController extends Controller
     Session::flash('title', 'Ticket Priority: ' . $ticketsPriority->priority);
     Session::flash('message', 'Successfully created');
 
-    return redirect('admin/ticket-priorities');
+    return redirect()->route('admin.ticket-priorities.index');
   }
 
   public function edit(TicketsPriority $ticketsPriority)
@@ -51,6 +51,6 @@ class TicketsPrioritiesController extends Controller
     Session::flash('title', 'Ticket Priority: ' . $ticketsPriority->priority);
     Session::flash('message', 'Successfully updated');
 
-    return redirect('/admin/ticket-priorities');
+    return redirect()->route('admin.ticket-priorities.index');
   }
 }

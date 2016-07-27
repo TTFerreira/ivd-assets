@@ -96,7 +96,7 @@ class TicketsController extends Controller
     Session::flash('title', 'Ticket #' . $ticket->id);
     Session::flash('message', 'Successfully logged');
 
-    return redirect('tickets/' . $ticket->id);
+    return redirect()->route('tickets.show', $ticket->id);
   }
 
   public function edit(Ticket $ticket)
@@ -113,6 +113,6 @@ class TicketsController extends Controller
     Session::flash('title', 'Ticket #' . $ticket->id);
     Session::flash('message', 'Successfully updated');
 
-    return redirect('tickets/' . $ticket->id);
+    return redirect()->route('tickets.show', $ticket->id);
   }
 }

@@ -39,7 +39,7 @@ class AssetModelsController extends Controller
     Session::flash('title', $asset_model->manufacturer->name . ' - ' . $asset_model->asset_model);
     Session::flash('message', 'Successfully created');
 
-    return redirect('models');
+    return redirect()->route('models.index');
   }
 
   public function edit(AssetModel $asset_model)
@@ -59,6 +59,6 @@ class AssetModelsController extends Controller
     Session::flash('title', $asset_model->manufacturer->name . ' - ' . $asset_model->asset_model);
     Session::flash('message', 'Successfully updated');
 
-    return redirect('models');
+    return redirect()->route('models.index');
   }
 }

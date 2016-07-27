@@ -40,6 +40,6 @@ class StoreroomsController extends Controller
     Session::flash('title', 'New Default Storeroom Saved');
     Session::flash('message', $location->location_name);
 
-    return redirect('/admin/storeroom');
+    return redirect()->route('admin.storeroom.index');
   }
 }

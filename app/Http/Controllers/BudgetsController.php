@@ -34,7 +34,7 @@ class BudgetsController extends Controller
     Session::flash('title', 'Budget for ' . $budget->year);
     Session::flash('message', 'Successfully created');
 
-    return redirect('budgets');
+    return redirect()->route('budgets.index');
   }
 
   public function edit(Budget $budget)
@@ -52,6 +52,6 @@ class BudgetsController extends Controller
     Session::flash('title', 'Budget for ' . $budget->year);
     Session::flash('message', 'Successfully updated');
 
-    return redirect('budgets');
+    return redirect()->route('budgets.index');
   }
 }

@@ -33,7 +33,7 @@ class StatusesController extends Controller
     Session::flash('title', $status->name);
     Session::flash('message', 'Successfully created');
 
-    return redirect('admin/assets-statuses');
+    return redirect()->route('admin.assets-statuses.index');
   }
 
   public function edit(Status $status)
@@ -50,6 +50,6 @@ class StatusesController extends Controller
     Session::flash('title', $status->name);
     Session::flash('message', 'Successfully updated');
 
-    return redirect('admin/assets-statuses');
+    return redirect()->route('admin.assets-statuses.index');
   }
 }

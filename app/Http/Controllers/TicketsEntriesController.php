@@ -39,6 +39,6 @@ class TicketsEntriesController extends Controller
     Session::flash('title', 'Ticket #' . $ticket->id);
     Session::flash('message', 'New Note Added');
 
-    return redirect('tickets/' . $ticket->id);
+    return redirect()->route('tickets.show', $ticket->id);
   }
 }
