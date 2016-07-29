@@ -23,7 +23,7 @@
                     @if($asset->model_id == $asset_model->id)
                       selected
                     @endif
-                  value="{{$asset_model->id}}">{{$asset_model->asset_model}}</option>
+                  value="{{$asset_model->id}}">{{$asset_model->manufacturer->name}} - {{$asset_model->asset_model}}</option>
                 @endforeach
               </select>
             </div>
