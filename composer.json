@@ -9,7 +9,8 @@
         "laravel/framework": "5.2.*",
         "acacha/admin-lte-template-laravel": "2.*",
         "guzzlehttp/guzzle": "~5.3|~6.0",
-        "zizaco/entrust": "5.2.x-dev"
+        "zizaco/entrust": "5.2.x-dev",
+        "maknz/slack-laravel": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

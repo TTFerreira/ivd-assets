@@ -8,6 +8,7 @@ I.V.D. Assets is a web application developed with Laravel 5.2, that caters to th
 
 Work In Progress
 
+* Slack Integration for notifications of new Tickets and Asset Movements
 * Reports (Currently DataTables can be filtered and exported as .csv, .xslx or copied)
 * More functionality for Tickets (Attachments, Reports)
 
@@ -68,6 +69,16 @@ If you prefer not to use Mailgun, remove the 2 lines for Mailgun from the `.env`
 MAILGUN_DOMAIN=
 MAILGUN_SECRET=
 ```
+
+### Slack Integration
+
+You will find 4 lines for Slack in the `.env` file.
+All that you are required to do to get slack to work is to [Create an Incoming Webhook here](https://my.slack.com/services/new/incoming-webhook).
+Simply create a new webhook on your slack account and copy and paste it next to `SLACK_WEBHOOK=` in the `.env` file, without any quotes.
+You're welcome to change the default channel and bot name there as well.
+
+If you do not want to use Slack, change `SLACK_ENABLED=true` to `SLACK_ENABLED=false`
+You can also edit the Slack Integration in more detail within `app/config/slack.php`
 
 ### Time Zone
 
@@ -160,12 +171,13 @@ phpunit tests/models/StatusTest --filter=testCreateNewStatus
 
 There are currently 49 tests, with 419 assertions.
 
-## Credits
+## Credits/Packages
 
 * [Acacha AdminLTE Laravel](https://github.com/acacha/adminlte-laravel)
 * [Select2](https://select2.github.io/)
 * [DataTables](https://datatables.net/)
 * [toastr](http://codeseven.github.io/toastr/)
+* [slack-laravel](https://github.com/maknz/slack-laravel)
 
 
 ## License

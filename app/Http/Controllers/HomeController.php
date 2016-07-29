@@ -14,6 +14,7 @@ use App\Status;
 use App\Budget;
 use App\Invoice;
 use App\Division;
+use Auth;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
@@ -48,7 +49,14 @@ class HomeController extends Controller
       $invoices = Invoice::all();
       $divisions = Division::all();
       $year = \Carbon\Carbon::now()->year;
-      $movements = Movement::orderBy('created_at', 'desc')->take(5)->get();
-      return view('home', compact('assets', 'movements', 'locations', 'statuses', 'budgets', 'invoices', 'divisions', 'year', 'pageTitle'));
+
+      // Get Authenticated User
+      $user = Auth::user();
+      if ($user->hasRole('user')) {
+        return redirect()->route('tickets.index');
+      } else {
+        $movements = Movement::orderBy('created_at', 'desc')->take(5)->get();
+        return view('home', compact('assets', 'movements', 'locations', 'statuses', 'budgets', 'invoices', 'divisions', 'year', 'pageTitle'));
+      }
     }
 }

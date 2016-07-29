@@ -7,17 +7,14 @@
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
             <li class="header">Navigation</li>
-            <!-- Optionally, you can add icons to the links -->
-            <li><a href="{{ url('home') }}"><i class='fa fa-home'></i> <span>Home</span></a></li>
+            <!-- Only Super Admins and Admins can see the following menu items -->
+            @role(['super-admin', 'admin'])
+              <li><a href="{{ url('home') }}"><i class='fa fa-home'></i> <span>Home</span></a></li>
+              <li><a href="{{ url('/assets')}}"><i class='fa fa-tags'></i> <span>Assets</span></a></li>
+            @endrole
             <li class="treeview">
                 <a href="{{ url('/tickets')}}"><i class='fa fa-ticket'></i> <span>Tickets</span></a>
             </li>
-            <!-- Only Super Admins and Admins can see the following menu items -->
-            @role(['super-admin', 'admin'])
-              <li class="treeview">
-                  <a href="{{ url('/assets')}}"><i class='fa fa-tags'></i> <span>Assets</span></a>
-              </li>
-            @endrole
             <!-- Only Super Admins can see the following menu items -->
             @role(['super-admin'])
               <li class="treeview">

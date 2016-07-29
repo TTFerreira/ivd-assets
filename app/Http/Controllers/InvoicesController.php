@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Invoices\StoreInvoiceRequest;
 use App\Http\Requests\Invoices\UpdateInvoiceRequest;
 use Illuminate\Http\Response;
+use Slack;
 
 class InvoicesController extends Controller
 {
@@ -57,6 +58,47 @@ class InvoicesController extends Controller
     Session::flash('status', 'success');
     Session::flash('title', 'Invoice ' . $invoice->invoice_number);
     Session::flash('message', 'Successfully created');
+
+    if (env('SLACK_ENABLED')) {
+      Slack::attach([
+        'title' => 'New Invoice Created',
+        'title_link' => url('invoices/' . $invoice->id),
+        'fallback' => 'New Invoice Created',
+        'color' => 'good',
+        'fields' => [
+          [
+            'title' => 'Invoice Number',
+            'value' => $invoice->invoice_number,
+            'short' => true
+          ],
+          [
+            'title' => 'Order Number',
+            'value' => $invoice->order_number,
+            'short' => true
+          ],
+          [
+            'title' => 'Division',
+            'value' => $invoice->division->name,
+            'short' => true
+          ],
+          [
+            'title' => 'Supplier',
+            'value' => $invoice->supplier->name,
+            'short' => true
+          ],
+          [
+            'title' => 'Invoice Date',
+            'value' => $invoice->invoiced_date,
+            'short' => true
+          ],
+          [
+            'title' => 'Total',
+            'value' => $invoice->total,
+            'short' => true
+          ],
+        ]
+      ])->send();
+    }
 
     return redirect()->route('invoices.index');
   }

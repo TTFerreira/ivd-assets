@@ -3,35 +3,37 @@
 namespace App\Http\Controllers;
 
 use App\Location;
-use Session;
 use App\Http\Requests\Locations\StoreLocationRequest;
 use App\Http\Requests\Locations\UpdateLocationRequest;
 use Illuminate\Http\Request;
+use App\Repositories\Locations\LocationRepositoryInterface;
 
 use App\Http\Requests;
 
 class LocationsController extends Controller
 {
-  public function __construct()
+  public function __construct(LocationRepositoryInterface $location)
   {
       $this->middleware('auth');
+      $this->location = $location;
   }
 
   public function index()
   {
     $pageTitle = 'View Locations';
-    $locations = Location::all();
+    $locations = $this->location->getAll();
     return view('locations.index', compact('locations', 'pageTitle'));
   }
 
   public function store(StoreLocationRequest $request)
   {
-    Location::create($request->all());
-    $location = Location::get()->last();
+    $this->location->store($request);
 
-    Session::flash('status', 'success');
-    Session::flash('title', $location->location_name);
-    Session::flash('message', 'Successfully created');
+    $this->location->flashSuccessCreate($this->location->getLatest()->location_name);
+
+    if (env('SLACK_ENABLED')) {
+      $this->location->slackCreate();
+    }
 
     return redirect()->route('locations.index');
   }
@@ -44,11 +46,13 @@ class LocationsController extends Controller
 
   public function update(UpdateLocationRequest $request, Location $location)
   {
-    $location->update($request->all());
+    $this->location->update($request, $location);
 
-    Session::flash('status', 'success');
-    Session::flash('title', $location->location_name);
-    Session::flash('message', 'Successfully updated');
+    $this->location->flashSuccessUpdate($this->location->find($location->id)->location_name);
+
+    if (env('SLACK_ENABLED')) {
+      $this->location->slackUpdate($location->id);
+    }
 
     return redirect()->route('locations.index');
   }

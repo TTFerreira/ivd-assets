@@ -3,35 +3,33 @@
 namespace App\Http\Controllers;
 
 use App\Manufacturer;
-use Session;
 use App\Http\Requests\Manufacturers\StoreManufacturerRequest;
 use App\Http\Requests\Manufacturers\UpdateManufacturerRequest;
 use Illuminate\Http\Request;
+use App\Repositories\Manufacturers\ManufacturerRepositoryInterface;
 
 use App\Http\Requests;
 
 class ManufacturersController extends Controller
 {
-  public function __construct()
+  public function __construct(ManufacturerRepositoryInterface $manufacturer)
   {
       $this->middleware('auth');
+      $this->manufacturer = $manufacturer;
   }
 
   public function index()
   {
     $pageTitle = 'Manufacturers';
-    $manufacturers = Manufacturer::all();
+    $manufacturers = $this->manufacturer->getAll();
     return view('manufacturers.index', compact('manufacturers', 'pageTitle'));
   }
 
   public function store(StoreManufacturerRequest $request)
   {
-    Manufacturer::create($request->all());
-    $manufacturer = Manufacturer::get()->last();
+    $this->manufacturer->store($request);
 
-    Session::flash('status', 'success');
-    Session::flash('title', $manufacturer->name);
-    Session::flash('message', 'Successfully created');
+    $this->manufacturer->flashSuccessCreate($this->manufacturer->getLatest()->name);
 
     return redirect()->route('manufacturers.index');
   }
@@ -44,11 +42,9 @@ class ManufacturersController extends Controller
 
   public function update(UpdateManufacturerRequest $request, Manufacturer $manufacturer)
   {
-    $manufacturer->update($request->all());
+    $this->manufacturer->update($request, $manufacturer);
 
-    Session::flash('status', 'success');
-    Session::flash('title', $manufacturer->name);
-    Session::flash('message', 'Successfully updated');
+    $this->manufacturer->flashSuccessUpdate($this->manufacturer->find($manufacturer->id)->name);
 
     return redirect()->route('manufacturers.index');
   }

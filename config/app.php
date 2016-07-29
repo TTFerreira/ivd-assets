@@ -147,6 +147,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        App\Repositories\BackendServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -166,6 +167,10 @@ return [
          */
         Zizaco\Entrust\EntrustServiceProvider::class,
 
+        /*
+         * Slack
+         */
+        Maknz\Slack\Laravel\ServiceProvider::class,
     ],
 
     /*
@@ -221,6 +226,11 @@ return [
          * Entrust ACL
          */
         'Entrust'  => Zizaco\Entrust\EntrustFacade::class,
+
+        /*
+         * Slack
+         */
+        'Slack' => Maknz\Slack\Laravel\Facade::class,
 
     ],
 
