@@ -77,7 +77,7 @@ All that you are required to do to get slack to work is to [Create an Incoming W
 Simply create a new webhook on your slack account and copy and paste it next to `SLACK_WEBHOOK=` in the `.env` file, without any quotes.
 You're welcome to change the default channel and bot name there as well.
 
-If you do not want to use Slack, change `SLACK_ENABLED=true` to `SLACK_ENABLED=false`
+Slack integration is disabled by default. If you want to use Slack, change `SLACK_ENABLED=flase` to `SLACK_ENABLED=true`
 You can also edit the Slack Integration in more detail within `app/config/slack.php`
 
 ### Time Zone
