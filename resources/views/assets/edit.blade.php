@@ -13,7 +13,7 @@
             {{csrf_field()}}
             <div class="form-group">
               <label for="serial_number">Serial Number</label>
-              <input type="text"  name="serial_number" class="form-control" value="{{$asset->serial_number}}">
+              <input type="text" name="serial_number" class="form-control" value="{{$asset->serial_number}}">
             </div>
             <div class="form-group">
               <label for="asset_model_id">Model</label>
@@ -66,11 +66,11 @@
             </div>
             <div class="form-group">
               <label for="purchase_date">Purchase Date</label>
-              <input type="date"  name="purchase_date" class="form-control" value="{{$asset->purchase_date}}">
+              <input type="date" name="purchase_date" class="form-control" value="{{$asset->purchase_date}}">
             </div>
             <div class="form-group">
               <label for="warranty_months">Warranty Months</label>
-              <input type="text"  name="warranty_months" class="form-control" value="{{$asset->warranty_months}}">
+              <input type="text" name="warranty_months" class="form-control" value="{{$asset->warranty_months}}">
             </div>
             <div class="form-group">
               <label for="warranty_type_id">Warranty Type</label>
@@ -84,6 +84,14 @@
                   value="{{$warranty_type->id}}">{{$warranty_type->name}}</option>
                 @endforeach
               </select>
+            </div>
+            <div class="form-group">
+              <label for="ip">IP Address (If PC/Laptop)</label>
+              <input type="text" name="ip" class="form-control" value="{{$asset->ip}}">
+            </div>
+            <div class="form-group">
+              <label for="mac">MAC Address (If PC/Laptop)</label>
+              <input type="text" name="mac" class="form-control" value="{{$asset->mac}}">
             </div>
 
             <div class="form-group">

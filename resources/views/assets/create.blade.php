@@ -67,6 +67,14 @@
                 @endforeach
               </select>
             </div>
+            <div class="form-group">
+              <label for="ip">IP Address (If PC/Laptop)</label>
+              <input type="text" name="ip" class="form-control" value="{{old('ip')}}">
+            </div>
+            <div class="form-group">
+              <label for="mac">MAC Address (If PC/Laptop)</label>
+              <input type="text" name="mac" class="form-control" value="{{old('mac')}}">
+            </div>
 
             <div class="form-group">
               <button type="submit" class="btn btn-primary"><b>Add New Asset</b></button>

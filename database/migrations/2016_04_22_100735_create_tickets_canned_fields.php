@@ -19,7 +19,7 @@ class CreateTicketsCannedFields extends Migration
             $table->integer('ticket_status_id')->unsigned()->index();
             $table->integer('ticket_type_id')->unsigned()->index();
             $table->integer('ticket_priority_id')->unsigned()->index();
-            $table->string('subject');
+            $table->string('subject', 255);
             $table->text('description');
             $table->timestamps();
 

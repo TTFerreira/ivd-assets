@@ -10,11 +10,11 @@ class Asset extends Model
    * Mass assignable attributes
    * @var array
    */
-  protected $fillable = ['serial_number', 'model_id', 'division_id', 'supplier_id', 'purchase_date', 'warranty_months', 'warranty_type', 'invoice_id'];
+  protected $fillable = ['serial_number', 'model_id', 'division_id', 'supplier_id', 'purchase_date', 'warranty_months', 'warranty_type', 'invoice_id', 'ip', 'mac'];
 
   /**
    * An Asset is owned by an AssetModel
-   * 
+   *
    */
   public function model()
   {

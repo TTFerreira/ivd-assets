@@ -14,8 +14,8 @@ class CreateAssetsTable extends Migration
     {
         Schema::create('assets', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('asset_tag')->unique()->index();
-            $table->string('serial_number')->nullable();
+            $table->string('asset_tag', 10)->unique()->index();
+            $table->string('serial_number', 50)->nullable();
             $table->integer('model_id')->unsigned()->index();
             $table->integer('division_id')->unsigned()->index();
             $table->integer('supplier_id')->unsigned()->index();

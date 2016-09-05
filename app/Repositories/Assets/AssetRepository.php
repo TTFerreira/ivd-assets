@@ -74,6 +74,8 @@ class AssetRepository implements AssetRepositoryInterface {
     $asset->warranty_months = $request->warranty_months;
     $asset->warranty_type_id = $request->warranty_type_id;
     $asset->invoice_id = $request->invoice_id;
+    $asset->ip = $request->ip;
+    $asset->mac = $request->mac;
 
     $asset->save();
 

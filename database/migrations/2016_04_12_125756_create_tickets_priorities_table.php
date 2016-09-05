@@ -14,7 +14,7 @@ class CreateTicketsPrioritiesTable extends Migration
     {
         Schema::create('tickets_priorities', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('priority');
+            $table->string('priority', 50)->unique();
         });
     }
 

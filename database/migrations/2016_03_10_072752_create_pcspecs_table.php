@@ -14,9 +14,9 @@ class CreatePcspecsTable extends Migration
     {
         Schema::create('pcspecs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('cpu');
-            $table->string('ram');
-            $table->string('hdd');
+            $table->string('cpu', 100);
+            $table->string('ram', 10);
+            $table->string('hdd', 10);
         });
     }
 

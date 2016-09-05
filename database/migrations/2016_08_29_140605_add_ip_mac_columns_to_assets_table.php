@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateManufacturersTable extends Migration
+class AddIpMacColumnsToAssetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,10 @@ class CreateManufacturersTable extends Migration
      */
     public function up()
     {
-        Schema::create('manufacturers', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name', 100);
-        });
+      Schema::table('assets', function ($table) {
+        $table->ipAddress('ip')->nullable();
+        $table->macAddress('mac')->nullable();
+      });
     }
 
     /**
@@ -25,6 +25,6 @@ class CreateManufacturersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('manufacturers');
+        //
     }
 }

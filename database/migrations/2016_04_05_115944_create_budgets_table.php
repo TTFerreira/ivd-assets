@@ -15,7 +15,7 @@ class CreateBudgetsTable extends Migration
         Schema::create('budgets', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('division_id')->unsigned()->index();
-            $table->string('year');
+            $table->string('year', 4);
             $table->decimal('total', 8, 2);
             $table->timestamps();
 
