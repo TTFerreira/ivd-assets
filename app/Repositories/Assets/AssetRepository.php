@@ -39,7 +39,7 @@ class AssetRepository implements AssetRepositoryInterface {
     $movements = Movement::all();
     $manufacturers = Manufacturer::all();
     $warranty_types = WarrantyType::all();
-    $invoices = Invoice::all();
+    $invoices = Invoice::all()->sortByDesc('invoiced_date');
     $storeroom = Location::where('storeroom', 1)->first();
 
     if(isset($storeroom))
@@ -113,7 +113,7 @@ class AssetRepository implements AssetRepositoryInterface {
     $movements = Movement::all();
     $manufacturers = Manufacturer::all();
     $warranty_types = WarrantyType::all();
-    $invoices = Invoice::all();
+    $invoices = Invoice::all()->sortByDesc('invoiced_date');
     return view('assets.edit', compact('asset', 'asset_models', 'divisions', 'suppliers', 'movements', 'manufacturers', 'invoices', 'warranty_types', 'pageTitle'));
   }
 

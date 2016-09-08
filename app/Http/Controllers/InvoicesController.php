@@ -26,7 +26,7 @@ class InvoicesController extends Controller
   public function index()
   {
     $pageTitle = 'Invoices';
-    $invoices = Invoice::all();
+    $invoices = Invoice::all()->sortByDesc('invoiced_date');
     $suppliers = Supplier::all();
     $divisions = Division::all();
     return view('invoices.index', compact('invoices', 'suppliers', 'divisions', 'pageTitle'));
