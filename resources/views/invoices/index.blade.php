@@ -137,7 +137,7 @@
         columnDefs: [ {
           orderable: false, targets: 6
         } ],
-        order: [[ 5, "asc" ]]
+        order: [[ 5, "desc" ]]
     } );
   } );
   </script>
