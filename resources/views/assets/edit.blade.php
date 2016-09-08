@@ -60,7 +60,7 @@
                     @if($asset->invoice_id == $invoice->id)
                       selected
                     @endif
-                  value="{{$invoice->id}}">{{$invoice->invoice_number}}</option>
+                  value="{{$invoice->id}}">{{$invoice->invoice_number}} - {{$invoice->invoiced_date}} - {{$invoice->supplier->name}} - R{{$invoice->total}}</option>
                 @endforeach
               </select>
             </div>

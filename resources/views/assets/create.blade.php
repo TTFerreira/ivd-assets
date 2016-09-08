@@ -46,7 +46,7 @@
               <select class="form-control invoice_id" name="invoice_id">
                 <option value = ""></option>
                 @foreach($invoices as $invoice)
-                    <option value="{{$invoice->id}}">{{$invoice->invoice_number}}</option>
+                    <option value="{{$invoice->id}}">{{$invoice->invoice_number}} - {{$invoice->invoiced_date}} - {{$invoice->supplier->name}} - R{{$invoice->total}}</option>
                 @endforeach
               </select>
             </div>
