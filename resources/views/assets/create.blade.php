@@ -12,7 +12,7 @@
             {{csrf_field()}}
             <div class="form-group">
               <label for="serial_number">Serial Number</label>
-              <input type="text"  name="serial_number" class="form-control" value="{{old('serial_number')}}">
+              <input type="text"  name="serial_number" class="form-control" value="{{old('serial_number')}}" autofocus>
             </div>
             <div class="form-group">
               <label for="asset_model_id">Model</label>
