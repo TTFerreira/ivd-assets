@@ -117,14 +117,30 @@ class AssetRepository implements AssetRepositoryInterface {
     return view('assets.edit', compact('asset', 'asset_models', 'divisions', 'suppliers', 'movements', 'manufacturers', 'invoices', 'warranty_types', 'pageTitle'));
   }
 
-  public function update($request, $model)
+  public function update($request, $asset)
   {
-    $model->update($request->all());
+    $asset->serial_number = $request->serial_number;
+    $asset->model_id = $request->asset_model_id;
+    $tag = $asset->model->asset_type->abbreviation;
+    $oldTag = $asset->asset_tag;
+    $oldTag = substr($oldTag,3);
+    $tag = $tag . $oldTag;
+    $asset->asset_tag = $tag;
+    $asset->division_id = $request->division_id;
+    $asset->supplier_id = $request->supplier_id;
+    $asset->purchase_date = $request->purchase_date;
+    $asset->warranty_months = $request->warranty_months;
+    $asset->warranty_type_id = $request->warranty_type_id;
+    $asset->invoice_id = $request->invoice_id;
+    $asset->ip = $request->ip;
+    $asset->mac = $request->mac;
 
-    $this->flashSuccessUpdate($this->find($model->id)->asset_tag);
+    $asset->update();
+
+    $this->flashSuccessUpdate($this->find($asset->id)->asset_tag);
 
     if (env('SLACK_ENABLED')) {
-      $this->slackUpdate($model->id);
+      $this->slackUpdate($asset->id);
     }
 
     return redirect()->route('assets.index');
