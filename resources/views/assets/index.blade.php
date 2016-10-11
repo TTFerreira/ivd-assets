@@ -65,6 +65,7 @@
                 <th>Tag</th>
                 <th>Asset Type</th>
                 <th>S/N</th>
+                <th>Age</th>
                 <th>Model</th>
                 <th>Location</th>
                 <th>Division</th>
@@ -96,6 +97,14 @@
                     <td>{{$asset->asset_tag}}</td>
                     <td>{{$asset->model->asset_type->type_name}}</td>
                     <td>{{$asset->serial_number or ''}}</td>
+                    <td>
+                      @if (isset($age))
+                        <?php $years = $age / 12;
+                              $months = $age % 12;
+                               ?>
+                        {{floor($years)}}Y, {{$months}}M
+                      @endif
+                    </td>
                     <td>
                       <div id="model{{$asset->id}}" class="hover-pointer">
                         {{$asset->model->manufacturer->name}} - {{$asset->model->asset_model}}
@@ -155,19 +164,19 @@
             {
               extend: 'excel',
               exportOptions: {
-                columns: [0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11]
+                columns: [0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12]
               }
             },
             {
               extend: 'csv',
               exportOptions: {
-                columns: [0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11]
+                columns: [0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12]
               }
             },
             {
               extend: 'copy',
               exportOptions: {
-                columns: [0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11]
+                columns: [0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12]
               }
             }
         ],
@@ -180,12 +189,13 @@
           null,
           null,
           null,
+          null,
           { "visible": false },
           { "visible": false },
           { "visible": false },
           { "visible": false }
         ], columnDefs: [{
-          orderable: false, targets: 7
+          orderable: false, targets: 8
         }]
     } );
     // Get the model, location, division and status columns' div IDs for each row.
