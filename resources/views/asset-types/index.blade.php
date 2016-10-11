@@ -13,6 +13,7 @@
               <tr>
                 <th>Asset Type Name</th>
                 <th>Abbreviation</th>
+                <th>Tracking Spare</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -22,6 +23,13 @@
                   <div>
                     <td>{{$asset_type->type_name}}</td>
                     <td>{{$asset_type->abbreviation}}</td>
+                    <td>
+                      @if ($asset_type->spare == 1)
+                        Yes
+                      @else
+                        No
+                      @endif
+                    </td>
                     <td><a href="/asset-types/{{ $asset_type->id }}/edit" class="btn btn-primary"><span class='fa fa-pencil' aria-hidden='true'></span> <b>Edit</b></a></td>
                   </div>
                 </tr>
@@ -49,6 +57,14 @@
               <input type="text"  name="abbreviation" class="form-control" value="{{old('abbreviation')}}">
               {{ hasErrorForField($errors, 'abbreviation') }}
             </div>
+            <div class="form-group {{ hasErrorForClass($errors, 'spare') }}">
+              <label for="spare">Track Spare Level?</label>
+              <select class="form-control spare" name="spare">
+                <option value = 0>No</option>
+                <option value = 1>Yes</option>
+              </select>
+              {{ hasErrorForField($errors, 'spare') }}
+            </div>
 
             <div class="form-group">
               <button type="submit" class="btn btn-primary"><b>Add New Asset Type</b></button>
@@ -61,7 +77,7 @@
     $(document).ready(function() {
       $('#table').DataTable( {
         columnDefs: [ {
-          orderable: false, targets: 2
+          orderable: false, targets: 3
         } ],
         order: [[ 0, "asc" ]]
       } );

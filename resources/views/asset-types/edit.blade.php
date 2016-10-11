@@ -21,6 +21,24 @@
                 <input type="text"  name="abbreviation" class="form-control" value="{{$asset_type->abbreviation}}">
                 {{ hasErrorForField($errors, 'abbreviation') }}
               </div>
+              <div class="form-group {{ hasErrorForClass($errors, 'spare') }}">
+                <label for="spare">Track Spare Level</label>
+                <select class="form-control spare" name="spare">
+                  <option
+                    @if($asset_type->spare == 0)
+                      selected
+                    @endif
+                    value = 0>No
+                  </option>
+                  <option
+                    @if($asset_type->spare == 1)
+                      selected
+                    @endif
+                    value = 1>Yes
+                  </option>
+                </select>
+                {{ hasErrorForField($errors, 'spare') }}
+              </div>
 
               <div class="form-group">
                 <button type="submit" class="btn btn-primary"><b>Edit Asset Type</b></button>

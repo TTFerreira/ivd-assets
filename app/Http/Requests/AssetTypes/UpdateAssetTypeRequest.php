@@ -28,7 +28,8 @@ class UpdateAssetTypeRequest extends Request
 
       return [
         'type_name' => 'required|unique:asset_types,type_name,'.$assetType->id,
-        'abbreviation' => 'required|unique:asset_types,abbreviation,'.$assetType->id
+        'abbreviation' => 'required|unique:asset_types,abbreviation,'.$assetType->id,
+        'spare' => 'required'
       ];
     }
 
@@ -44,6 +45,7 @@ class UpdateAssetTypeRequest extends Request
         'type_name.unique' => 'Asset Type Name \'' . $this->type_name . '\' already exists. You must enter a unique Asset Type Name.',
         'abbreviation.required' => 'You must enter the Abbreviation.',
         'abbreviation.unique' => 'Abbreviation \'' . $this->abbreviation . '\' already exists. You must enter a unique Abbreviation.',
+        'spare.required' => 'You must specify if this must be tracked as a spare.',
       ];
     }
 }
