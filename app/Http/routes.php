@@ -114,6 +114,12 @@ Route::group(['middleware' => ['web']], function () {
       'only' => ['index', 'update'],
       'parameters' => 'singular'
     ]);
+
+    // Spares
+    Route::resource('/spares', 'SparesController', [
+      'only' => ['index'],
+      'parameters' => 'singular'
+    ]);
   });
 
   Route::group(['middleware' => ['auth', 'role:super-admin|admin']], function () {

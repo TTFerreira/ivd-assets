@@ -11,6 +11,7 @@
             @role(['super-admin', 'admin'])
               <li><a href="{{ url('home') }}"><i class='fa fa-home'></i> <span>Home</span></a></li>
               <li><a href="{{ url('/assets')}}"><i class='fa fa-tags'></i> <span>Assets</span></a></li>
+              <li><a href="{{ url('/spares')}}"><i class='fa fa-life-ring'></i> <span>Spares</span></a></li>
             @endrole
             <li class="treeview">
                 <a href="{{ url('/tickets')}}"><i class='fa fa-ticket'></i> <span>Tickets</span></a>
