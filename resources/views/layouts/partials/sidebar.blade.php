@@ -44,7 +44,9 @@
                       <li><a href="{{ url('/budgets')}}">Budgets</a></li>
                   </ul>
               </li>
-              <li><a href="{{ url('/admin')}}"><i class='fa fa-gear'></i> Admin</a></li>
+              <li class="treeview">
+                <a href="{{ url('/admin')}}"><i class='fa fa-gear'></i> <span>Admin</span></a>
+              </li>
             @endrole
         </ul><!-- /.sidebar-menu -->
     </section>
