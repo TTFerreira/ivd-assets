@@ -36,6 +36,7 @@ class AssetRepository implements AssetRepositoryInterface {
     $asset_models = AssetModel::all();
     $divisions = Division::all();
     $suppliers = Supplier::all();
+    $locations = Location::all()->sortBy('location_name');
     $movements = Movement::all();
     $manufacturers = Manufacturer::all();
     $warranty_types = WarrantyType::all();
@@ -44,7 +45,7 @@ class AssetRepository implements AssetRepositoryInterface {
 
     if(isset($storeroom))
     {
-      return view('assets.create', compact('asset_models', 'divisions', 'suppliers', 'movements', 'manufacturers', 'warranty_types', 'invoices', 'pageTitle'));
+      return view('assets.create', compact('asset_models', 'divisions', 'suppliers', 'locations', 'movements', 'manufacturers', 'warranty_types', 'invoices', 'pageTitle'));
     }
     else
     {
@@ -81,19 +82,34 @@ class AssetRepository implements AssetRepositoryInterface {
 
     $user = Auth::user()->id;
 
-    $storeroom = Location::where('storeroom', '=', 1)->first();
-    $status = Status::where('name', '=', 'Ready to Deploy')->first();
+    if ($request->location != '') {
+      $status = Status::where('name', '=', 'Deployed')->first();
 
-    $movement = new Movement();
-    $movement->asset_id = $asset->id;
-    $movement->location_id = $storeroom->id;
-    $movement->status_id = $status->id;
-    $movement->user_id = $user;
-    $movement->save();
+      $movement = new Movement();
+      $movement->asset_id = $asset->id;
+      $movement->location_id = $request->location;
+      $movement->status_id = $status->id;
+      $movement->user_id = $user;
+      $movement->save();
 
-    $asset->movement_id = $movement->id;
+      $asset->movement_id = $movement->id;
 
-    $asset->update();
+      $asset->update();
+    } else {
+      $storeroom = Location::where('storeroom', '=', 1)->first();
+      $status = Status::where('name', '=', 'Ready to Deploy')->first();
+
+      $movement = new Movement();
+      $movement->asset_id = $asset->id;
+      $movement->location_id = $storeroom->id;
+      $movement->status_id = $status->id;
+      $movement->user_id = $user;
+      $movement->save();
+
+      $asset->movement_id = $movement->id;
+
+      $asset->update();
+    }
 
     $this->flashSuccessCreate($this->find($asset->id)->asset_tag);
 

@@ -75,6 +75,15 @@
               <label for="mac">MAC Address (If PC/Laptop)</label>
               <input type="text" name="mac" class="form-control" value="{{old('mac')}}">
             </div>
+            <div class="form-group">
+              <label for="location">Deploy to a Location</label>
+              <select class="form-control location" name="location">
+                <option value = "">No</option>
+                @foreach($locations as $location)
+                    <option value="{{$location->id}}">{{$location->location_name}} - {{$location->building}}, {{$location->office}}</option>
+                @endforeach
+              </select>
+            </div>
 
             <div class="form-group">
               <button type="submit" class="btn btn-primary"><b>Add New Asset</b></button>
@@ -113,6 +122,7 @@
       $(".asset_model_id").select2();
       $(".division_id").select2();
       $(".supplier_id").select2();
+      $(".location").select2();
       $(".warranty_type_id").select2();
       $(".invoice_id").select2();
     });
