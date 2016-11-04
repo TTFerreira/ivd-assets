@@ -149,3 +149,11 @@
     </script>
   @endif
 @endsection
+@section('footer')
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $(".supplier_id").select2();
+      $(".division_id").select2();
+    });
+  </script>
+@endsection
