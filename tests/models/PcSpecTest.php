@@ -10,9 +10,27 @@ class PcSpecTest extends TestCase
 {
   use DatabaseTransactions;
 
-  public function testPcSpecsViewWithLoggedInUser()
+  public function testUserCannotAccessPcSpecsView()
   {
-    $user = User::get()->first();
+    $user = User::where('name', 'User User')->get()->first();
+
+    $this->actingAs($user)
+         ->get('/pcspecs')
+         ->assertResponseStatus('403');
+  }
+
+  public function testAdminCannotAccessPcSpecsView()
+  {
+    $user = User::where('name', 'Admin User')->get()->first();
+
+    $this->actingAs($user)
+         ->get('/pcspecs')
+         ->assertResponseStatus('403');
+  }
+
+  public function testPcSpecsViewWithLoggedInSuperAdmin()
+  {
+    $user = User::where('name', 'Super Admin User')->get()->first();
 
     $this->actingAs($user)
          ->visit('/pcspecs')
@@ -21,7 +39,7 @@ class PcSpecTest extends TestCase
 
   public function testCreateNewPcSpec()
   {
-    $user = User::get()->first();
+    $user = User::where('name', 'Super Admin User')->get()->first();
 
     $this->actingAs($user)
          ->visit('/pcspecs')
@@ -37,7 +55,7 @@ class PcSpecTest extends TestCase
 
   public function testEditPcSpec()
   {
-    $user = User::get()->first();
+    $user = User::where('name', 'Super Admin User')->get()->first();
 
     $this->actingAs($user)
          ->visit('/pcspecs')

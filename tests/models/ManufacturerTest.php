@@ -10,9 +10,27 @@ class ManufacturerTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testManufacturersViewWithLoggedInUser()
+    public function testUserCannotAccessManufacturersView()
     {
-      $user = User::get()->first();
+      $user = User::where('name', 'User User')->get()->first();
+
+      $this->actingAs($user)
+           ->get('/manufacturers')
+           ->assertResponseStatus('403');
+    }
+
+    public function testAdminCannotAccessManufacturersView()
+    {
+      $user = User::where('name', 'Admin User')->get()->first();
+
+      $this->actingAs($user)
+           ->get('/manufacturers')
+           ->assertResponseStatus('403');
+    }
+
+    public function testManufacturersViewWithLoggedInSuperAdmin()
+    {
+      $user = User::where('name', 'Super Admin User')->get()->first();
 
       $this->actingAs($user)
            ->visit('/manufacturers')
@@ -21,7 +39,7 @@ class ManufacturerTest extends TestCase
 
     public function testCreateNewManufacturer()
     {
-      $user = User::get()->first();
+      $user = User::where('name', 'Super Admin User')->get()->first();
 
       $this->actingAs($user)
            ->visit('/manufacturers')
@@ -35,7 +53,7 @@ class ManufacturerTest extends TestCase
 
     public function testEditManufacturer()
     {
-      $user = User::get()->first();
+      $user = User::where('name', 'Super Admin User')->get()->first();
 
       $this->actingAs($user)
            ->visit('/manufacturers')

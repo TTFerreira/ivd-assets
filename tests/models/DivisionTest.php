@@ -10,9 +10,27 @@ class DivisionTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testDivisionsViewWithLoggedInUser()
+    public function testUserCannotAccessDivisionsView()
     {
-      $user = User::get()->first();
+      $user = User::where('name', 'User User')->get()->first();
+
+      $this->actingAs($user)
+           ->get('/divisions')
+           ->assertResponseStatus('403');
+    }
+
+    public function testAdminCannotAccessDivisionsView()
+    {
+      $user = User::where('name', 'Admin User')->get()->first();
+
+      $this->actingAs($user)
+           ->get('/divisions')
+           ->assertResponseStatus('403');
+    }
+
+    public function testDivisionsViewWithLoggedInSuperAdmin()
+    {
+      $user = User::where('name', 'Super Admin User')->get()->first();
 
       $this->actingAs($user)
            ->visit('/divisions')
@@ -21,7 +39,7 @@ class DivisionTest extends TestCase
 
     public function testCreateNewDivision()
     {
-      $user = User::get()->first();
+      $user = User::where('name', 'Super Admin User')->get()->first();
 
       $this->actingAs($user)
            ->visit('/divisions')
@@ -35,7 +53,7 @@ class DivisionTest extends TestCase
 
     public function testEditDivision()
     {
-      $user = User::get()->first();
+      $user = User::where('name', 'Super Admin User')->get()->first();
 
       $this->actingAs($user)
            ->visit('/divisions')

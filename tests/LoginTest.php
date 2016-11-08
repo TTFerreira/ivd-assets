@@ -22,8 +22,8 @@ class LoginTest extends TestCase
   {
     $this->visit('/')
        ->see('Sign in to start your session')
-       ->type('terry@pixelcandy.co.za', 'email')
-       ->type('secret', 'password')
+       ->type('superadmin@terryferreira.com', 'email')
+       ->type('superadmin', 'password')
        ->press('Sign In')
        ->see('Latest Movement Activity')
        ->seePageIs('/');

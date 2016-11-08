@@ -10,9 +10,27 @@ class LocationTest extends TestCase
 {
   use DatabaseTransactions;
 
-  public function testLocationsViewWithLoggedInUser()
+  public function testUserCannotAccessLocationsView()
   {
-    $user = User::get()->first();
+    $user = User::where('name', 'User User')->get()->first();
+
+    $this->actingAs($user)
+         ->get('/locations')
+         ->assertResponseStatus('403');
+  }
+
+  public function testAdminCannotAccessLocationsView()
+  {
+    $user = User::where('name', 'Admin User')->get()->first();
+
+    $this->actingAs($user)
+         ->get('/locations')
+         ->assertResponseStatus('403');
+  }
+
+  public function testLocationsViewWithLoggedInSuperAdmin()
+  {
+    $user = User::where('name', 'Super Admin User')->get()->first();
 
     $this->actingAs($user)
          ->visit('/locations')
@@ -21,7 +39,7 @@ class LocationTest extends TestCase
 
   public function testCreateNewLocation()
   {
-    $user = User::get()->first();
+    $user = User::where('name', 'Super Admin User')->get()->first();
 
     $this->actingAs($user)
          ->visit('/locations')
@@ -37,7 +55,7 @@ class LocationTest extends TestCase
 
   public function testEditLocation()
   {
-    $user = User::get()->first();
+    $user = User::where('name', 'Super Admin User')->get()->first();
 
     $this->actingAs($user)
          ->visit('/locations')

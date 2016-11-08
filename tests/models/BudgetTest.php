@@ -10,9 +10,27 @@ class BudgetTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testBudgetsViewWithLoggedInUser()
+    public function testUserCannotAccessBudgetsView()
     {
-      $user = User::get()->first();
+      $user = User::where('name', 'User User')->get()->first();
+
+      $this->actingAs($user)
+           ->get('/budgets')
+           ->assertResponseStatus('403');
+    }
+
+    public function testAdminCannotAccessBudgetsView()
+    {
+      $user = User::where('name', 'Admin User')->get()->first();
+
+      $this->actingAs($user)
+           ->get('/budgets')
+           ->assertResponseStatus('403');
+    }
+
+    public function testBudgetsViewWithLoggedInSuperAdmin()
+    {
+      $user = User::where('name', 'Super Admin User')->get()->first();
 
       $this->actingAs($user)
            ->visit('/budgets')

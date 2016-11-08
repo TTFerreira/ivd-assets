@@ -10,9 +10,27 @@ class AssetModelTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testAssetModelsViewWithLoggedInUser()
+    public function testUserCannotAccessAssetModelsView()
     {
-      $user = User::get()->first();
+      $user = User::where('name', 'User User')->get()->first();
+
+      $this->actingAs($user)
+           ->get('/models')
+           ->assertResponseStatus('403');
+    }
+
+    public function testAdminCannotAccessAssetModelsView()
+    {
+      $user = User::where('name', 'Admin User')->get()->first();
+
+      $this->actingAs($user)
+           ->get('/models')
+           ->assertResponseStatus('403');
+    }
+
+    public function testAssetModelsViewWithLoggedInSuperAdmin()
+    {
+      $user = User::where('name', 'Super Admin User')->get()->first();
 
       $this->actingAs($user)
            ->visit('/models')
@@ -21,7 +39,7 @@ class AssetModelTest extends TestCase
 
     public function testCreateNewAssetModelWithoutPartNumberAndPCSpec()
     {
-      $user = User::get()->first();
+      $user = User::where('name', 'Super Admin User')->get()->first();
 
       $this->actingAs($user)
            ->visit('/models')
@@ -37,7 +55,7 @@ class AssetModelTest extends TestCase
 
     public function testCreateNewAssetModelWithPartNumberAndPCSpec()
     {
-      $user = User::get()->first();
+      $user = User::where('name', 'Super Admin User')->get()->first();
 
       $this->actingAs($user)
            ->visit('/models')
@@ -55,7 +73,7 @@ class AssetModelTest extends TestCase
 
     public function testEditAssetModel()
     {
-      $user = User::get()->first();
+      $user = User::where('name', 'Super Admin User')->get()->first();
 
       $this->actingAs($user)
            ->visit('/models')

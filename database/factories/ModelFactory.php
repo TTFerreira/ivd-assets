@@ -46,6 +46,7 @@ $factory->define(App\AssetType::class, function (Faker\Generator $faker) {
     return [
         'type_name' => $faker->word,
         'abbreviation' => $faker->regexify('[A-H]{3}'),
+        'spare' => 0
     ];
 });
 

@@ -12,9 +12,27 @@ class InvoiceTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testInvoicesViewWithLoggedInUser()
+    public function testUserCannotAccessInvoicesView()
     {
-      $user = User::get()->first();
+      $user = User::where('name', 'User User')->get()->first();
+
+      $this->actingAs($user)
+           ->get('/invoices')
+           ->assertResponseStatus('403');
+    }
+
+    public function testAdminCannotAccessInvoicesView()
+    {
+      $user = User::where('name', 'Admin User')->get()->first();
+
+      $this->actingAs($user)
+           ->get('/invoices')
+           ->assertResponseStatus('403');
+    }
+
+    public function testInvoicesViewWithLoggedInSuperAdmin()
+    {
+      $user = User::where('name', 'Super Admin User')->get()->first();
 
       $this->actingAs($user)
            ->visit('/invoices')
@@ -23,7 +41,7 @@ class InvoiceTest extends TestCase
 
     public function testNewInvoiceWithoutAttachment()
     {
-      $user = User::get()->first();
+      $user = User::where('name', 'Super Admin User')->get()->first();
 
       $this->actingAs($user)
            ->visit('/invoices')
@@ -42,7 +60,7 @@ class InvoiceTest extends TestCase
 
     public function testNewInvoiceWithAttachment()
     {
-      $user = User::get()->first();
+      $user = User::where('name', 'Super Admin User')->get()->first();
 
       $path = storage_path('testing/test.pdf');
       $original_name = 'pdf.pdf';
@@ -74,7 +92,7 @@ class InvoiceTest extends TestCase
 
     public function testEditInvoiceWithAttachment()
     {
-      $user = User::get()->first();
+      $user = User::where('name', 'Super Admin User')->get()->first();
 
       $path = storage_path('testing/test.pdf');
       $original_name = 'pdf.pdf';
