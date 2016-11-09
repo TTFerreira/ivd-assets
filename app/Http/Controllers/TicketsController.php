@@ -36,7 +36,7 @@ class TicketsController extends Controller
    */
   public function index()
   {
-    $pageTitle = 'View Tickets';
+    $pageTitle = 'Tickets';
     $tickets = Ticket::all();
     return view('tickets.index', compact('tickets', 'pageTitle'));
   }

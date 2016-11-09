@@ -10,18 +10,36 @@ class SupplierTest extends TestCase
 {
   use DatabaseTransactions;
 
-  public function testSuppliersViewWithLoggedInUser()
+  public function testUserCannotAccessSuppliersView()
   {
-    $user = User::get()->first();
+    $user = User::where('name', 'User User')->get()->first();
+
+    $this->actingAs($user)
+         ->get('/suppliers')
+         ->assertResponseStatus('403');
+  }
+
+  public function testAdminCannotAccessSuppliersView()
+  {
+    $user = User::where('name', 'Admin User')->get()->first();
+
+    $this->actingAs($user)
+         ->get('/suppliers')
+         ->assertResponseStatus('403');
+  }
+
+  public function testSuppliersViewWithLoggedInSuperAdmin()
+  {
+    $user = User::where('name', 'Super Admin User')->get()->first();
 
     $this->actingAs($user)
          ->visit('/suppliers')
-         ->see('View Suppliers');
+         ->see('Suppliers');
   }
 
   public function testCreateNewSupplier()
   {
-    $user = User::get()->first();
+    $user = User::where('name', 'Super Admin User')->get()->first();
 
     $this->actingAs($user)
          ->visit('/suppliers')
@@ -35,7 +53,7 @@ class SupplierTest extends TestCase
 
   public function testEditSupplier()
   {
-    $user = User::get()->first();
+    $user = User::where('name', 'Super Admin User')->get()->first();
 
     $this->actingAs($user)
          ->visit('/suppliers')

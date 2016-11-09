@@ -44,7 +44,7 @@ class StoreUserRequest extends Request
         'email.unique' => $this->email . ' already exists. You must enter a unique email address.',
         'email.email' => 'Please enter a valid email address.',
         'password.required' => 'You must enter a password.',
-        'password.min' => 'The password must be a minimum of 6 characters long.'
+        'password.min' => 'The password must be a minimum of six (6) characters long.'
       ];
     }
 }

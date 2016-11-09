@@ -10,9 +10,27 @@ class TicketPriorityTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testTicketPrioritiesViewWithLoggedInUser()
+    public function testUserCannotAccessTicketPrioritiesView()
     {
-      $user = User::get()->first();
+      $user = User::where('name', 'User User')->get()->first();
+
+      $this->actingAs($user)
+           ->get('/admin/ticket-priorities')
+           ->assertResponseStatus('403');
+    }
+
+    public function testAdminCannotAccessTicketPrioritiesView()
+    {
+      $user = User::where('name', 'Admin User')->get()->first();
+
+      $this->actingAs($user)
+           ->get('/admin/ticket-priorities')
+           ->assertResponseStatus('403');
+    }
+
+    public function testTicketPrioritiesViewWithLoggedInSuperAdmin()
+    {
+      $user = User::where('name', 'Super Admin User')->get()->first();
 
       $this->actingAs($user)
            ->visit('/admin/ticket-priorities')
@@ -21,7 +39,7 @@ class TicketPriorityTest extends TestCase
 
     public function testCreateNewTicketPriority()
     {
-      $user = User::get()->first();
+      $user = User::where('name', 'Super Admin User')->get()->first();
 
       $this->actingAs($user)
            ->visit('/admin/ticket-priorities')
@@ -35,7 +53,7 @@ class TicketPriorityTest extends TestCase
 
     public function testEditTicketPriority()
     {
-      $user = User::get()->first();
+      $user = User::where('name', 'Super Admin User')->get()->first();
 
       $this->actingAs($user)
            ->visit('/admin/ticket-priorities')

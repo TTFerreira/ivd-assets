@@ -47,8 +47,8 @@ class UpdateUserRequest extends Request
         'email.required' => 'You must enter the User\'s Email Address.',
         'email.unique' => $this->email . ' already exists. You must enter a unique email address.',
         'password.confirmed' => 'The passwords do not match.',
-        'password.min' => 'The password must be a minimum of six (6) characters.',
-        'password_confirmation.min' => 'The password must be a minimum of six (6) characters.',
+        'password.min' => 'The password must be a minimum of six (6) characters long.',
+        'password_confirmation.min' => 'The password must be a minimum of six (6) characters long.',
       ];
     }
 }

@@ -20,7 +20,7 @@ class LocationsController extends Controller
 
   public function index()
   {
-    $pageTitle = 'View Locations';
+    $pageTitle = 'Locations';
     $locations = $this->location->getAll();
     return view('locations.index', compact('locations', 'pageTitle'));
   }

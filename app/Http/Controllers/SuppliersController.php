@@ -19,7 +19,7 @@ class SuppliersController extends Controller
 
   public function index()
   {
-    $pageTitle = 'View Suppliers';
+    $pageTitle = 'Suppliers';
     $suppliers = Supplier::all();
     return view('suppliers.index', compact('suppliers', 'pageTitle'));
   }

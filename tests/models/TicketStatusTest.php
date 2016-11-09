@@ -10,9 +10,27 @@ class TicketStatusTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testTicketStatusesViewWithLoggedInUser()
+    public function testUserCannotAccessTicketStatusesView()
     {
-      $user = User::get()->first();
+      $user = User::where('name', 'User User')->get()->first();
+
+      $this->actingAs($user)
+           ->get('/admin/ticket-statuses')
+           ->assertResponseStatus('403');
+    }
+
+    public function testAdminCannotAccessTicketStatusesView()
+    {
+      $user = User::where('name', 'Admin User')->get()->first();
+
+      $this->actingAs($user)
+           ->get('/admin/ticket-statuses')
+           ->assertResponseStatus('403');
+    }
+
+    public function testTicketStatusesViewWithLoggedInSuperAdmin()
+    {
+      $user = User::where('name', 'Super Admin User')->get()->first();
 
       $this->actingAs($user)
            ->visit('/admin/ticket-statuses')
@@ -21,7 +39,7 @@ class TicketStatusTest extends TestCase
 
     public function testCreateNewTicketStatus()
     {
-      $user = User::get()->first();
+      $user = User::where('name', 'Super Admin User')->get()->first();
 
       $this->actingAs($user)
            ->visit('/admin/ticket-statuses')
@@ -35,7 +53,7 @@ class TicketStatusTest extends TestCase
 
     public function testEditTicketStatus()
     {
-      $user = User::get()->first();
+      $user = User::where('name', 'Super Admin User')->get()->first();
 
       $this->actingAs($user)
            ->visit('/admin/ticket-statuses')

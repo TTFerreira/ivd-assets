@@ -10,9 +10,27 @@ class StatusTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testStatusesViewWithLoggedInUser()
+    public function testUserCannotAccessStatusView()
     {
-      $user = User::get()->first();
+      $user = User::where('name', 'User User')->get()->first();
+
+      $this->actingAs($user)
+           ->get('/admin/assets-statuses')
+           ->assertResponseStatus('403');
+    }
+
+    public function testAdminCannotAccessStatusView()
+    {
+      $user = User::where('name', 'Admin User')->get()->first();
+
+      $this->actingAs($user)
+           ->get('/admin/assets-statuses')
+           ->assertResponseStatus('403');
+    }
+
+    public function testStatusViewWithLoggedInSuperAdmin()
+    {
+      $user = User::where('name', 'Super Admin User')->get()->first();
 
       $this->actingAs($user)
            ->visit('/admin/assets-statuses')
@@ -21,7 +39,7 @@ class StatusTest extends TestCase
 
     public function testCreateNewStatus()
     {
-      $user = User::get()->first();
+      $user = User::where('name', 'Super Admin User')->get()->first();
 
       $this->actingAs($user)
            ->visit('/admin/assets-statuses')
@@ -35,7 +53,7 @@ class StatusTest extends TestCase
 
     public function testEditStatus()
     {
-      $user = User::get()->first();
+      $user = User::where('name', 'Super Admin User')->get()->first();
 
       $this->actingAs($user)
            ->visit('/admin/assets-statuses')

@@ -10,9 +10,27 @@ class StoreroomTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testStoreroomViewWithLoggedInUser()
+    public function testUserCannotAccessStoreroomView()
     {
-      $user = User::get()->first();
+      $user = User::where('name', 'User User')->get()->first();
+
+      $this->actingAs($user)
+           ->get('/admin/storeroom')
+           ->assertResponseStatus('403');
+    }
+
+    public function testAdminCannotAccessStoreroomView()
+    {
+      $user = User::where('name', 'Admin User')->get()->first();
+
+      $this->actingAs($user)
+           ->get('/admin/storeroom')
+           ->assertResponseStatus('403');
+    }
+
+    public function testStoreroomViewWithLoggedInSuperAdmin()
+    {
+      $user = User::where('name', 'Super Admin User')->get()->first();
 
       $this->actingAs($user)
            ->visit('/admin/storeroom')
@@ -21,7 +39,7 @@ class StoreroomTest extends TestCase
 
     public function testSetNewDefaultStoreroom()
     {
-      $user = User::get()->first();
+      $user = User::where('name', 'Super Admin User')->get()->first();
 
       $this->actingAs($user)
            ->visit('/admin/storeroom')
@@ -35,7 +53,7 @@ class StoreroomTest extends TestCase
 
     public function testSetDifferentDefaultStoreroom()
     {
-      $user = User::get()->first();
+      $user = User::where('name', 'Super Admin User')->get()->first();
 
       $this->actingAs($user)
            ->visit('/admin/storeroom')

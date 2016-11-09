@@ -135,7 +135,7 @@ The login details for the account are as follows.
 ## Tests
 
 Create your test sqlite file.
-Within the `database` folder, create file named `testing.sqlite`
+Within the `database` folder, create a file named `testing.sqlite`
 If you want to use a different file, make sure to change the `sqlite_testing` section within `config/database.php` to reflect your file.
 
 Run `migrate` on the test Database
@@ -169,7 +169,7 @@ Example
 phpunit tests/models/StatusTest --filter=testCreateNewStatus
 ```
 
-There are currently 49 tests, with 419 assertions.
+There are currently 92 tests, with 526 assertions.
 
 ## Credits/Packages
 

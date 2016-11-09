@@ -10,9 +10,27 @@ class TicketCannedFieldTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function testTicketCannedFieldViewWithLoggedInUser()
+    public function testUserCannotAccessTicketCannedFieldView()
     {
-      $user = User::get()->first();
+      $user = User::where('name', 'User User')->get()->first();
+
+      $this->actingAs($user)
+           ->get('/admin/ticket-canned-fields')
+           ->assertResponseStatus('403');
+    }
+
+    public function testAdminCannotAccessTicketCannedFieldView()
+    {
+      $user = User::where('name', 'Admin User')->get()->first();
+
+      $this->actingAs($user)
+           ->get('/admin/ticket-canned-fields')
+           ->assertResponseStatus('403');
+    }
+
+    public function testTicketCannedFieldViewWithLoggedInSuperAdmin()
+    {
+      $user = User::where('name', 'Super Admin User')->get()->first();
 
       $this->actingAs($user)
            ->visit('/admin/ticket-canned-fields')
@@ -21,7 +39,7 @@ class TicketCannedFieldTest extends TestCase
 
     public function testCreateNewTicketCannedField()
     {
-      $user = User::get()->first();
+      $user = User::where('name', 'Super Admin User')->get()->first();
 
       $this->actingAs($user)
            ->visit('/admin/ticket-canned-fields')
@@ -41,7 +59,7 @@ class TicketCannedFieldTest extends TestCase
 
     public function testEditTicketCannedField()
     {
-      $user = User::get()->first();
+      $user = User::where('name', 'Super Admin User')->get()->first();
 
       $this->actingAs($user)
            ->visit('/admin/ticket-canned-fields')
