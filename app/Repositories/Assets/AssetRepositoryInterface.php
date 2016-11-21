@@ -15,6 +15,7 @@ interface AssetRepositoryInterface {
   public function deployedCount();
   public function readyToDeployCount();
   public function repairsCount();
+  public function writtenOffCount();
   public function flashSuccessCreate($title);
   public function flashSuccessUpdate($title);
   public function slackCreate();

@@ -2,51 +2,68 @@
 
 @section('main-content')
   <div class="row">
-    <div class="col-md-3 col-sm-6 col-xs-12">
-      <div class="info-box">
-        <span class="info-box-icon bg-purple"><i class="fa fa-tags"></i></span>
+    <div class="col-md-2 col-sm-6 col-xs-12">
+      <div class="small-box bg-purple">
+        <div class="inner">
+          <h3>{{$totalAssets}}</h3>
 
-        <div class="info-box-content">
-          <span class="info-box-text">Total Assets</span>
-          <span class="info-box-number">{{$totalAssets}}</span>
+          <p>Total</p>
         </div>
-        <!-- /.info-box-content -->
+        <div class="icon">
+          <i class="fa fa-tags"></i>
+        </div>
       </div>
       <!-- /.info-box -->
     </div>
-    <div class="col-md-3 col-sm-6 col-xs-12">
-      <div class="info-box">
-        <span class="info-box-icon bg-aqua"><i class="fa fa-check-circle"></i></span>
+    <div class="col-md-2 col-sm-6 col-xs-12">
+      <div class="small-box bg-aqua">
+        <div class="inner">
+          <h3>{{$deployed}}</h3>
 
-        <div class="info-box-content">
-          <span class="info-box-text">Deployed</span>
-          <span class="info-box-number">{{$deployed}}</span>
+          <p>Deployed</p>
         </div>
-        <!-- /.info-box-content -->
+        <div class="icon">
+          <i class="fa fa-check-circle"></i>
+        </div>
       </div>
       <!-- /.info-box -->
     </div>
-    <div class="col-md-3 col-sm-6 col-xs-12">
-      <div class="info-box">
-        <span class="info-box-icon bg-green"><i class="fa fa-plus-circle"></i></span>
+    <div class="col-md-2 col-sm-6 col-xs-12">
+      <div class="small-box bg-green">
+        <div class="inner">
+          <h3>{{$readyToDeploy}}</h3>
 
-        <div class="info-box-content">
-          <span class="info-box-text">Ready to Deploy</span>
-          <span class="info-box-number">{{$readyToDeploy}}</span>
+          <p>Ready</p>
         </div>
-        <!-- /.info-box-content -->
+        <div class="icon">
+          <i class="fa fa-plus-circle"></i>
+        </div>
       </div>
       <!-- /.info-box -->
     </div>
-    <div class="col-md-3 col-sm-6 col-xs-12">
-      <div class="info-box">
-        <span class="info-box-icon bg-yellow"><i class="fa fa-times-circle"></i></span>
+    <div class="col-md-2 col-sm-6 col-xs-12">
+      <div class="small-box bg-yellow">
+        <div class="inner">
+          <h3>{{$repairs}}</h3>
 
-        <div class="info-box-content">
-          <span class="info-box-text">Repairs</span>
-          <span class="info-box-number">{{$repairs}}</span>
+          <p>Repairs</p>
         </div>
-        <!-- /.info-box-content -->
+        <div class="icon">
+          <i class="fa fa-question-circle"></i>
+        </div>
+      </div>
+      <!-- /.info-box -->
+    </div>
+    <div class="col-md-2 col-sm-6 col-xs-12">
+      <div class="small-box bg-red">
+        <div class="inner">
+          <h3>{{$writtenOff}}</h3>
+
+          <p>Written Off</p>
+        </div>
+        <div class="icon">
+          <i class="fa fa-times-circle"></i>
+        </div>
       </div>
       <!-- /.info-box -->
     </div>

@@ -26,8 +26,9 @@ class AssetRepository implements AssetRepositoryInterface {
     $deployed = $this->deployedCount();
     $readyToDeploy = $this->readyToDeployCount();
     $repairs = $this->repairsCount();
+    $writtenOff = $this->writtenOffCount();
 
-    return view('assets.index', compact('assets', 'pageTitle', 'totalAssets', 'deployed', 'readyToDeploy', 'repairs'));
+    return view('assets.index', compact('assets', 'pageTitle', 'totalAssets', 'deployed', 'readyToDeploy', 'repairs', 'writtenOff'));
   }
 
   public function create()
@@ -212,6 +213,18 @@ class AssetRepository implements AssetRepositoryInterface {
                        $repairs2 = DB::table('statuses')->where('name', 'Waiting for Repairs')->pluck('id');
                        $join->on('assets.movement_id', '=', 'movements.id')
                             ->whereIn('movements.status_id', [$repairs1, $repairs2]);
+                     })
+                     ->count();
+  }
+
+  public function writtenOffCount()
+  {
+    return DB::table('assets')
+                     ->join('movements', function ($join) {
+                       $writtenOff1 = DB::table('statuses')->where('name', 'Written Off - Broken')->pluck('id');
+                       $writtenOff2 = DB::table('statuses')->where('name', 'Written Off - Age')->pluck('id');
+                       $join->on('assets.movement_id', '=', 'movements.id')
+                            ->whereIn('movements.status_id', [$writtenOff1, $writtenOff2]);
                      })
                      ->count();
   }
